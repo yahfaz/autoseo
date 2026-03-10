@@ -20,29 +20,28 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .app{position:relative;z-index:1;display:flex;min-height:100vh;}
 
 /* ── SIDEBAR ── */
-.sidebar{width:220px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto;}
-.sidebar-logo{padding:22px 20px 18px;border-bottom:1px solid var(--border);}
+.sidebar{width:230px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto;}
+.sidebar-logo{padding:20px 18px 16px;border-bottom:1px solid var(--border);}
 .logo{display:flex;align-items:center;gap:10px;}
 .logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;font-family:'Space Mono',monospace;flex-shrink:0;}
 .logo-text{font-size:18px;font-weight:800;}
 .logo-text span{color:var(--accent);}
-.sidebar-nav{flex:1;padding:14px 10px;}
-.nav-section{font-size:9px;font-family:'Space Mono',monospace;letter-spacing:2px;color:var(--muted);padding:10px 10px 6px;text-transform:uppercase;}
-.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;cursor:pointer;transition:all .15s;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:2px;}
+.sidebar-nav{flex:1;padding:12px 8px;}
+.nav-section{font-size:9px;font-family:'Space Mono',monospace;letter-spacing:2px;color:var(--muted);padding:10px 10px 5px;text-transform:uppercase;}
+.nav-item{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:8px;cursor:pointer;transition:all .15s;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:1px;}
 .nav-item:hover{background:var(--surface2);color:var(--text);}
 .nav-item.active{background:rgba(108,71,255,0.1);color:var(--accent);}
-.nav-item .nav-icon{font-size:16px;width:20px;text-align:center;flex-shrink:0;}
-.nav-badge{margin-left:auto;background:var(--accent2);color:#fff;font-size:10px;padding:1px 7px;border-radius:10px;font-family:'Space Mono',monospace;}
-.sidebar-footer{padding:16px;border-top:1px solid var(--border);}
+.nav-item .nav-icon{font-size:15px;width:18px;text-align:center;flex-shrink:0;}
+.sidebar-footer{padding:14px;border-top:1px solid var(--border);}
 .key-status{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);font-family:'Space Mono',monospace;}
 .key-dot{width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 5px rgba(16,185,129,0.5);flex-shrink:0;}
 .key-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;}
 
 /* ── MAIN ── */
 .main{flex:1;display:flex;flex-direction:column;min-width:0;overflow-x:hidden;}
-.topbar{padding:16px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);position:sticky;top:0;z-index:50;}
-.page-title{font-size:18px;font-weight:800;}
-.page-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+.topbar{padding:14px 26px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.94);backdrop-filter:blur(20px);position:sticky;top:0;z-index:50;flex-shrink:0;}
+.page-title{font-size:17px;font-weight:800;}
+.page-sub{font-size:11.5px;color:var(--muted);margin-top:2px;}
 .topbar-actions{display:flex;gap:10px;align-items:center;}
 
 /* ── GATE ── */
@@ -52,147 +51,188 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .gate-title{font-size:26px;font-weight:800;margin-bottom:10px;}
 .gate-title span{color:var(--accent);}
 .gate-sub{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:28px;}
-.gate-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative;overflow:hidden;text-align:left;}
+.gate-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative;overflow:hidden;text-align:left;box-shadow:0 4px 20px rgba(108,71,255,0.08);}
 .gate-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),transparent);}
 
 /* ── PAGES ── */
-.page{display:none;flex:1;padding:28px;overflow-y:auto;}
+.page{display:none;flex:1;overflow-y:auto;}
 .page.active{display:block;}
+.page-body{padding:24px 28px;}
 
 /* ── BUTTONS ── */
-.btn{border:none;border-radius:9px;padding:11px 20px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .2s;white-space:nowrap;}
+.btn{border:none;border-radius:9px;padding:10px 18px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .2s;white-space:nowrap;}
 .btn-accent{background:var(--accent);color:#fff;}
 .btn-accent:hover{background:#5535e8;transform:translateY(-1px);box-shadow:0 6px 18px rgba(108,71,255,0.3);}
 .btn-purple{background:linear-gradient(135deg,var(--accent2),#4f46e5);color:#fff;}
 .btn-purple:hover{opacity:.88;transform:translateY(-1px);}
-.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted);font-size:12px;padding:9px 16px;}
+.btn-teal{background:#0d9488;color:#fff;}
+.btn-teal:hover{background:#0f766e;transform:translateY(-1px);}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted);font-size:12px;padding:8px 14px;}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:rgba(108,71,255,0.05);}
-.btn-danger{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);color:var(--danger);font-size:12px;padding:9px 16px;}
-.btn-sm{padding:7px 14px;font-size:12px;}
+.btn-danger{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:var(--danger);font-size:12px;padding:8px 14px;}
+.btn-sm{padding:6px 13px;font-size:12px;}
 .btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important;box-shadow:none!important;}
 
 /* ── INPUTS ── */
-.input{background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:11px 16px;color:var(--text);font-family:'Space Mono',monospace;font-size:13px;outline:none;transition:border-color .2s;width:100%;}
+.input{background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:10px 14px;color:var(--text);font-family:'Space Mono',monospace;font-size:13px;outline:none;transition:border-color .2s;width:100%;}
 .input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(108,71,255,0.1);}
 .input::placeholder{color:var(--muted);}
-.input-label{font-size:10px;font-family:'Space Mono',monospace;letter-spacing:2px;color:var(--accent2);margin-bottom:8px;display:block;text-transform:uppercase;}
-.input-group{margin-bottom:16px;}
+.input-label{font-size:10px;font-family:'Space Mono',monospace;letter-spacing:2px;color:var(--accent2);margin-bottom:7px;display:block;text-transform:uppercase;}
+.input-group{margin-bottom:14px;}
 .input-row{display:flex;gap:10px;}
+textarea.input{resize:vertical;min-height:90px;font-family:'Syne',sans-serif;font-size:13px;}
 
 /* ── CARDS ── */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;position:relative;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.06);}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;position:relative;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.05);}
 .card-accent::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),transparent);}
-.card-grid{display:grid;gap:16px;}
-.card-grid-2{grid-template-columns:repeat(auto-fill,minmax(280px,1fr));}
-.card-grid-3{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));}
+.card-grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.card-grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;}
 
 /* ── STATS ROW ── */
-.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin-bottom:24px;}
-.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;}
-.stat-num{font-size:30px;font-weight:800;font-family:'Space Mono',monospace;color:var(--accent);line-height:1;}
-.stat-label{font-size:11px;color:var(--muted);margin-top:5px;text-transform:uppercase;letter-spacing:1px;}
-.stat-change{font-size:11px;color:var(--success);margin-top:4px;}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px;margin-bottom:22px;}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,0.04);}
+.stat-num{font-size:28px;font-weight:800;font-family:'Space Mono',monospace;color:var(--accent);line-height:1;}
+.stat-label{font-size:10px;color:var(--muted);margin-top:5px;text-transform:uppercase;letter-spacing:1px;}
 
 /* ── TABLE ── */
 .table-wrap{overflow-x:auto;}
 table{width:100%;border-collapse:collapse;font-size:13px;}
-th{padding:11px 16px;text-align:left;color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;border-bottom:1px solid var(--border);background:var(--surface2);text-transform:uppercase;}
-td{padding:13px 16px;border-bottom:1px solid rgba(200,205,230,0.5);vertical-align:middle;}
+th{padding:10px 14px;text-align:left;color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;border-bottom:1px solid var(--border);background:var(--surface2);text-transform:uppercase;}
+td{padding:12px 14px;border-bottom:1px solid rgba(200,205,230,0.5);vertical-align:middle;}
 tr:last-child td{border-bottom:none;}
-tr:hover td{background:rgba(108,71,255,0.03);}
+tr:hover td{background:rgba(108,71,255,0.025);}
 
-/* ── STATUS BADGES ── */
-.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;font-family:'Space Mono',monospace;}
-.badge-green{background:rgba(16,185,129,0.1);color:#059669;border:1px solid rgba(16,185,129,0.25);}
-.badge-yellow{background:rgba(245,158,11,0.1);color:#d97706;border:1px solid rgba(245,158,11,0.25);}
-.badge-purple{background:rgba(108,71,255,0.1);color:var(--accent);border:1px solid rgba(108,71,255,0.2);}
-.badge-blue{background:rgba(59,130,246,0.1);color:#2563eb;border:1px solid rgba(59,130,246,0.2);}
-.badge-red{background:rgba(239,68,68,0.1);color:#dc2626;border:1px solid rgba(239,68,68,0.2);}
+/* ── BADGES ── */
+.badge{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:20px;font-size:10.5px;font-family:'Space Mono',monospace;}
+.badge-green{background:rgba(16,185,129,0.1);color:#059669;border:1px solid rgba(16,185,129,0.2);}
+.badge-yellow{background:rgba(245,158,11,0.1);color:#d97706;border:1px solid rgba(245,158,11,0.2);}
+.badge-purple{background:rgba(108,71,255,0.1);color:var(--accent);border:1px solid rgba(108,71,255,0.18);}
+.badge-blue{background:rgba(59,130,246,0.1);color:#2563eb;border:1px solid rgba(59,130,246,0.18);}
+.badge-red{background:rgba(239,68,68,0.1);color:#dc2626;border:1px solid rgba(239,68,68,0.18);}
+.badge-teal{background:rgba(13,148,136,0.1);color:#0d9488;border:1px solid rgba(13,148,136,0.2);}
 
-/* ── ARTICLE EDITOR ── */
-.article-preview{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:24px;max-height:520px;overflow-y:auto;font-size:13px;line-height:1.8;color:var(--text);}
+/* ── ARTICLE PREVIEW ── */
+.article-preview{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:22px;max-height:560px;overflow-y:auto;font-size:13px;line-height:1.8;color:var(--text);}
 .article-preview::-webkit-scrollbar{width:5px;}
 .article-preview::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
-.article-preview h1{font-size:22px;color:var(--accent);margin:0 0 16px;font-family:'Syne',sans-serif;}
-.article-preview h2{font-size:16px;color:var(--accent2);margin:22px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--border);}
-.article-preview h3{font-size:14px;color:var(--accent3);margin:16px 0 8px;}
-.article-preview p{margin-bottom:12px;}
-.article-preview ul{margin:8px 0 12px 20px;}
-.article-preview li{margin-bottom:5px;}
+.article-preview h1{font-size:21px;color:var(--accent);margin:0 0 14px;font-family:'Syne',sans-serif;}
+.article-preview h2{font-size:15px;color:var(--accent2);margin:20px 0 9px;padding-bottom:7px;border-bottom:1px solid var(--border);}
+.article-preview h3{font-size:13.5px;color:#d97706;margin:14px 0 7px;font-weight:700;}
+.article-preview p{margin-bottom:11px;}
+.article-preview ul,
+.article-preview ol{margin:8px 0 11px 20px;}
+.article-preview li{margin-bottom:4px;}
 .article-preview strong{color:var(--accent2);font-weight:700;}
-.article-preview table{width:100%;border-collapse:collapse;margin:14px 0;}
-.article-preview th{background:var(--surface3);padding:8px 12px;text-align:left;font-size:11px;border:1px solid var(--border);}
-.article-preview td{padding:8px 12px;border:1px solid var(--border);}
-.article-preview blockquote{border-left:3px solid var(--accent);padding:10px 16px;margin:12px 0;background:rgba(108,71,255,0.05);border-radius:0 8px 8px 0;color:var(--muted);}
+.article-preview code{background:var(--surface3);padding:1px 6px;border-radius:4px;font-family:'Space Mono',monospace;font-size:12px;}
+.article-preview pre{background:var(--surface3);padding:14px;border-radius:8px;overflow-x:auto;margin:12px 0;}
+.article-preview pre code{background:none;padding:0;}
+.article-preview table{width:100%;border-collapse:collapse;margin:12px 0;}
+.article-preview th{background:var(--surface3);padding:8px 11px;text-align:left;font-size:11px;border:1px solid var(--border);}
+.article-preview td{padding:8px 11px;border:1px solid var(--border);}
+.article-preview blockquote{border-left:3px solid var(--accent);padding:10px 14px;margin:11px 0;background:rgba(108,71,255,0.05);border-radius:0 8px 8px 0;color:var(--muted);}
 
 /* ── LOADING ── */
 .loading-box{text-align:center;padding:60px 20px;}
-.loading-box .icon{font-size:42px;margin-bottom:14px;opacity:.5;}
-.loading-box .title{font-size:16px;font-weight:700;margin-bottom:7px;}
-.loading-box .sub{font-size:13px;color:var(--muted);}
-.dots{display:inline-flex;gap:5px;align-items:center;margin-top:16px;}
+.loading-box .icon{font-size:40px;margin-bottom:13px;opacity:.45;}
+.loading-box .title{font-size:15px;font-weight:700;margin-bottom:7px;}
+.loading-box .sub{font-size:12px;color:var(--muted);}
+.dots{display:inline-flex;gap:5px;align-items:center;margin-top:14px;}
 .dots span{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:db 1.4s infinite ease-in-out both;}
 .dots span:nth-child(1){animation-delay:-.32s;}
 .dots span:nth-child(2){animation-delay:-.16s;}
 @keyframes db{0%,80%,100%{transform:scale(.6);opacity:.4;}40%{transform:scale(1);opacity:1;}}
-.progress-bar-wrap{background:var(--surface2);border-radius:4px;height:4px;overflow:hidden;margin-top:14px;}
-.progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:4px;transition:width .3s;}
+.progress-bar-wrap{background:var(--surface2);border-radius:4px;height:4px;overflow:hidden;margin-top:12px;}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:4px;transition:width .4s;}
+
+/* ── AGENT CARDS ── */
+.agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:13px;margin-bottom:22px;}
+.agent-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 14px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
+.agent-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(108,71,255,0.12);transform:translateY(-2px);}
+.agent-card.running{border-color:var(--accent2);background:rgba(124,58,237,0.04);}
+.agent-card.done{border-color:var(--success);background:rgba(16,185,129,0.04);}
+.agent-card .agent-icon{font-size:22px;margin-bottom:9px;}
+.agent-card .agent-name{font-size:12.5px;font-weight:700;margin-bottom:3px;}
+.agent-card .agent-desc{font-size:11px;color:var(--muted);line-height:1.5;}
+.agent-card .agent-status{position:absolute;top:11px;right:11px;width:8px;height:8px;border-radius:50%;background:var(--border);}
+.agent-card.running .agent-status{background:var(--accent2);animation:pulse 1s infinite;}
+.agent-card.done .agent-status{background:var(--success);}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+
+/* ── CONTENT BRIEF ── */
+.brief-layout{display:grid;grid-template-columns:1fr 320px;gap:18px;}
+.brief-main{min-width:0;}
+.brief-sources{display:flex;flex-direction:column;gap:11px;}
+.source-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.source-card .source-label{font-size:9px;font-family:'Space Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.source-card .source-title{font-size:12.5px;font-weight:700;margin-bottom:3px;display:flex;align-items:center;gap:6px;}
+.source-card .source-url{font-size:10px;color:var(--accent);font-family:'Space Mono',monospace;margin-bottom:7px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.source-card .source-snippet{font-size:11.5px;color:var(--muted);line-height:1.6;}
+.brief-section{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:14px;}
+.brief-section-title{font-size:12px;font-family:'Space Mono',monospace;letter-spacing:1px;text-transform:uppercase;color:var(--accent2);font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:7px;}
+.brief-tag{display:inline-flex;background:rgba(108,71,255,0.08);color:var(--accent);border:1px solid rgba(108,71,255,0.15);border-radius:5px;padding:3px 9px;font-size:11.5px;margin:3px;}
+.brief-question{background:var(--surface2);border-radius:7px;padding:9px 12px;font-size:12.5px;color:var(--text);margin-bottom:6px;border-left:3px solid var(--accent);}
+.brief-heading-item{display:flex;align-items:baseline;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);}
+.brief-heading-item:last-child{border-bottom:none;}
+.brief-h-tag{font-size:10px;font-family:'Space Mono',monospace;background:var(--surface2);padding:2px 7px;border-radius:4px;color:var(--muted);flex-shrink:0;}
+.brief-h-text{font-size:12.5px;}
+
+/* ── SCORE RING ── */
+.score-ring-wrap{display:flex;align-items:center;gap:18px;margin-bottom:18px;}
+.score-ring{width:76px;height:76px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:800;font-family:'Space Mono',monospace;flex-shrink:0;}
+.score-high{background:rgba(16,185,129,0.1);border:3px solid var(--success);color:#059669;}
+.score-mid{background:rgba(245,158,11,0.1);border:3px solid var(--accent3);color:#d97706;}
+.score-low{background:rgba(239,68,68,0.1);border:3px solid var(--danger);color:#dc2626;}
 
 /* ── CALENDAR ── */
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:16px;}
-.cal-header{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:6px;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-top:14px;}
+.cal-header{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-bottom:5px;}
 .cal-day-name{font-size:10px;color:var(--muted);text-align:center;font-family:'Space Mono',monospace;text-transform:uppercase;}
-.cal-cell{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px;min-height:70px;font-size:11px;cursor:pointer;transition:border-color .2s;}
+.cal-cell{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:7px;min-height:68px;font-size:11px;cursor:pointer;transition:border-color .2s;}
 .cal-cell:hover{border-color:var(--accent2);}
-.cal-cell.has-article{border-color:rgba(0,255,136,0.35);background:rgba(0,255,136,0.04);}
+.cal-cell.has-article{border-color:rgba(108,71,255,0.3);background:rgba(108,71,255,0.04);}
 .cal-cell.today{border-color:var(--accent);}
-.cal-date{font-size:12px;font-weight:700;font-family:'Space Mono',monospace;margin-bottom:5px;}
-.cal-article-pill{background:rgba(0,255,136,0.15);color:var(--accent);padding:2px 7px;border-radius:4px;font-size:10px;line-height:1.4;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.cal-date{font-size:11.5px;font-weight:700;font-family:'Space Mono',monospace;margin-bottom:4px;}
+.cal-article-pill{background:rgba(108,71,255,0.12);color:var(--accent);padding:2px 6px;border-radius:4px;font-size:10px;line-height:1.4;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 
 /* ── TABS ── */
-.tab-bar{display:flex;border-bottom:1px solid var(--border);margin-bottom:22px;overflow-x:auto;scrollbar-width:none;}
+.tab-bar{display:flex;border-bottom:1px solid var(--border);margin-bottom:20px;overflow-x:auto;scrollbar-width:none;}
 .tab-bar::-webkit-scrollbar{display:none;}
-.tab-btn{padding:12px 20px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;}
+.tab-btn{padding:11px 18px;font-size:12.5px;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;}
 .tab-btn:hover{color:var(--text);}
 .tab-btn.active{color:var(--accent);border-bottom-color:var(--accent);}
 
 /* ── MISC ── */
-.section-title{font-size:16px;font-weight:700;margin-bottom:14px;}
-.section-sub{font-size:12px;color:var(--muted);margin-bottom:18px;line-height:1.6;}
-.divider{border:none;border-top:1px solid var(--border);margin:22px 0;}
-.empty-state{text-align:center;padding:50px 20px;color:var(--muted);}
-.empty-state .icon{font-size:40px;margin-bottom:14px;opacity:.4;}
-.empty-state .title{font-size:15px;color:var(--text);margin-bottom:8px;font-weight:600;}
-.toast{position:fixed;bottom:24px;right:24px;background:var(--surface);border:1px solid var(--success);color:var(--success);padding:12px 20px;border-radius:10px;font-size:13px;font-family:'Space Mono',monospace;z-index:999;animation:slideIn .3s ease;display:none;}
+.section-title{font-size:15px;font-weight:700;margin-bottom:13px;}
+.section-sub{font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.6;}
+.divider{border:none;border-top:1px solid var(--border);margin:20px 0;}
+.empty-state{text-align:center;padding:48px 20px;color:var(--muted);}
+.empty-state .icon{font-size:38px;margin-bottom:13px;opacity:.38;}
+.empty-state .title{font-size:14px;color:var(--text);margin-bottom:7px;font-weight:600;}
+.toast{position:fixed;bottom:22px;right:22px;background:var(--surface);border:1px solid var(--success);color:var(--success);padding:11px 18px;border-radius:10px;font-size:12.5px;font-family:'Space Mono',monospace;z-index:999;animation:slideIn .3s ease;display:none;box-shadow:0 4px 16px rgba(0,0,0,0.1);}
 @keyframes slideIn{from{transform:translateY(20px);opacity:0;}to{transform:translateY(0);opacity:1;}}
-.error-msg{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:12px 16px;font-size:12px;color:#fca5a5;line-height:1.6;margin-top:10px;display:none;}
-
-textarea.input{resize:vertical;min-height:90px;font-family:'Syne',sans-serif;font-size:13px;}
+.error-msg{background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.22);border-radius:8px;padding:11px 14px;font-size:12px;color:#dc2626;line-height:1.6;margin-top:10px;display:none;}
+.gap-row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;}
 
 @media(max-width:768px){
   .sidebar{display:none;}
-  .page{padding:18px;}
+  .page-body{padding:16px;}
   .stats-row{grid-template-columns:repeat(2,1fr);}
+  .brief-layout{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
 <div class="orb orb1"></div>
 <div class="orb orb2"></div>
-
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
-
 <div class="app">
 
-<!-- ═══════════════════════════════════════
-     API KEY GATE
-═══════════════════════════════════════ -->
+<!-- ═══════ GATE ═══════ -->
 <div id="gate" style="flex:1;">
   <div class="gate-wrap">
     <div class="gate-icon">🚀</div>
     <div class="gate-title">Welcome to <span>AutoSEO</span></div>
-    <div class="gate-sub">Your all-in-one AI SEO platform. Write articles, build backlinks, publish to WordPress — all on autopilot.</div>
+    <div class="gate-sub">Your all-in-one AI SEO platform. Write articles, build backlinks, run audits, and publish to WordPress — all on autopilot.</div>
     <div class="gate-card">
       <div class="input-group">
         <label class="input-label">Anthropic API Key</label>
@@ -203,18 +243,16 @@ textarea.input{resize:vertical;min-height:90px;font-family:'Syne',sans-serif;fon
         <div style="font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6;">
           Get your key at <a href="https://console.anthropic.com/keys" target="_blank" style="color:var(--accent);text-decoration:none;">console.anthropic.com/keys</a> · Stored in this tab only · Never shared
         </div>
-        <div class="error-msg" id="gateErr">⚠ Please enter a valid key starting with sk-ant-</div>
+        <div class="error-msg" id="gateErr" style="display:none;">⚠ Please enter a valid key starting with sk-ant-</div>
       </div>
-      <hr class="divider" style="margin:16px 0;">
+      <hr class="divider" style="margin:14px 0;">
       <button class="btn btn-ghost" style="width:100%;justify-content:center;" onclick="skipGate()">Skip — running inside Claude.ai</button>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     MAIN APP
-═══════════════════════════════════════ -->
-<div id="appWrap" style="display:none;flex:1;display:none;min-width:0;">
+<!-- ═══════ APP ═══════ -->
+<div id="appWrap" style="display:none;flex:1;min-width:0;">
 
   <!-- SIDEBAR -->
   <div class="sidebar">
@@ -227,15 +265,25 @@ textarea.input{resize:vertical;min-height:90px;font-family:'Syne',sans-serif;fon
     <div class="sidebar-nav">
       <div class="nav-section">Overview</div>
       <div class="nav-item active" onclick="showPage('dashboard')"><span class="nav-icon">📊</span>Dashboard</div>
+
       <div class="nav-section">Content Engine</div>
       <div class="nav-item" onclick="showPage('writer')"><span class="nav-icon">✍️</span>Article Writer</div>
+      <div class="nav-item" onclick="showPage('brief')"><span class="nav-icon">📋</span>Content Brief</div>
+      <div class="nav-item" onclick="showPage('strategy')"><span class="nav-icon">🗺️</span>Content Strategy</div>
       <div class="nav-item" onclick="showPage('calendar')"><span class="nav-icon">📅</span>Content Calendar</div>
       <div class="nav-item" onclick="showPage('articles')"><span class="nav-icon">📄</span>Published Articles</div>
-      <div class="nav-section">SEO Tools</div>
+
+      <div class="nav-section">SEO Agents</div>
       <div class="nav-item" onclick="showPage('audit')"><span class="nav-icon">🔍</span>Site Audit</div>
+      <div class="nav-item" onclick="showPage('onpage')"><span class="nav-icon">📝</span>On-Page SEO</div>
+      <div class="nav-item" onclick="showPage('competitor')"><span class="nav-icon">⚔️</span>Competitor Analysis</div>
       <div class="nav-item" onclick="showPage('keywords')"><span class="nav-icon">🎯</span>Keyword Research</div>
+      <div class="nav-item" onclick="showPage('localseo')"><span class="nav-icon">📍</span>Local SEO</div>
+      <div class="nav-item" onclick="showPage('vitals')"><span class="nav-icon">⚙️</span>Core Web Vitals</div>
       <div class="nav-item" onclick="showPage('backlinks')"><span class="nav-icon">🔗</span>Backlink Builder</div>
       <div class="nav-item" onclick="showPage('schema')"><span class="nav-icon">🏗️</span>Schema Generator</div>
+      <div class="nav-item" onclick="showPage('report')"><span class="nav-icon">📊</span>Executive Report</div>
+
       <div class="nav-section">Publish</div>
       <div class="nav-item" onclick="showPage('wordpress')"><span class="nav-icon">🌐</span>WordPress Connect</div>
       <div class="nav-section">Settings</div>
@@ -252,74 +300,67 @@ textarea.input{resize:vertical;min-height:90px;font-family:'Syne',sans-serif;fon
   <!-- MAIN CONTENT -->
   <div class="main">
 
-    <!-- ── DASHBOARD ── -->
+    <!-- ══ DASHBOARD ══ -->
     <div class="page active" id="page-dashboard">
       <div class="topbar">
         <div><div class="page-title">Dashboard</div><div class="page-sub">Your SEO growth at a glance</div></div>
         <div class="topbar-actions">
-          <input class="input" id="siteUrl" placeholder="https://yourdomain.com" style="width:260px;" />
-          <button class="btn btn-accent" onclick="runFullAudit()">⚡ Full Audit</button>
+          <input class="input" id="siteUrl" placeholder="https://yourdomain.com" style="width:240px;" />
+          <button class="btn btn-ghost" onclick="runQuickScan()">⚡ Quick Scan</button>
+          <button class="btn btn-accent" onclick="runFullAuditDash()">🔍 Full Audit</button>
         </div>
       </div>
-      <div style="padding:28px;">
-        <div class="stats-row" id="dashStats">
+      <div class="page-body">
+        <div class="stats-row">
           <div class="stat-card"><div class="stat-num" id="statArticles">0</div><div class="stat-label">Articles Written</div></div>
           <div class="stat-card"><div class="stat-num" id="statPublished">0</div><div class="stat-label">Published</div></div>
           <div class="stat-card"><div class="stat-num" id="statBacklinks">0</div><div class="stat-label">Backlink Targets</div></div>
           <div class="stat-card"><div class="stat-num" id="statKeywords">0</div><div class="stat-label">Keywords Tracked</div></div>
         </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;">
           <div class="card card-accent">
             <div class="section-title">🚀 Quick Actions</div>
-            <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;flex-direction:column;gap:9px;">
               <button class="btn btn-accent" style="justify-content:flex-start;" onclick="showPage('writer')">✍️ Write New Article</button>
-              <button class="btn btn-purple" style="justify-content:flex-start;" onclick="generateCalendar()">📅 Generate 30-Day Calendar</button>
+              <button class="btn btn-purple" style="justify-content:flex-start;" onclick="showPage('brief')">📋 Create Content Brief</button>
+              <button class="btn btn-teal" style="justify-content:flex-start;" onclick="showPage('strategy')">🗺️ Build Content Strategy</button>
               <button class="btn btn-ghost" style="justify-content:flex-start;" onclick="showPage('audit')">🔍 Run Site Audit</button>
-              <button class="btn btn-ghost" style="justify-content:flex-start;" onclick="showPage('backlinks')">🔗 Find Backlink Targets</button>
+              <button class="btn btn-ghost" style="justify-content:flex-start;" onclick="showPage('report')">📊 Executive Report</button>
             </div>
           </div>
           <div class="card">
             <div class="section-title">📋 Recent Activity</div>
             <div id="recentActivity">
-              <div class="empty-state" style="padding:30px 10px;">
-                <div class="icon">📭</div>
-                <div class="title">No activity yet</div>
-                <div style="font-size:12px;">Start by writing an article or running an audit</div>
+              <div class="empty-state" style="padding:28px 10px;">
+                <div class="icon">📭</div><div class="title">No activity yet</div>
+                <div style="font-size:12px;">Start by running a scan or writing an article</div>
               </div>
             </div>
           </div>
         </div>
-
-        <div style="margin-top:18px;" class="card" id="auditResultCard" style="display:none;">
-          <div class="section-title">🔍 Latest Audit Results</div>
-          <div id="auditResultContent"></div>
+        <div class="card" id="dashAuditCard" style="display:none;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <div class="section-title" style="margin:0;" id="dashAuditTitle">Scan Results</div>
+            <button class="btn btn-ghost btn-sm" onclick="showPage('audit')">Full Audit →</button>
+          </div>
+          <div id="dashAuditContent"></div>
         </div>
       </div>
     </div>
 
-    <!-- ── ARTICLE WRITER ── -->
+    <!-- ══ ARTICLE WRITER ══ -->
     <div class="page" id="page-writer">
       <div class="topbar">
         <div><div class="page-title">✍️ Article Writer</div><div class="page-sub">AI-powered SEO articles — 1,500–2,500 words</div></div>
       </div>
-      <div style="padding:28px;">
-        <div style="display:grid;grid-template-columns:340px 1fr;gap:22px;">
-
-          <!-- Controls -->
+      <div class="page-body">
+        <div style="display:grid;grid-template-columns:320px 1fr;gap:20px;">
           <div>
-            <div class="card card-accent" style="margin-bottom:16px;">
-              <div class="section-title" style="margin-bottom:14px;">Article Settings</div>
-              <div class="input-group">
-                <label class="input-label">Target Keyword / Topic</label>
-                <input class="input" id="writerKeyword" placeholder="e.g. best medical spa NYC" />
-              </div>
-              <div class="input-group">
-                <label class="input-label">Website / Business URL</label>
-                <input class="input" id="writerUrl" placeholder="https://yourdomain.com" />
-              </div>
-              <div class="input-group">
-                <label class="input-label">Tone</label>
+            <div class="card card-accent" style="margin-bottom:14px;">
+              <div class="section-title" style="margin-bottom:13px;">Article Settings</div>
+              <div class="input-group"><label class="input-label">Target Keyword / Topic</label><input class="input" id="writerKeyword" placeholder="e.g. best medical spa NYC" /></div>
+              <div class="input-group"><label class="input-label">Website / Business URL</label><input class="input" id="writerUrl" placeholder="https://yourdomain.com" /></div>
+              <div class="input-group"><label class="input-label">Tone</label>
                 <select class="input" id="writerTone">
                   <option>Professional & Authoritative</option>
                   <option>Friendly & Conversational</option>
@@ -327,120 +368,140 @@ textarea.input{resize:vertical;min-height:90px;font-family:'Syne',sans-serif;fon
                   <option>Persuasive & Sales-focused</option>
                 </select>
               </div>
-              <div class="input-group">
-                <label class="input-label">Article Length</label>
+              <div class="input-group"><label class="input-label">Article Length</label>
                 <select class="input" id="writerLength">
                   <option value="1500">Standard (~1,500 words)</option>
                   <option value="2000" selected>Long-form (~2,000 words)</option>
                   <option value="2500">Comprehensive (~2,500 words)</option>
                 </select>
               </div>
-              <div class="input-group">
-                <label class="input-label">Language</label>
+              <div class="input-group"><label class="input-label">Language</label>
                 <select class="input" id="writerLang">
-                  <option>English</option>
-                  <option>Spanish</option>
-                  <option>French</option>
-                  <option>German</option>
-                  <option>Portuguese</option>
-                  <option>Italian</option>
-                  <option>Dutch</option>
-                  <option>Arabic</option>
+                  <option>English</option><option>Spanish</option><option>French</option><option>German</option>
+                  <option>Portuguese</option><option>Italian</option><option>Dutch</option><option>Arabic</option>
                 </select>
               </div>
               <button class="btn btn-accent" style="width:100%;justify-content:center;" id="writeBtn" onclick="writeArticle()">✍️ Generate Article</button>
             </div>
-
-            <!-- WordPress publish -->
             <div class="card" id="publishCard" style="display:none;">
               <div class="section-title">🌐 Publish to WordPress</div>
-              <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">Connect WordPress in Settings to enable one-click publishing.</div>
+              <div style="font-size:12px;color:var(--muted);margin-bottom:11px;">Connect WordPress in Settings to enable one-click publishing.</div>
               <button class="btn btn-purple btn-sm" style="width:100%;justify-content:center;" onclick="publishToWP()" id="publishBtn">📤 Publish Now</button>
               <button class="btn btn-ghost btn-sm" style="width:100%;justify-content:center;margin-top:8px;" onclick="copyArticle()">📋 Copy HTML</button>
             </div>
           </div>
-
-          <!-- Article output -->
           <div>
             <div id="writerOutput">
               <div class="empty-state" style="padding:80px 20px;background:var(--surface);border:1px solid var(--border);border-radius:14px;">
-                <div class="icon">✍️</div>
-                <div class="title">Your article will appear here</div>
+                <div class="icon">✍️</div><div class="title">Your article will appear here</div>
                 <div style="font-size:12px;">Enter a keyword and click Generate Article</div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
 
-    <!-- ── CONTENT CALENDAR ── -->
+    <!-- ══ CONTENT BRIEF ══ -->
+    <div class="page" id="page-brief">
+      <div class="topbar">
+        <div><div class="page-title">📋 Content Brief</div><div class="page-sub">AI research brief with sources — compile articles manually</div></div>
+      </div>
+      <div class="page-body">
+        <div class="card card-accent" style="margin-bottom:18px;">
+          <div class="gap-row">
+            <div style="flex:1;min-width:220px;"><label class="input-label">Topic / Keyword</label><input class="input" id="briefKeyword" placeholder="e.g. botox for migraines NYC" /></div>
+            <div style="min-width:160px;"><label class="input-label">Industry</label><input class="input" id="briefIndustry" placeholder="e.g. Medical Spa" /></div>
+            <div style="min-width:140px;"><label class="input-label">Content Type</label>
+              <select class="input" id="briefType">
+                <option>How-To Guide</option><option>Listicle</option><option>Comparison</option>
+                <option>Local Page</option><option>Thought Leadership</option><option>FAQ Article</option>
+              </select>
+            </div>
+            <button class="btn btn-accent" onclick="generateBrief()" id="briefBtn" style="align-self:flex-end;">📋 Generate Brief</button>
+          </div>
+        </div>
+        <div id="briefOutput">
+          <div class="empty-state"><div class="icon">📋</div><div class="title">Enter a keyword to generate a content brief</div><div style="font-size:12px;">Research data and sources will populate on the right</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CONTENT STRATEGY ══ -->
+    <div class="page" id="page-strategy">
+      <div class="topbar">
+        <div><div class="page-title">🗺️ Content Strategy</div><div class="page-sub">3-month content plan, topic clusters, and content briefs</div></div>
+      </div>
+      <div class="page-body">
+        <div class="card card-accent" style="margin-bottom:18px;">
+          <div class="gap-row">
+            <div style="flex:1;min-width:200px;"><label class="input-label">Website URL</label><input class="input" id="stratUrl" placeholder="https://yourdomain.com" /></div>
+            <div style="flex:1;min-width:180px;"><label class="input-label">Industry / Niche</label><input class="input" id="stratNiche" placeholder="e.g. Medical Spa, NYC" /></div>
+            <div style="min-width:140px;"><label class="input-label">Goal</label>
+              <select class="input" id="stratGoal">
+                <option>Grow Organic Traffic</option><option>Generate Leads</option><option>Build Brand Authority</option><option>Local SEO Domination</option>
+              </select>
+            </div>
+            <button class="btn btn-teal" onclick="generateStrategy()" id="stratBtn" style="align-self:flex-end;">🗺️ Build Strategy</button>
+          </div>
+        </div>
+        <div id="stratOutput">
+          <div class="empty-state"><div class="icon">🗺️</div><div class="title">Enter your URL and build a 3-month content strategy</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CONTENT CALENDAR ══ -->
     <div class="page" id="page-calendar">
       <div class="topbar">
         <div><div class="page-title">📅 Content Calendar</div><div class="page-sub">30-day AI-generated publishing schedule</div></div>
-        <div class="topbar-actions">
-          <button class="btn btn-purple" onclick="generateCalendar()">🔄 Generate Calendar</button>
-        </div>
+        <div class="topbar-actions"><button class="btn btn-purple" onclick="generateCalendar()">🔄 Generate Calendar</button></div>
       </div>
-      <div style="padding:28px;">
-        <div class="card card-accent" style="margin-bottom:20px;">
-          <div style="display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;">
-            <div style="flex:1;min-width:200px;">
-              <label class="input-label">Website URL</label>
-              <input class="input" id="calUrl" placeholder="https://yourdomain.com" />
-            </div>
-            <div style="flex:1;min-width:180px;">
-              <label class="input-label">Niche / Industry</label>
-              <input class="input" id="calNiche" placeholder="e.g. Medical Spa, NYC" />
-            </div>
-            <div>
-              <label class="input-label">Publish Frequency</label>
+      <div class="page-body">
+        <div class="card card-accent" style="margin-bottom:18px;">
+          <div class="gap-row">
+            <div style="flex:1;min-width:200px;"><label class="input-label">Website URL</label><input class="input" id="calUrl" placeholder="https://yourdomain.com" /></div>
+            <div style="flex:1;min-width:160px;"><label class="input-label">Niche / Industry</label><input class="input" id="calNiche" placeholder="e.g. Medical Spa, NYC" /></div>
+            <div><label class="input-label">Frequency</label>
               <select class="input" id="calFreq">
                 <option value="1">Daily (30 articles)</option>
-                <option value="2" selected>Every 2 days (15 articles)</option>
+                <option value="2" selected>Every 2 days (15)</option>
                 <option value="7">Weekly (4 articles)</option>
               </select>
             </div>
-            <button class="btn btn-accent" onclick="generateCalendar()">📅 Generate</button>
+            <button class="btn btn-accent" onclick="generateCalendar()" style="align-self:flex-end;">📅 Generate</button>
           </div>
         </div>
         <div id="calendarOutput">
-          <div class="empty-state">
-            <div class="icon">📅</div>
-            <div class="title">No calendar yet</div>
-            <div style="font-size:12px;">Enter your URL and click Generate</div>
-          </div>
+          <div class="empty-state"><div class="icon">📅</div><div class="title">No calendar yet</div><div style="font-size:12px;">Enter your URL and click Generate</div></div>
         </div>
       </div>
     </div>
 
-    <!-- ── ARTICLES LIST ── -->
+    <!-- ══ ARTICLES LIST ══ -->
     <div class="page" id="page-articles">
-      <div class="topbar">
-        <div><div class="page-title">📄 Articles</div><div class="page-sub">All written and published articles</div></div>
-      </div>
-      <div style="padding:28px;">
+      <div class="topbar"><div><div class="page-title">📄 Articles</div><div class="page-sub">All written and published articles</div></div></div>
+      <div class="page-body">
         <div id="articlesList">
-          <div class="empty-state">
-            <div class="icon">📄</div>
-            <div class="title">No articles yet</div>
-            <div style="font-size:12px;">Write your first article in the Article Writer</div>
-          </div>
+          <div class="empty-state"><div class="icon">📄</div><div class="title">No articles yet</div><div style="font-size:12px;">Write your first article in the Article Writer</div></div>
         </div>
       </div>
     </div>
 
-    <!-- ── SITE AUDIT ── -->
+    <!-- ══ SITE AUDIT ══ -->
     <div class="page" id="page-audit">
       <div class="topbar">
-        <div><div class="page-title">🔍 Site Audit</div><div class="page-sub">Technical SEO analysis</div></div>
+        <div><div class="page-title">🔍 Site Audit</div><div class="page-sub">Technical SEO analysis — health score, meta tags, indexability</div></div>
       </div>
-      <div style="padding:28px;">
-        <div class="card card-accent" style="margin-bottom:20px;">
+      <div class="page-body">
+        <div class="card card-accent" style="margin-bottom:18px;">
           <div class="input-row">
             <input class="input" id="auditUrl" placeholder="https://yourdomain.com" />
-            <button class="btn btn-accent" id="auditBtn" onclick="runAuditPage()">🔍 Run Audit</button>
+            <button class="btn btn-ghost" id="quickAuditBtn" onclick="runAuditPage('quick')">⚡ Quick Scan</button>
+            <button class="btn btn-accent" id="auditBtn" onclick="runAuditPage('full')">🔍 Full Audit</button>
+          </div>
+          <div style="font-size:11.5px;color:var(--muted);margin-top:10px;">
+            <strong>Quick Scan</strong> — top 5 critical issues in ~10s &nbsp;·&nbsp; <strong>Full Audit</strong> — complete analysis with health score and fixes
           </div>
         </div>
         <div id="auditOutput">
@@ -449,13 +510,50 @@ textarea.input{resize:vertical;min-height:90px;font-family:'Syne',sans-serif;fon
       </div>
     </div>
 
-    <!-- ── KEYWORDS ── -->
+    <!-- ══ ON-PAGE SEO ══ -->
+    <div class="page" id="page-onpage">
+      <div class="topbar">
+        <div><div class="page-title">📝 On-Page SEO</div><div class="page-sub">Meta titles, descriptions, H1s, and schema recommendations</div></div>
+      </div>
+      <div class="page-body">
+        <div class="card card-accent" style="margin-bottom:18px;">
+          <div class="input-row">
+            <input class="input" id="onpageUrl" placeholder="https://yourdomain.com/specific-page" />
+            <button class="btn btn-accent" id="onpageBtn" onclick="runOnPage()">📝 Analyse Page</button>
+          </div>
+        </div>
+        <div id="onpageOutput">
+          <div class="empty-state"><div class="icon">📝</div><div class="title">Enter a page URL to analyse on-page SEO</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ COMPETITOR ANALYSIS ══ -->
+    <div class="page" id="page-competitor">
+      <div class="topbar">
+        <div><div class="page-title">⚔️ Competitor Analysis</div><div class="page-sub">Top rivals, their gaps, your 90-day battle plan</div></div>
+      </div>
+      <div class="page-body">
+        <div class="card card-accent" style="margin-bottom:18px;">
+          <div class="gap-row">
+            <div style="flex:1;min-width:200px;"><label class="input-label">Your Website</label><input class="input" id="compUrl" placeholder="https://yourdomain.com" /></div>
+            <div style="flex:1;min-width:180px;"><label class="input-label">Your Niche</label><input class="input" id="compNiche" placeholder="e.g. Medical Spa NYC" /></div>
+            <button class="btn btn-accent" onclick="runCompetitor()" id="compBtn" style="align-self:flex-end;">⚔️ Analyse Competitors</button>
+          </div>
+        </div>
+        <div id="compOutput">
+          <div class="empty-state"><div class="icon">⚔️</div><div class="title">Enter your URL and niche to analyse competitors</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ KEYWORDS ══ -->
     <div class="page" id="page-keywords">
       <div class="topbar">
         <div><div class="page-title">🎯 Keyword Research</div><div class="page-sub">Find keywords your site should rank for</div></div>
       </div>
-      <div style="padding:28px;">
-        <div class="card card-accent" style="margin-bottom:20px;">
+      <div class="page-body">
+        <div class="card card-accent" style="margin-bottom:18px;">
           <div class="input-row">
             <input class="input" id="kwUrl" placeholder="https://yourdomain.com" />
             <button class="btn btn-accent" id="kwBtn" onclick="runKeywords()">🎯 Research Keywords</button>
@@ -467,154 +565,171 @@ textarea.input{resize:vertical;min-height:90px;font-family:'Syne',sans-serif;fon
       </div>
     </div>
 
-    <!-- ── BACKLINKS ── -->
+    <!-- ══ LOCAL SEO ══ -->
+    <div class="page" id="page-localseo">
+      <div class="topbar">
+        <div><div class="page-title">📍 Local SEO</div><div class="page-sub">Google Business optimization, citations, and local schema</div></div>
+      </div>
+      <div class="page-body">
+        <div class="card card-accent" style="margin-bottom:18px;">
+          <div class="gap-row">
+            <div style="flex:1;min-width:200px;"><label class="input-label">Business Website</label><input class="input" id="localUrl" placeholder="https://yourdomain.com" /></div>
+            <div style="flex:1;min-width:160px;"><label class="input-label">Business Name</label><input class="input" id="localBiz" placeholder="e.g. Manhattan Medical Arts" /></div>
+            <div style="min-width:140px;"><label class="input-label">City / Location</label><input class="input" id="localCity" placeholder="e.g. New York, NY" /></div>
+            <button class="btn btn-accent" onclick="runLocalSEO()" id="localBtn" style="align-self:flex-end;">📍 Analyse Local SEO</button>
+          </div>
+        </div>
+        <div id="localOutput">
+          <div class="empty-state"><div class="icon">📍</div><div class="title">Enter your business details to analyse local SEO</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CORE WEB VITALS ══ -->
+    <div class="page" id="page-vitals">
+      <div class="topbar">
+        <div><div class="page-title">⚙️ Core Web Vitals</div><div class="page-sub">Speed optimisation — LCP, CLS, INP recommendations</div></div>
+      </div>
+      <div class="page-body">
+        <div class="card card-accent" style="margin-bottom:18px;">
+          <div class="input-row">
+            <input class="input" id="vitalsUrl" placeholder="https://yourdomain.com" />
+            <button class="btn btn-accent" id="vitalsBtn" onclick="runVitals()">⚙️ Analyse Vitals</button>
+          </div>
+        </div>
+        <div id="vitalsOutput">
+          <div class="empty-state"><div class="icon">⚙️</div><div class="title">Enter a URL to analyse Core Web Vitals</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ BACKLINKS ══ -->
     <div class="page" id="page-backlinks">
       <div class="topbar">
         <div><div class="page-title">🔗 Backlink Builder</div><div class="page-sub">Find link targets and generate outreach emails</div></div>
       </div>
-      <div style="padding:28px;">
+      <div class="page-body">
         <div class="tab-bar">
           <div class="tab-btn active" onclick="switchBLTab('targets',this)">🎯 Link Targets</div>
           <div class="tab-btn" onclick="switchBLTab('outreach',this)">📧 Outreach Emails</div>
           <div class="tab-btn" onclick="switchBLTab('tracker',this)">📊 Tracker</div>
         </div>
-
         <div id="bl-targets">
-          <div class="card card-accent" style="margin-bottom:20px;">
-            <div class="input-row" style="flex-wrap:wrap;gap:12px;">
+          <div class="card card-accent" style="margin-bottom:18px;">
+            <div class="gap-row">
               <input class="input" id="blUrl" placeholder="https://yourdomain.com" style="flex:1;min-width:200px;" />
-              <input class="input" id="blNiche" placeholder="Niche (e.g. medical spa)" style="flex:1;min-width:180px;" />
+              <input class="input" id="blNiche" placeholder="Niche (e.g. medical spa)" style="flex:1;min-width:160px;" />
               <button class="btn btn-accent" id="blBtn" onclick="findBacklinkTargets()">🔍 Find Targets</button>
             </div>
           </div>
-          <div id="blTargetsOutput">
-            <div class="empty-state"><div class="icon">🔗</div><div class="title">Enter your URL to find link targets</div></div>
-          </div>
+          <div id="blTargetsOutput"><div class="empty-state"><div class="icon">🔗</div><div class="title">Enter your URL to find link targets</div></div></div>
         </div>
-
         <div id="bl-outreach" style="display:none;">
-          <div class="card card-accent" style="margin-bottom:20px;">
+          <div class="card card-accent" style="margin-bottom:18px;">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
               <div><label class="input-label">Your Website</label><input class="input" id="outUrl" placeholder="https://yourdomain.com" /></div>
               <div><label class="input-label">Target Website</label><input class="input" id="outTarget" placeholder="https://targetsite.com" /></div>
               <div><label class="input-label">Your Name</label><input class="input" id="outName" placeholder="John Smith" /></div>
               <div><label class="input-label">Email Type</label>
                 <select class="input" id="outType">
-                  <option>Guest Post Pitch</option>
-                  <option>Resource Page Request</option>
-                  <option>Broken Link Replacement</option>
-                  <option>Partnership / Collaboration</option>
-                  <option>Podcast Guest Pitch</option>
+                  <option>Guest Post Pitch</option><option>Resource Page Request</option>
+                  <option>Broken Link Replacement</option><option>Partnership / Collaboration</option><option>Podcast Guest Pitch</option>
                 </select>
               </div>
             </div>
-            <button class="btn btn-accent" style="margin-top:12px;" onclick="generateOutreach()">📧 Generate Email</button>
+            <button class="btn btn-accent" style="margin-top:11px;" onclick="generateOutreach()">📧 Generate Email</button>
           </div>
-          <div id="outreachOutput">
-            <div class="empty-state"><div class="icon">📧</div><div class="title">Fill in the form to generate an outreach email</div></div>
-          </div>
+          <div id="outreachOutput"><div class="empty-state"><div class="icon">📧</div><div class="title">Fill in the form to generate an outreach email</div></div></div>
         </div>
-
         <div id="bl-tracker" style="display:none;">
-          <div class="card" style="margin-bottom:16px;">
-            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <div class="card" style="margin-bottom:14px;">
+            <div class="gap-row">
               <input class="input" id="blTrackUrl" placeholder="Target URL" style="flex:1;" />
-              <input class="input" id="blTrackStatus" placeholder="Status (e.g. Emailed)" style="flex:1;" />
+              <input class="input" id="blTrackStatus" placeholder="Status" style="flex:1;" />
               <button class="btn btn-accent btn-sm" onclick="addBacklinkTrack()">+ Add</button>
             </div>
           </div>
-          <div id="blTrackerTable">
-            <div class="empty-state"><div class="icon">📊</div><div class="title">No backlinks tracked yet</div></div>
-          </div>
+          <div id="blTrackerTable"><div class="empty-state"><div class="icon">📊</div><div class="title">No backlinks tracked yet</div></div></div>
         </div>
       </div>
     </div>
 
-    <!-- ── SCHEMA ── -->
+    <!-- ══ SCHEMA ══ -->
     <div class="page" id="page-schema">
       <div class="topbar">
         <div><div class="page-title">🏗️ Schema Generator</div><div class="page-sub">Ready-to-paste JSON-LD structured data</div></div>
       </div>
-      <div style="padding:28px;">
-        <div class="card card-accent" style="margin-bottom:20px;">
-          <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;">
+      <div class="page-body">
+        <div class="card card-accent" style="margin-bottom:18px;">
+          <div class="gap-row">
             <div style="flex:1;min-width:200px;"><label class="input-label">Website URL</label><input class="input" id="schemaUrl" placeholder="https://yourdomain.com" /></div>
-            <div style="flex:1;min-width:180px;"><label class="input-label">Schema Type</label>
+            <div style="min-width:180px;"><label class="input-label">Schema Type</label>
               <select class="input" id="schemaType">
-                <option>All Schema Types</option>
-                <option>LocalBusiness</option>
-                <option>MedicalOrganization</option>
-                <option>Organization</option>
-                <option>FAQPage</option>
-                <option>Article</option>
-                <option>Product</option>
-                <option>Service</option>
-                <option>BreadcrumbList</option>
+                <option>All Schema Types</option><option>LocalBusiness</option><option>MedicalOrganization</option>
+                <option>Organization</option><option>FAQPage</option><option>Article</option>
+                <option>Product</option><option>Service</option><option>BreadcrumbList</option>
               </select>
             </div>
-            <button class="btn btn-accent" onclick="generateSchema()">🏗️ Generate</button>
+            <button class="btn btn-accent" onclick="generateSchema()" style="align-self:flex-end;">🏗️ Generate</button>
           </div>
         </div>
-        <div id="schemaOutput">
-          <div class="empty-state"><div class="icon">🏗️</div><div class="title">Enter a URL to generate schema</div></div>
-        </div>
+        <div id="schemaOutput"><div class="empty-state"><div class="icon">🏗️</div><div class="title">Enter a URL to generate schema</div></div></div>
       </div>
     </div>
 
-    <!-- ── WORDPRESS ── -->
-    <div class="page" id="page-wordpress">
+    <!-- ══ EXECUTIVE REPORT ══ -->
+    <div class="page" id="page-report">
       <div class="topbar">
-        <div><div class="page-title">🌐 WordPress Connect</div><div class="page-sub">Auto-publish articles directly to your site</div></div>
+        <div><div class="page-title">📊 Executive Report</div><div class="page-sub">Full scoring, 90-day roadmap, and ROI projections</div></div>
       </div>
-      <div style="padding:28px;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div class="page-body">
+        <div class="card card-accent" style="margin-bottom:18px;">
+          <div class="gap-row">
+            <div style="flex:1;min-width:200px;"><label class="input-label">Website URL</label><input class="input" id="reportUrl" placeholder="https://yourdomain.com" /></div>
+            <div style="flex:1;min-width:160px;"><label class="input-label">Business Name</label><input class="input" id="reportBiz" placeholder="Your Business Name" /></div>
+            <div style="min-width:140px;"><label class="input-label">Industry</label><input class="input" id="reportIndustry" placeholder="e.g. Medical Spa" /></div>
+            <button class="btn btn-accent" onclick="generateReport()" id="reportBtn" style="align-self:flex-end;">📊 Generate Report</button>
+          </div>
+        </div>
+        <div id="reportOutput"><div class="empty-state"><div class="icon">📊</div><div class="title">Enter your details to generate an executive SEO report</div></div></div>
+      </div>
+    </div>
+
+    <!-- ══ WORDPRESS ══ -->
+    <div class="page" id="page-wordpress">
+      <div class="topbar"><div><div class="page-title">🌐 WordPress Connect</div><div class="page-sub">Auto-publish articles directly to your site</div></div></div>
+      <div class="page-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
           <div class="card card-accent">
             <div class="section-title">🔌 Connection Settings</div>
-            <div class="section-sub">Connect your WordPress site to enable one-click publishing. You need the WordPress REST API enabled (default on all modern WP installations).</div>
-            <div class="input-group">
-              <label class="input-label">WordPress Site URL</label>
-              <input class="input" id="wpUrl" placeholder="https://yourblog.com" />
-            </div>
-            <div class="input-group">
-              <label class="input-label">Username</label>
-              <input class="input" id="wpUser" placeholder="admin" />
-            </div>
+            <div class="section-sub">Connect your WordPress site to enable one-click publishing. Requires WordPress REST API (default on all modern WP installs).</div>
+            <div class="input-group"><label class="input-label">WordPress Site URL</label><input class="input" id="wpUrl" placeholder="https://yourblog.com" /></div>
+            <div class="input-group"><label class="input-label">Username</label><input class="input" id="wpUser" placeholder="admin" /></div>
             <div class="input-group">
               <label class="input-label">Application Password</label>
               <input class="input" id="wpPass" type="password" placeholder="xxxx xxxx xxxx xxxx xxxx xxxx" />
-              <div style="font-size:11px;color:var(--muted);margin-top:6px;">Generate at: WP Admin → Users → Profile → Application Passwords</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:5px;">Generate at: WP Admin → Users → Profile → Application Passwords</div>
             </div>
             <button class="btn btn-accent" onclick="testWPConnection()">🔌 Test Connection</button>
-            <div id="wpTestResult" style="margin-top:12px;font-size:12px;"></div>
+            <div id="wpTestResult" style="margin-top:11px;font-size:12px;"></div>
           </div>
           <div class="card">
             <div class="section-title">📤 Publish Settings</div>
-            <div class="input-group">
-              <label class="input-label">Default Post Status</label>
-              <select class="input" id="wpStatus">
-                <option value="draft">Draft (review before publishing)</option>
-                <option value="publish">Publish Immediately</option>
-              </select>
+            <div class="input-group"><label class="input-label">Default Post Status</label>
+              <select class="input" id="wpStatus"><option value="draft">Draft (review before publishing)</option><option value="publish">Publish Immediately</option></select>
             </div>
-            <div class="input-group">
-              <label class="input-label">Default Category</label>
-              <input class="input" id="wpCategory" placeholder="SEO, Blog, etc." />
-            </div>
-            <div class="input-group">
-              <label class="input-label">Author Name</label>
-              <input class="input" id="wpAuthor" placeholder="Your name" />
-            </div>
+            <div class="input-group"><label class="input-label">Default Category</label><input class="input" id="wpCategory" placeholder="SEO, Blog, etc." /></div>
+            <div class="input-group"><label class="input-label">Author Name</label><input class="input" id="wpAuthor" placeholder="Your name" /></div>
             <button class="btn btn-ghost" onclick="saveWPSettings()">💾 Save Settings</button>
-            <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);">
-              <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Connection Status:</div>
+            <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
+              <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">Connection Status:</div>
               <div id="wpStatus2" class="badge badge-yellow">⚠ Not connected</div>
             </div>
           </div>
         </div>
-
-        <div class="card" style="margin-top:20px;">
+        <div class="card" style="margin-top:18px;">
           <div class="section-title">📋 How to get your Application Password</div>
-          <ol style="font-size:13px;color:var(--muted);line-height:2;padding-left:20px;">
+          <ol style="font-size:13px;color:var(--muted);line-height:2.1;padding-left:20px;">
             <li>Log in to your WordPress admin panel</li>
             <li>Go to <strong style="color:var(--text);">Users → Your Profile</strong></li>
             <li>Scroll down to <strong style="color:var(--text);">Application Passwords</strong></li>
@@ -625,160 +740,135 @@ textarea.input{resize:vertical;min-height:90px;font-family:'Syne',sans-serif;fon
       </div>
     </div>
 
-    <!-- ── SETTINGS ── -->
+    <!-- ══ SETTINGS ══ -->
     <div class="page" id="page-settings">
-      <div class="topbar">
-        <div><div class="page-title">⚙️ Settings</div><div class="page-sub">Configure your AutoSEO platform</div></div>
-      </div>
-      <div style="padding:28px;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div class="topbar"><div><div class="page-title">⚙️ Settings</div><div class="page-sub">Configure your AutoSEO platform</div></div></div>
+      <div class="page-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
           <div class="card card-accent">
             <div class="section-title">🔑 API Key</div>
-            <div class="input-group">
-              <label class="input-label">Anthropic API Key</label>
-              <input class="input" id="settingsKey" type="password" placeholder="sk-ant-…" />
-            </div>
+            <div class="input-group"><label class="input-label">Anthropic API Key</label><input class="input" id="settingsKey" type="password" placeholder="sk-ant-…" /></div>
             <button class="btn btn-accent btn-sm" onclick="updateKey()">Update Key</button>
           </div>
           <div class="card">
             <div class="section-title">🏢 Business Profile</div>
-            <div class="input-group">
-              <label class="input-label">Business Name</label>
-              <input class="input" id="bizName" placeholder="Your Business Name" />
-            </div>
-            <div class="input-group">
-              <label class="input-label">Website URL</label>
-              <input class="input" id="bizUrl" placeholder="https://yourdomain.com" />
-            </div>
-            <div class="input-group">
-              <label class="input-label">Industry / Niche</label>
-              <input class="input" id="bizNiche" placeholder="e.g. Medical Spa, NYC" />
-            </div>
-            <div class="input-group">
-              <label class="input-label">Target Audience</label>
-              <input class="input" id="bizAudience" placeholder="e.g. Adults 25-55, NYC area" />
-            </div>
+            <div class="input-group"><label class="input-label">Business Name</label><input class="input" id="bizName" placeholder="Your Business Name" /></div>
+            <div class="input-group"><label class="input-label">Website URL</label><input class="input" id="bizUrl" placeholder="https://yourdomain.com" /></div>
+            <div class="input-group"><label class="input-label">Industry / Niche</label><input class="input" id="bizNiche" placeholder="e.g. Medical Spa, NYC" /></div>
+            <div class="input-group"><label class="input-label">Target Audience</label><input class="input" id="bizAudience" placeholder="e.g. Adults 25-55, NYC area" /></div>
             <button class="btn btn-ghost btn-sm" onclick="saveBizProfile()">💾 Save Profile</button>
           </div>
           <div class="card">
             <div class="section-title">🗑️ Data</div>
-            <div style="font-size:12px;color:var(--muted);margin-bottom:14px;">Clear all locally stored articles, settings, and calendar data.</div>
+            <div style="font-size:12px;color:var(--muted);margin-bottom:13px;">Clear all locally stored articles, settings, and calendar data.</div>
             <button class="btn btn-danger btn-sm" onclick="clearAllData()">🗑️ Clear All Data</button>
           </div>
         </div>
       </div>
     </div>
 
-  </div><!-- end .main -->
-</div><!-- end #appWrap -->
-</div><!-- end .app -->
+  </div><!-- /.main -->
+</div><!-- /#appWrap -->
+</div><!-- /.app -->
 
 <script>
-// ═══════════════════════════════════════════════
-// CONFIG
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
+// CONFIG & STATE
+// ════════════════════════════════════════════
 const PROXY = 'https://white-bush-5905.ya-363.workers.dev/';
 let API_KEY = '';
+let currentArticle = null;
 
-// ═══════════════════════════════════════════════
-// LOCAL STORAGE HELPERS
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
+// STORAGE
+// ════════════════════════════════════════════
 const DB = {
   get: k => { try { return JSON.parse(localStorage.getItem('autoseo_'+k)||'null'); } catch(e){return null;} },
   set: (k,v) => { try { localStorage.setItem('autoseo_'+k, JSON.stringify(v)); } catch(e){} },
   del: k => localStorage.removeItem('autoseo_'+k),
 };
 
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
 // GATE
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
 function startApp() {
-  const val = document.getElementById('gateKey').value.trim();
-  if (!val || !val.startsWith('sk-ant')) {
-    document.getElementById('gateErr').style.display = 'block'; return;
-  }
-  API_KEY = val;
-  DB.set('apikey', val);
-  launchApp();
+  const v = document.getElementById('gateKey').value.trim();
+  if (!v || !v.startsWith('sk-ant')) { document.getElementById('gateErr').style.display='block'; return; }
+  API_KEY = v; DB.set('apikey', v); launchApp();
 }
-function skipGate() { API_KEY = ''; launchApp(); }
-
+function skipGate() { launchApp(); }
 function launchApp() {
   document.getElementById('gate').style.display = 'none';
   const aw = document.getElementById('appWrap');
   aw.style.display = 'flex';
   const saved = DB.get('apikey');
   if (saved && !API_KEY) API_KEY = saved;
-  const disp = API_KEY ? API_KEY.slice(0,10)+'••••'+API_KEY.slice(-4) : 'Claude.ai injected';
-  document.getElementById('keyDisplay').textContent = disp;
-  if (document.getElementById('settingsKey')) document.getElementById('settingsKey').value = API_KEY || '';
+  document.getElementById('keyDisplay').textContent = API_KEY ? API_KEY.slice(0,10)+'••••'+API_KEY.slice(-4) : 'Claude.ai';
+  if (document.getElementById('settingsKey')) document.getElementById('settingsKey').value = API_KEY||'';
   loadDashboard();
+  // populate saved biz profile
+  const biz = DB.get('biz')||{};
+  ['bizName','bizUrl','bizNiche','bizAudience'].forEach(id=>{const el=document.getElementById(id);if(el&&biz[id])el.value=biz[id];});
+  const wp = DB.get('wp')||{};
+  ['wpUrl','wpUser','wpCategory','wpAuthor'].forEach(id=>{const el=document.getElementById(id);if(el&&wp[id])el.value=wp[id];});
 }
-
-// Auto-launch if saved key exists
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded',()=>{
   const saved = DB.get('apikey');
-  if (saved) { document.getElementById('gateKey').value = saved; API_KEY = saved; launchApp(); }
-  // populate settings fields
-  const biz = DB.get('biz') || {};
-  ['bizName','bizUrl','bizNiche','bizAudience'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el && biz[id]) el.value = biz[id];
-  });
-  const wp = DB.get('wp') || {};
-  ['wpUrl','wpUser','wpCategory','wpAuthor'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el && wp[id]) el.value = wp[id];
-  });
-  document.getElementById('gateKey').addEventListener('keydown', e => { if(e.key==='Enter') startApp(); });
+  if (saved) { document.getElementById('gateKey').value=saved; API_KEY=saved; launchApp(); }
+  document.getElementById('gateKey').addEventListener('keydown',e=>{if(e.key==='Enter')startApp();});
 });
 
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
 // NAVIGATION
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
 function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const page = document.getElementById('page-'+id);
-  if (page) page.classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n => {
-    if (n.textContent.toLowerCase().includes(id.replace('-',' '))) n.classList.add('active');
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const pg = document.getElementById('page-'+id);
+  if (pg) pg.classList.add('active');
+  // Find matching nav item by onclick
+  document.querySelectorAll('.nav-item').forEach(n=>{
+    if(n.getAttribute('onclick') && n.getAttribute('onclick').includes("'"+id+"'")) n.classList.add('active');
   });
   window.scrollTo(0,0);
+  // Sync URL fields
+  if(id==='articles') renderArticlesList();
+  if(id==='backlinks') renderBacklinkTracker();
 }
 
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
 // API CALL
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
 async function callClaude(prompt, maxTokens=1500) {
-  const headers = {'Content-Type':'application/json','anthropic-version':'2023-06-01'};
-  if (API_KEY) headers['x-api-key'] = API_KEY;
+  const hdrs = {'Content-Type':'application/json','anthropic-version':'2023-06-01'};
+  if (API_KEY) hdrs['x-api-key'] = API_KEY;
   const res = await fetch(PROXY, {
-    method:'POST', headers,
-    body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:maxTokens, messages:[{role:'user',content:prompt}] })
+    method:'POST', headers:hdrs,
+    body: JSON.stringify({model:'claude-sonnet-4-20250514', max_tokens:maxTokens, messages:[{role:'user',content:prompt}]})
   });
   if (!res.ok) { const j=await res.json().catch(()=>({})); throw new Error(j?.error?.message||'HTTP '+res.status); }
   const data = await res.json();
   const text = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n').trim();
-  if (!text) throw new Error('Empty response from API');
+  if (!text) throw new Error('Empty response');
   return text;
 }
 
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
 // TOAST
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
 function toast(msg, isErr=false) {
   const t = document.getElementById('toast');
   t.textContent = msg;
-  t.style.borderColor = isErr ? 'var(--danger)' : 'var(--success)';
-  t.style.color = isErr ? 'var(--danger)' : 'var(--success)';
+  t.style.borderColor = isErr?'var(--danger)':'var(--success)';
+  t.style.color = isErr?'var(--danger)':'var(--success)';
   t.style.display = 'block';
-  setTimeout(()=>t.style.display='none', 3500);
+  clearTimeout(t._timer);
+  t._timer = setTimeout(()=>t.style.display='none', 3500);
 }
 
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
 // MARKDOWN RENDERER
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
 function escH(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function inlineFmt(s){
   s=s.replace(/`([^`]+)`/g,'<code>$1</code>');
@@ -795,23 +885,28 @@ function mdHtml(raw) {
   function fTbl(){
     if(!tRows.length)return;let o='<table>';
     tRows.forEach((r,ri)=>{const cs=r.split('|').map(c=>c.trim()).filter((_,ci,a)=>ci>0&&ci<a.length-1);
-      if(ri===0)o+='<thead><tr>'+cs.map(c=>`<th>${escH(c)}</th>`).join('')+'</tr></thead><tbody>';
+      if(ri===0){o+='<thead><tr>'+cs.map(c=>`<th>${escH(c)}</th>`).join('')+'</tr></thead><tbody>';}
       else if(ri===1)return;
       else o+='<tr>'+cs.map(c=>`<td>${inlineFmt(escH(c))}</td>`).join('')+'</tr>';
     });o+='</tbody></table>';html+=o;tRows=[];
   }
   while(i<lines.length){
     const l=lines[i];
-    if(l.trim().startsWith('```')){if(!inPre){fUl();fOl();fTbl();inPre=true;preCnt='';}else{html+=`<pre><code>${escH(preCnt.replace(/^\n/,''))}</code></pre>`;inPre=false;}i++;continue;}
+    if(l.trim().startsWith('```')){
+      if(!inPre){fUl();fOl();fTbl();inPre=true;preCnt='';}
+      else{html+=`<pre><code>${escH(preCnt.replace(/^\n/,''))}</code></pre>`;inPre=false;}
+      i++;continue;
+    }
     if(inPre){preCnt+=l+'\n';i++;continue;}
     if(l.trim().startsWith('|')&&l.trim().endsWith('|')){fUl();fOl();tRows.push(l.trim());i++;continue;}
     else if(tRows.length)fTbl();
     if(!l.trim()){fUl();fOl();i++;continue;}
-    const h1=l.match(/^# (.+)/),h2=l.match(/^## (.+)/),h3=l.match(/^### (.+)/);
+    const h1=l.match(/^# (.+)/),h2=l.match(/^## (.+)/),h3=l.match(/^### (.+)/),h4=l.match(/^#### (.+)/);
     if(h1){fUl();fOl();html+=`<h1>${inlineFmt(escH(h1[1]))}</h1>`;i++;continue;}
     if(h2){fUl();fOl();html+=`<h2>${inlineFmt(escH(h2[1]))}</h2>`;i++;continue;}
     if(h3){fUl();fOl();html+=`<h3>${inlineFmt(escH(h3[1]))}</h3>`;i++;continue;}
-    if(/^---+$/.test(l.trim())){fUl();fOl();html+='<hr>';i++;continue;}
+    if(h4){fUl();fOl();html+=`<h4 style="font-size:13px;color:var(--muted);margin:12px 0 6px;">${inlineFmt(escH(h4[1]))}</h4>`;i++;continue;}
+    if(/^---+$/.test(l.trim())){fUl();fOl();html+='<hr style="border:none;border-top:1px solid var(--border);margin:14px 0;">';i++;continue;}
     if(l.startsWith('> ')){fUl();fOl();html+=`<blockquote>${inlineFmt(escH(l.slice(2)))}</blockquote>`;i++;continue;}
     const ul=l.match(/^[\s]*[•\-\*] (.+)/);if(ul){fOl();ulI.push(ul[1]);i++;continue;}
     const ol=l.match(/^[\s]*\d+[\.\)] (.+)/);if(ol){fUl();olI.push(ol[1]);i++;continue;}
@@ -821,464 +916,872 @@ function mdHtml(raw) {
   return html;
 }
 
-// ═══════════════════════════════════════════════
-// LOADING HELPER
-// ═══════════════════════════════════════════════
 function loadingHTML(title, sub='This takes 15–25 seconds…') {
   return `<div class="loading-box"><div class="icon">⚡</div><div class="title">${title}</div><div class="sub">${sub}</div><div class="dots"><span></span><span></span><span></span></div></div>`;
 }
+function resultCard(title, content, copyText) {
+  return `<div class="card"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;"><div class="section-title" style="margin:0;">${title}</div><button class="btn btn-ghost btn-sm" onclick="navigator.clipboard.writeText(${JSON.stringify(copyText||'')}).then(()=>toast('Copied!'))">📋 Copy</button></div><div class="article-preview">${mdHtml(content)}</div></div>`;
+}
 
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
 // DASHBOARD
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
 function loadDashboard() {
-  const articles = DB.get('articles') || [];
-  const backlinks = DB.get('backlinks') || [];
-  const keywords = DB.get('keywords') || [];
-  document.getElementById('statArticles').textContent = articles.length;
-  document.getElementById('statPublished').textContent = articles.filter(a=>a.published).length;
-  document.getElementById('statBacklinks').textContent = backlinks.length;
-  document.getElementById('statKeywords').textContent = keywords.length;
+  const arts = DB.get('articles')||[];
+  const bls = DB.get('backlinks')||[];
+  const kws = DB.get('keywords')||[];
+  document.getElementById('statArticles').textContent = arts.length;
+  document.getElementById('statPublished').textContent = arts.filter(a=>a.published).length;
+  document.getElementById('statBacklinks').textContent = bls.length;
+  document.getElementById('statKeywords').textContent = kws.length;
   renderRecentActivity();
-  // pre-fill URL inputs from saved biz profile
-  const biz = DB.get('biz') || {};
-  if (biz.bizUrl) {
-    ['siteUrl','auditUrl','kwUrl','blUrl','calUrl','writerUrl'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el && !el.value) el.value = biz.bizUrl;
+  // Pre-fill URL fields from biz profile
+  const biz = DB.get('biz')||{};
+  if(biz.bizUrl){
+    ['siteUrl','auditUrl','kwUrl','blUrl','calUrl','writerUrl','onpageUrl','compUrl','localUrl','vitalsUrl','schemaUrl','reportUrl','stratUrl'].forEach(id=>{
+      const el=document.getElementById(id); if(el&&!el.value) el.value=biz.bizUrl;
     });
-    if (biz.bizNiche) { const el=document.getElementById('calNiche'); if(el&&!el.value) el.value=biz.bizNiche; }
+    if(biz.bizNiche){['calNiche','compNiche','blNiche','stratNiche'].forEach(id=>{const el=document.getElementById(id);if(el&&!el.value)el.value=biz.bizNiche;});}
+    if(biz.bizName){['localBiz','reportBiz'].forEach(id=>{const el=document.getElementById(id);if(el&&!el.value)el.value=biz.bizName;});}
+    if(biz.bizNiche){const el=document.getElementById('reportIndustry');if(el&&!el.value)el.value=biz.bizNiche;}
   }
 }
-
-function renderRecentActivity() {
-  const articles = (DB.get('articles')||[]).slice(-5).reverse();
-  const el = document.getElementById('recentActivity');
-  if (!articles.length) return;
-  el.innerHTML = articles.map(a=>`
-    <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);">
-      <span style="font-size:16px;">✍️</span>
-      <div style="flex:1;min-width:0;">
-        <div style="font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escH(a.title||a.keyword)}</div>
-        <div style="font-size:11px;color:var(--muted);">${a.date||''} · ${a.words||0} words · <span class="badge ${a.published?'badge-green':'badge-yellow'}" style="font-size:10px;">${a.published?'Published':'Draft'}</span></div>
-      </div>
-    </div>`).join('');
+function renderRecentActivity(){
+  const arts=(DB.get('articles')||[]).slice(-5).reverse();
+  const el=document.getElementById('recentActivity');
+  if(!arts.length)return;
+  el.innerHTML=arts.map(a=>`<div style="display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);">
+    <span style="font-size:15px;">✍️</span>
+    <div style="flex:1;min-width:0;">
+      <div style="font-size:12.5px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escH(a.title||a.keyword)}</div>
+      <div style="font-size:11px;color:var(--muted);">${a.date||''} · ${a.words||0} words · <span class="badge ${a.published?'badge-green':'badge-yellow'}">${a.published?'Published':'Draft'}</span></div>
+    </div></div>`).join('');
 }
 
-async function runFullAudit() {
-  const url = document.getElementById('siteUrl').value.trim();
-  if (!url) { toast('Enter a URL first', true); return; }
-  document.getElementById('auditResultCard').style.display = 'block';
-  document.getElementById('auditResultContent').innerHTML = loadingHTML('Running full audit…');
-  try {
-    const result = await callClaude(auditPrompt(url));
-    document.getElementById('auditResultContent').innerHTML = `<div style="font-size:13px;line-height:1.8;">${mdHtml(result)}</div>`;
-    addActivity('Audit completed for '+url);
-  } catch(e) { document.getElementById('auditResultContent').innerHTML = `<div class="error-msg" style="display:block;">${escH(e.message)}</div>`; }
+async function runQuickScan(){
+  const url=document.getElementById('siteUrl').value.trim(); if(!url){toast('Enter a URL first',true);return;}
+  document.getElementById('dashAuditCard').style.display='block';
+  document.getElementById('dashAuditTitle').textContent='⚡ Quick Scan — '+url;
+  document.getElementById('dashAuditContent').innerHTML=loadingHTML('Quick scan in progress…','Checking top 5 issues — ~10 seconds');
+  try{
+    const r=await callClaude(`You are an SEO expert. Run a QUICK scan of: ${url}
+Return ONLY these 5 items, each with a ✅ ⚠️ or ❌ status icon and 1-sentence fix:
+1. HTTPS/Security
+2. Page Title Tag
+3. Meta Description
+4. Mobile Friendliness
+5. Page Speed Estimate
+Format as a tight bullet list. End with an overall Quick Score /100.`, 400);
+    document.getElementById('dashAuditContent').innerHTML=`<div style="font-size:13px;line-height:1.8;">${mdHtml(r)}</div>`;
+    toast('⚡ Quick scan done!');
+  }catch(e){document.getElementById('dashAuditContent').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;}
 }
 
-function addActivity(text) {
-  // just refresh
-  loadDashboard();
+async function runFullAuditDash(){
+  const url=document.getElementById('siteUrl').value.trim(); if(!url){toast('Enter a URL first',true);return;}
+  document.getElementById('dashAuditCard').style.display='block';
+  document.getElementById('dashAuditTitle').textContent='🔍 Full Audit — '+url;
+  document.getElementById('dashAuditContent').innerHTML=loadingHTML('Running full audit…');
+  try{
+    const r=await callClaude(fullAuditPrompt(url),1500);
+    document.getElementById('dashAuditContent').innerHTML=`<div style="font-size:13px;line-height:1.8;">${mdHtml(r)}</div><div style="margin-top:12px;"><button class="btn btn-ghost btn-sm" onclick="showPage('audit')">Open Full Audit Page →</button></div>`;
+    toast('✅ Full audit complete!');
+  }catch(e){document.getElementById('dashAuditContent').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;}
 }
 
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
 // ARTICLE WRITER
-// ═══════════════════════════════════════════════
-let currentArticle = null;
-
-async function writeArticle() {
-  const kw = document.getElementById('writerKeyword').value.trim();
-  const url = document.getElementById('writerUrl').value.trim();
-  const tone = document.getElementById('writerTone').value;
-  const length = document.getElementById('writerLength').value;
-  const lang = document.getElementById('writerLang').value;
-  if (!kw) { toast('Enter a keyword or topic', true); return; }
-
-  document.getElementById('writeBtn').disabled = true;
-  document.getElementById('writerOutput').innerHTML = loadingHTML('Writing your article…', `Generating a ${length}-word SEO article on "${kw}"`);
-
-  const prompt = `You are an expert SEO content writer. Write a comprehensive, high-quality SEO article in ${lang}.
-
+// ════════════════════════════════════════════
+async function writeArticle(){
+  const kw=document.getElementById('writerKeyword').value.trim();
+  const url=document.getElementById('writerUrl').value.trim();
+  const tone=document.getElementById('writerTone').value;
+  const length=document.getElementById('writerLength').value;
+  const lang=document.getElementById('writerLang').value;
+  if(!kw){toast('Enter a keyword or topic',true);return;}
+  document.getElementById('writeBtn').disabled=true;
+  document.getElementById('writerOutput').innerHTML=loadingHTML('Writing your article…',`Generating a ${length}-word SEO article on "${kw}"`);
+  const prompt=`You are an expert SEO content writer. Write a comprehensive, high-quality SEO article in ${lang}.
 Target keyword: "${kw}"
-${url ? `Website: ${url}` : ''}
+${url?`Website: ${url}`:''}
 Tone: ${tone}
 Target length: approximately ${length} words
 
-Structure the article exactly like this:
+Structure EXACTLY like this:
 
 # [Compelling SEO Title including the keyword]
 
 ## Key Takeaways
-- [3-5 bullet points summarising the article]
+- [3-5 bullet points]
 
 ## Introduction
-[2-3 paragraphs. Hook the reader, state the problem they face, promise the solution. Include the keyword naturally in the first 100 words.]
+[2-3 paragraphs. Hook, problem, promise. Keyword in first 100 words.]
 
-## [Main Section 1 — H2]
-[3-4 paragraphs of detailed content]
-
-### [Sub-section H3]
+## [Main Section 1]
+[3-4 paragraphs]
+### [Sub-section]
 [Content]
 
-## [Main Section 2 — H2]
+## [Main Section 2]
+[Content]
+### [Sub-section]
 [Content]
 
-### [Sub-section H3]
+## [Main Section 3]
 [Content]
 
-## [Main Section 3 — H2]
-[Content]
-
-## [Main Section 4 — H2]
+## [Main Section 4]
 [Content]
 
 ## Common Mistakes to Avoid
-[List of 4-5 mistakes with explanations]
+[4-5 mistakes with explanations]
 
 ## Conclusion
-[Strong conclusion paragraph with CTA]
+[Strong conclusion with CTA]
 
 ## Frequently Asked Questions
-
 ### [Question 1]
 [Answer]
-
 ### [Question 2]
 [Answer]
-
 ### [Question 3]
 [Answer]
-
 ### [Question 4]
 [Answer]
-
 ### [Question 5]
 [Answer]
 
-Important:
-- Use the keyword "${kw}" naturally 8-12 times throughout
-- Include LSI/semantic keywords related to the topic
-- Write in ${lang}
-- Be specific, helpful, and authoritative
-- Do NOT use placeholder text — write the full article`;
-
-  try {
-    const result = await callClaude(prompt, 2000);
-    currentArticle = { keyword: kw, url, content: result, title: extractTitle(result), words: countWords(result), date: new Date().toLocaleDateString(), published: false, id: Date.now() };
+Rules: keyword "${kw}" 8-12 times, LSI keywords, write in ${lang}, be specific and authoritative.`;
+  try{
+    const r=await callClaude(prompt,2000);
+    currentArticle={keyword:kw,url,content:r,title:extractTitle(r),words:countWords(r),date:new Date().toLocaleDateString(),published:false,id:Date.now()};
     saveArticle(currentArticle);
-    document.getElementById('writerOutput').innerHTML = `
-      <div class="card" style="margin-bottom:0;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border);">
-          <div>
-            <div style="font-size:15px;font-weight:700;">${escH(currentArticle.title)}</div>
-            <div style="font-size:11px;color:var(--muted);margin-top:4px;">${currentArticle.words} words · ${lang} · ${tone}</div>
-          </div>
-          <div style="display:flex;gap:8px;">
-            <button class="btn btn-ghost btn-sm" onclick="copyArticle()">📋 Copy</button>
-            <button class="btn btn-accent btn-sm" onclick="publishToWP()">📤 Publish to WP</button>
-          </div>
+    document.getElementById('writerOutput').innerHTML=`<div class="card"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border);">
+      <div><div style="font-size:14px;font-weight:700;">${escH(currentArticle.title)}</div><div style="font-size:11px;color:var(--muted);margin-top:3px;">${currentArticle.words} words · ${lang} · ${tone}</div></div>
+      <div style="display:flex;gap:8px;"><button class="btn btn-ghost btn-sm" onclick="copyArticle()">📋 Copy</button><button class="btn btn-accent btn-sm" onclick="publishToWP()">📤 Publish to WP</button></div>
+    </div><div class="article-preview">${mdHtml(r)}</div></div>`;
+    document.getElementById('publishCard').style.display='block';
+    document.getElementById('statArticles').textContent=(DB.get('articles')||[]).length;
+    toast('✅ Article written!');
+  }catch(e){
+    document.getElementById('writerOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;
+    toast('Error: '+e.message,true);
+  }
+  document.getElementById('writeBtn').disabled=false;
+}
+function extractTitle(t){const m=t.match(/^#\s+(.+)/m);return m?m[1].replace(/\*/g,''):'Untitled Article';}
+function countWords(t){return t.trim().split(/\s+/).length;}
+function saveArticle(a){const arts=DB.get('articles')||[];arts.push(a);DB.set('articles',arts);renderArticlesList();}
+function copyArticle(){if(!currentArticle)return;navigator.clipboard.writeText(currentArticle.content).then(()=>toast('📋 Copied!'));}
+function renderArticlesList(){
+  const arts=(DB.get('articles')||[]).slice().reverse();
+  const el=document.getElementById('articlesList');
+  if(!arts.length){el.innerHTML='<div class="empty-state"><div class="icon">📄</div><div class="title">No articles yet</div></div>';return;}
+  el.innerHTML=`<div class="table-wrap"><table><thead><tr><th>Title</th><th>Keyword</th><th>Words</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead><tbody>
+  ${arts.map(a=>`<tr><td style="max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escH(a.title||a.keyword)}</td>
+  <td><span class="badge badge-purple">${escH(a.keyword)}</span></td>
+  <td style="font-family:'Space Mono',monospace;">${a.words||0}</td>
+  <td style="color:var(--muted);font-size:12px;">${a.date||''}</td>
+  <td><span class="badge ${a.published?'badge-green':'badge-yellow'}">${a.published?'✅ Published':'📝 Draft'}</span></td>
+  <td><button class="btn btn-ghost btn-sm" onclick="viewArticle(${a.id})">View</button></td></tr>`).join('')}
+  </tbody></table></div>`;
+}
+function viewArticle(id){
+  const a=(DB.get('articles')||[]).find(x=>x.id===id); if(!a)return;
+  currentArticle=a;
+  document.getElementById('writerKeyword').value=a.keyword;
+  document.getElementById('writerOutput').innerHTML=`<div class="card"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border);">
+    <div><div style="font-size:14px;font-weight:700;">${escH(a.title)}</div><div style="font-size:11px;color:var(--muted);margin-top:3px;">${a.words} words · ${a.date}</div></div>
+    <div style="display:flex;gap:8px;"><button class="btn btn-ghost btn-sm" onclick="copyArticle()">📋 Copy</button><button class="btn btn-accent btn-sm" onclick="publishToWP()">📤 Publish</button></div>
+  </div><div class="article-preview">${mdHtml(a.content)}</div></div>`;
+  document.getElementById('publishCard').style.display='block';
+  showPage('writer');
+}
+
+// ════════════════════════════════════════════
+// CONTENT BRIEF
+// ════════════════════════════════════════════
+async function generateBrief(){
+  const kw=document.getElementById('briefKeyword').value.trim();
+  const industry=document.getElementById('briefIndustry').value.trim();
+  const type=document.getElementById('briefType').value;
+  if(!kw){toast('Enter a keyword or topic',true);return;}
+  document.getElementById('briefBtn').disabled=true;
+  document.getElementById('briefOutput').innerHTML=loadingHTML('Researching your brief…','Pulling data from multiple angles — ~20 seconds');
+
+  const prompt=`You are an expert SEO content strategist. Create a comprehensive content brief for:
+
+Keyword/Topic: "${kw}"
+Industry: ${industry||'general'}
+Content Type: ${type}
+
+Return a structured JSON object (only JSON, no markdown, no explanation) with this EXACT format:
+{
+  "keyword": "${kw}",
+  "searchIntent": "informational|commercial|transactional|navigational",
+  "estimatedVolume": "high|medium|low",
+  "difficulty": "easy|medium|hard",
+  "targetWordCount": 1800,
+  "targetAudience": "description of ideal reader",
+  "contentAngle": "unique angle or hook for this article",
+  "primaryKeyword": "${kw}",
+  "secondaryKeywords": ["kw2","kw3","kw4","kw5","kw6"],
+  "lsiKeywords": ["term1","term2","term3","term4","term5","term6","term7","term8"],
+  "peopleAlsoAsk": ["question1?","question2?","question3?","question4?","question5?","question6?"],
+  "suggestedTitle": "SEO optimized H1 title",
+  "titleAlternatives": ["alt title 1","alt title 2","alt title 3"],
+  "metaDescription": "155 char meta description",
+  "proposedOutline": [
+    {"level":"H1","text":"Main title"},
+    {"level":"H2","text":"Introduction section"},
+    {"level":"H2","text":"Section 2"},
+    {"level":"H3","text":"Sub-section 2a"},
+    {"level":"H2","text":"Section 3"},
+    {"level":"H3","text":"Sub-section 3a"},
+    {"level":"H2","text":"Section 4"},
+    {"level":"H2","text":"FAQ Section"},
+    {"level":"H2","text":"Conclusion"}
+  ],
+  "keyStatistics": ["stat1 with source context","stat2","stat3","stat4"],
+  "expertQuoteAngles": ["angle1 to find a quote for","angle2","angle3"],
+  "internalLinkOpportunities": ["page type 1","page type 2","page type 3"],
+  "competitorAngles": ["what competitors cover","gap 1 you can fill","gap 2"],
+  "cta": "recommended call to action",
+  "sources": [
+    {"type":"Industry Study","title":"Suggested source type 1","url":"https://example.com","relevance":"Why this type of source helps"},
+    {"type":"Government/Authority","title":"Suggested source type 2","url":"https://example.com","relevance":"Why this matters"},
+    {"type":"Expert Blog","title":"Suggested source type 3","url":"https://example.com","relevance":"What to look for"},
+    {"type":"News/Media","title":"Suggested source type 4","url":"https://example.com","relevance":"For recency signals"},
+    {"type":"Research Paper","title":"Suggested source type 5","url":"https://example.com","relevance":"Academic backing"}
+  ]
+}`;
+
+  try{
+    const raw=await callClaude(prompt,1500);
+    const clean=raw.replace(/```json|```/g,'').trim();
+    let brief;
+    try{brief=JSON.parse(clean);}catch(e){const m=clean.match(/\{[\s\S]+\}/);brief=m?JSON.parse(m[0]):null;}
+    if(!brief)throw new Error('Could not parse brief data');
+    renderBrief(brief);
+    toast('✅ Content brief ready!');
+  }catch(e){
+    document.getElementById('briefOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;
+    toast('Error: '+e.message,true);
+  }
+  document.getElementById('briefBtn').disabled=false;
+}
+
+function renderBrief(b){
+  const intColor={'easy':'badge-green','medium':'badge-yellow','hard':'badge-red'}[b.difficulty]||'badge-purple';
+  const html=`<div class="brief-layout">
+  <!-- LEFT: BRIEF DATA -->
+  <div class="brief-main">
+
+    <!-- Meta row -->
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;align-items:center;">
+      <span class="badge badge-purple">🎯 ${escH(b.primaryKeyword)}</span>
+      <span class="badge badge-blue">Intent: ${escH(b.searchIntent)}</span>
+      <span class="badge badge-yellow">Volume: ${escH(b.estimatedVolume)}</span>
+      <span class="badge ${intColor}">Difficulty: ${escH(b.difficulty)}</span>
+      <span class="badge badge-teal">~${b.targetWordCount} words</span>
+    </div>
+
+    <!-- Titles & Meta -->
+    <div class="brief-section">
+      <div class="brief-section-title">📰 Titles & Meta</div>
+      <div style="margin-bottom:12px;">
+        <div class="input-label" style="margin-bottom:6px;">Suggested H1 Title</div>
+        <div style="font-size:14px;font-weight:700;padding:10px 14px;background:rgba(108,71,255,0.06);border-radius:8px;border-left:3px solid var(--accent);">${escH(b.suggestedTitle)}</div>
+      </div>
+      <div style="margin-bottom:12px;">
+        <div class="input-label" style="margin-bottom:6px;">Title Alternatives</div>
+        ${(b.titleAlternatives||[]).map(t=>`<div style="font-size:13px;padding:7px 12px;background:var(--surface2);border-radius:7px;margin-bottom:5px;">${escH(t)}</div>`).join('')}
+      </div>
+      <div>
+        <div class="input-label" style="margin-bottom:6px;">Meta Description</div>
+        <div style="font-size:12.5px;padding:10px 14px;background:var(--surface2);border-radius:8px;color:var(--muted);line-height:1.6;">${escH(b.metaDescription)}</div>
+      </div>
+    </div>
+
+    <!-- Keywords -->
+    <div class="brief-section">
+      <div class="brief-section-title">🎯 Keyword Map</div>
+      <div style="margin-bottom:12px;"><div class="input-label" style="margin-bottom:7px;">Secondary Keywords</div>
+        <div>${(b.secondaryKeywords||[]).map(k=>`<span class="brief-tag">${escH(k)}</span>`).join('')}</div>
+      </div>
+      <div><div class="input-label" style="margin-bottom:7px;">LSI / Semantic Keywords</div>
+        <div>${(b.lsiKeywords||[]).map(k=>`<span class="brief-tag" style="background:rgba(13,148,136,0.07);color:#0d9488;border-color:rgba(13,148,136,0.15);">${escH(k)}</span>`).join('')}</div>
+      </div>
+    </div>
+
+    <!-- Proposed Outline -->
+    <div class="brief-section">
+      <div class="brief-section-title">📐 Proposed Article Outline</div>
+      <div>${(b.proposedOutline||[]).map(h=>`<div class="brief-heading-item">
+        <span class="brief-h-tag">${escH(h.level)}</span>
+        <span class="brief-h-text" style="${h.level==='H1'?'font-weight:700;font-size:14px;':h.level==='H2'?'font-weight:600;':'color:var(--muted);'}">${escH(h.text)}</span>
+      </div>`).join('')}</div>
+    </div>
+
+    <!-- People Also Ask -->
+    <div class="brief-section">
+      <div class="brief-section-title">❓ People Also Ask</div>
+      ${(b.peopleAlsoAsk||[]).map(q=>`<div class="brief-question">${escH(q)}</div>`).join('')}
+    </div>
+
+    <!-- Stats, Quotes, CTAs -->
+    <div class="brief-section">
+      <div class="brief-section-title">📊 Key Statistics to Include</div>
+      <ul style="font-size:12.5px;color:var(--text);line-height:1.9;padding-left:18px;">
+        ${(b.keyStatistics||[]).map(s=>`<li>${escH(s)}</li>`).join('')}
+      </ul>
+    </div>
+
+    <div class="brief-section">
+      <div class="brief-section-title">💬 Expert Quote Angles</div>
+      ${(b.expertQuoteAngles||[]).map(q=>`<div style="padding:8px 12px;background:var(--surface2);border-radius:7px;font-size:12.5px;margin-bottom:6px;border-left:3px solid var(--accent2);">${escH(q)}</div>`).join('')}
+    </div>
+
+    <div class="brief-section">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <div class="brief-section-title">🔗 Internal Link Opportunities</div>
+          <ul style="font-size:12.5px;color:var(--muted);line-height:1.9;padding-left:18px;">${(b.internalLinkOpportunities||[]).map(l=>`<li>${escH(l)}</li>`).join('')}</ul>
         </div>
-        <div class="article-preview">${mdHtml(result)}</div>
-      </div>`;
-    document.getElementById('publishCard').style.display = 'block';
-    document.getElementById('statArticles').textContent = (DB.get('articles')||[]).length;
-    toast('✅ Article written successfully!');
-  } catch(e) {
-    document.getElementById('writerOutput').innerHTML = `<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;
-    toast('Error: '+e.message, true);
-  }
-  document.getElementById('writeBtn').disabled = false;
-}
-
-function extractTitle(content) {
-  const m = content.match(/^#\s+(.+)/m);
-  return m ? m[1].replace(/\*/g,'') : 'Untitled Article';
-}
-function countWords(text) { return text.trim().split(/\s+/).length; }
-
-function saveArticle(article) {
-  const articles = DB.get('articles') || [];
-  articles.push(article);
-  DB.set('articles', articles);
-  renderArticlesList();
-}
-
-function copyArticle() {
-  if (!currentArticle) return;
-  navigator.clipboard.writeText(currentArticle.content).then(()=>toast('📋 Article copied!'));
-}
-
-function renderArticlesList() {
-  const articles = (DB.get('articles')||[]).reverse();
-  const el = document.getElementById('articlesList');
-  if (!articles.length) { el.innerHTML = '<div class="empty-state"><div class="icon">📄</div><div class="title">No articles yet</div></div>'; return; }
-  el.innerHTML = `<div class="table-wrap"><table>
-    <thead><tr><th>Title</th><th>Keyword</th><th>Words</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
-    <tbody>${articles.map((a,i)=>`
-      <tr>
-        <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escH(a.title||a.keyword)}</td>
-        <td><span class="badge badge-purple">${escH(a.keyword)}</span></td>
-        <td style="font-family:'Space Mono',monospace;">${a.words||0}</td>
-        <td style="color:var(--muted);font-size:12px;">${a.date||''}</td>
-        <td><span class="badge ${a.published?'badge-green':'badge-yellow'}">${a.published?'✅ Published':'📝 Draft'}</span></td>
-        <td><button class="btn btn-ghost btn-sm" onclick="viewArticle(${a.id})">View</button></td>
-      </tr>`).join('')}
-    </tbody></table></div>`;
-}
-
-function viewArticle(id) {
-  const articles = DB.get('articles') || [];
-  const a = articles.find(x=>x.id===id);
-  if (!a) return;
-  currentArticle = a;
-  document.getElementById('writerKeyword').value = a.keyword;
-  document.getElementById('writerOutput').innerHTML = `
-    <div class="card">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border);">
-        <div><div style="font-size:15px;font-weight:700;">${escH(a.title)}</div><div style="font-size:11px;color:var(--muted);margin-top:4px;">${a.words} words · ${a.date}</div></div>
-        <div style="display:flex;gap:8px;"><button class="btn btn-ghost btn-sm" onclick="copyArticle()">📋 Copy</button><button class="btn btn-accent btn-sm" onclick="publishToWP()">📤 Publish</button></div>
+        <div>
+          <div class="brief-section-title">⚔️ Competitor Gaps to Fill</div>
+          <ul style="font-size:12.5px;color:var(--muted);line-height:1.9;padding-left:18px;">${(b.competitorAngles||[]).map(c=>`<li>${escH(c)}</li>`).join('')}</ul>
+        </div>
       </div>
-      <div class="article-preview">${mdHtml(a.content)}</div>
-    </div>`;
-  document.getElementById('publishCard').style.display = 'block';
-  showPage('writer');
+    </div>
+
+    <div class="brief-section">
+      <div class="brief-section-title">🎯 Recommended CTA</div>
+      <div style="padding:11px 16px;background:rgba(108,71,255,0.07);border-radius:8px;font-size:13px;font-weight:600;color:var(--accent);">${escH(b.cta)}</div>
+    </div>
+
+    <div style="margin-top:16px;display:flex;gap:10px;">
+      <button class="btn btn-accent" onclick="writeFromBrief()">✍️ Write Article from Brief</button>
+      <button class="btn btn-ghost" onclick="navigator.clipboard.writeText(JSON.stringify(window._lastBrief,null,2)).then(()=>toast('Brief JSON copied!'))">📋 Copy Brief JSON</button>
+    </div>
+  </div>
+
+  <!-- RIGHT: SOURCES PANEL -->
+  <div class="brief-sources">
+    <div style="font-size:11px;font-family:'Space Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding-bottom:8px;border-bottom:1px solid var(--border);">📚 Research Sources</div>
+    <div style="font-size:11.5px;color:var(--muted);line-height:1.6;padding:8px 0;">Use these source types to pull real data for your article. Each adds credibility and helps rank for E-E-A-T signals.</div>
+    ${(b.sources||[]).map((s,i)=>`<div class="source-card">
+      <div class="source-label">${escH(s.type)}</div>
+      <div class="source-title"><span style="width:20px;height:20px;background:rgba(108,71,255,0.12);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:var(--accent);font-weight:700;">${i+1}</span>${escH(s.title)}</div>
+      <div class="source-url">${escH(s.url)}</div>
+      <div class="source-snippet">${escH(s.relevance)}</div>
+    </div>`).join('')}
+    <div class="source-card" style="background:rgba(108,71,255,0.04);border-color:rgba(108,71,255,0.2);">
+      <div class="source-label">💡 PRO TIP</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7;">Aim for 3-5 authoritative external links per 1,000 words. Mix: 1 gov/academic, 1 industry study, 1-2 expert blogs, and a recent news source.</div>
+    </div>
+  </div>
+</div>`;
+
+  window._lastBrief = b;
+  document.getElementById('briefOutput').innerHTML = html;
 }
 
-// ═══════════════════════════════════════════════
+function writeFromBrief(){
+  if(!window._lastBrief)return;
+  document.getElementById('writerKeyword').value=window._lastBrief.primaryKeyword||'';
+  showPage('writer');
+  setTimeout(()=>writeArticle(),200);
+}
+
+// ════════════════════════════════════════════
+// CONTENT STRATEGY
+// ════════════════════════════════════════════
+async function generateStrategy(){
+  const url=document.getElementById('stratUrl').value.trim();
+  const niche=document.getElementById('stratNiche').value.trim();
+  const goal=document.getElementById('stratGoal').value;
+  if(!url&&!niche){toast('Enter a URL or niche',true);return;}
+  document.getElementById('stratBtn').disabled=true;
+  document.getElementById('stratOutput').innerHTML=loadingHTML('Building your 3-month content strategy…','Creating clusters, briefs and publishing roadmap');
+
+  const prompt=`You are a senior content strategist. Build a complete 3-month content strategy for:
+Website: ${url||'not specified'}
+Niche: ${niche||'general'}
+Primary Goal: ${goal}
+
+## 1. Strategy Overview
+3-4 sentences: current landscape, opportunity, core approach.
+
+## 2. Topic Clusters (6 clusters)
+Table: | Cluster Name | Pillar Page Topic | # Supporting Articles | Priority |
+
+## 3. Month-by-Month Plan
+
+### Month 1 — Foundation (8 articles)
+Table: | Week | Article Title | Target Keyword | Type | Word Count |
+
+### Month 2 — Authority (8 articles)  
+Table: | Week | Article Title | Target Keyword | Type | Word Count |
+
+### Month 3 — Scale (8 articles)
+Table: | Week | Article Title | Target Keyword | Type | Word Count |
+
+## 4. Pillar Content Briefs (top 3 priorities)
+For each: title, target keyword, outline (5 H2s), estimated traffic potential.
+
+## 5. Content Formats to Use
+Mix recommendation with rationale (how-to, listicle, comparison, FAQ, local pages, case studies).
+
+## 6. Distribution Channels
+Where to promote each content type.
+
+## 7. KPIs & Success Metrics
+Table: | Metric | Month 1 Target | Month 3 Target | Tool to Track |
+
+## 8. 90-Day Quick Wins
+5 high-impact, low-effort actions to do in week 1.`;
+
+  try{
+    const r=await callClaude(prompt,1500);
+    document.getElementById('stratOutput').innerHTML=resultCard('🗺️ 3-Month Content Strategy',r,r);
+    toast('✅ Strategy built!');
+  }catch(e){
+    document.getElementById('stratOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;
+    toast('Error: '+e.message,true);
+  }
+  document.getElementById('stratBtn').disabled=false;
+}
+
+// ════════════════════════════════════════════
 // CONTENT CALENDAR
-// ═══════════════════════════════════════════════
-async function generateCalendar() {
-  const url = document.getElementById('calUrl').value.trim() || document.getElementById('siteUrl').value.trim();
-  const niche = document.getElementById('calNiche').value.trim();
-  const freq = parseInt(document.getElementById('calFreq').value);
-  if (!url && !niche) { toast('Enter a URL or niche', true); return; }
-
+// ════════════════════════════════════════════
+async function generateCalendar(){
+  const url=document.getElementById('calUrl').value.trim()||document.getElementById('siteUrl').value.trim();
+  const niche=document.getElementById('calNiche').value.trim();
+  const freq=parseInt(document.getElementById('calFreq').value);
+  if(!url&&!niche){toast('Enter a URL or niche',true);return;}
   showPage('calendar');
-  document.getElementById('calendarOutput').innerHTML = loadingHTML('Building your content calendar…', 'Generating 30 days of SEO article topics');
-
-  const articleCount = Math.floor(30 / freq);
-  const prompt = `You are an SEO content strategist. Create a ${articleCount}-article content calendar for:
-Website: ${url || 'not specified'}
-Niche/Industry: ${niche || 'general business'}
-
-Return ONLY a JSON array (no markdown, no explanation) in this exact format:
-[
-  {"day": 1, "keyword": "exact keyword to target", "title": "Full SEO Article Title", "intent": "informational|commercial|transactional", "wordcount": 1500},
-  ...
-]
-
-Rules:
-- Mix informational, commercial, and transactional intent
-- Use realistic, specific, rankable long-tail keywords
-- Vary article formats (how-to, listicle, comparison, guide, FAQ)
-- Focus on keywords relevant to ${niche || url}
-- Return exactly ${articleCount} articles`;
-
-  try {
-    const raw = await callClaude(prompt, 1500);
-    const clean = raw.replace(/```json|```/g,'').trim();
-    let items;
-    try { items = JSON.parse(clean); } catch(e) {
-      // fallback: extract JSON array
-      const m = clean.match(/\[[\s\S]+\]/);
-      items = m ? JSON.parse(m[0]) : [];
-    }
-    DB.set('calendar', { url, niche, freq, items, created: new Date().toLocaleDateString() });
-    renderCalendar(items, freq);
+  document.getElementById('calendarOutput').innerHTML=loadingHTML('Building your content calendar…');
+  const count=Math.floor(30/freq);
+  const prompt=`Create a ${count}-article content calendar for:
+Website: ${url||'not specified'}
+Niche: ${niche||'general'}
+Return ONLY a JSON array (no markdown):
+[{"day":1,"keyword":"exact keyword","title":"Full SEO Title","intent":"informational|commercial|transactional","wordcount":1500},...]
+Rules: realistic long-tail keywords, varied formats, exactly ${count} articles.`;
+  try{
+    const raw=await callClaude(prompt,1200);
+    const clean=raw.replace(/```json|```/g,'').trim();
+    let items; try{items=JSON.parse(clean);}catch(e){const m=clean.match(/\[[\s\S]+\]/);items=m?JSON.parse(m[0]):[];}
+    DB.set('calendar',{url,niche,freq,items,created:new Date().toLocaleDateString()});
+    renderCalendar(items,freq);
     toast('📅 Calendar generated!');
-  } catch(e) {
-    document.getElementById('calendarOutput').innerHTML = `<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;
-    toast('Error: '+e.message, true);
+  }catch(e){
+    document.getElementById('calendarOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;
+    toast('Error: '+e.message,true);
   }
 }
 
-function renderCalendar(items, freq) {
-  const el = document.getElementById('calendarOutput');
-  const today = new Date();
-
-  // Build date-indexed map
-  const dayMap = {};
-  items.forEach(item => { dayMap[item.day] = item; });
-
-  // Calendar grid for 30 days
-  const startDow = today.getDay();
-  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-
-  let html = `
-    <div class="card card-accent" style="margin-bottom:20px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-        <div class="section-title" style="margin:0;">📅 30-Day Content Plan — ${items.length} Articles</div>
-        <button class="btn btn-purple btn-sm" onclick="writeAllArticles()">⚡ Write All Articles</button>
-      </div>
-      <div class="cal-header">${days.map(d=>`<div class="cal-day-name">${d}</div>`).join('')}</div>
-      <div class="cal-grid">`;
-
-  // Empty cells before day 1
-  for (let d=0; d<startDow; d++) html += '<div class="cal-cell" style="opacity:.3;"></div>';
-
-  for (let day=1; day<=30; day++) {
-    const date = new Date(today); date.setDate(today.getDate()+day-1);
-    const article = dayMap[day];
-    const isToday = day===1;
-    html += `<div class="cal-cell ${article?'has-article':''} ${isToday?'today':''}" ${article?`onclick="writeFromCalendar('${escH(article.keyword).replace(/'/g,"\\'")}','${escH(article.title).replace(/'/g,"\\'")}')"`:''}">
-      <div class="cal-date">${date.getDate()}</div>
-      ${article ? `<span class="cal-article-pill" title="${escH(article.title)}">${escH(article.keyword)}</span><span style="font-size:9px;color:var(--muted);display:block;margin-top:3px;">${article.wordcount||1500}w</span>` : ''}
-    </div>`;
+function renderCalendar(items,freq){
+  const today=new Date(); const dayMap={};
+  items.forEach(it=>dayMap[it.day]=it);
+  const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const startDow=today.getDay();
+  let html=`<div class="card card-accent" style="margin-bottom:18px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:13px;">
+      <div class="section-title" style="margin:0;">📅 30-Day Content Plan — ${items.length} Articles</div>
+      <button class="btn btn-purple btn-sm" onclick="writeAllArticles()">⚡ Write All (first 5)</button>
+    </div>
+    <div class="cal-header">${days.map(d=>`<div class="cal-day-name">${d}</div>`).join('')}</div>
+    <div class="cal-grid">`;
+  for(let d=0;d<startDow;d++) html+=`<div class="cal-cell" style="opacity:.25;min-height:68px;"></div>`;
+  for(let day=1;day<=30;day++){
+    const dt=new Date(today); dt.setDate(today.getDate()+day-1);
+    const a=dayMap[day];
+    html+=`<div class="cal-cell ${a?'has-article':''} ${day===1?'today':''}" ${a?`onclick="writeFromCalendar('${escH(a.keyword).replace(/'/g,"\\'")}','${escH(a.title).replace(/'/g,"\\'")}')"`:''}>`+
+      `<div class="cal-date">${dt.getDate()}</div>${a?`<span class="cal-article-pill" title="${escH(a.title)}">${escH(a.keyword)}</span><span style="font-size:9.5px;color:var(--muted);display:block;margin-top:2px;">${a.wordcount||1500}w</span>`:''}</div>`;
   }
-  html += '</div></div>';
-
-  // Table view
-  html += `<div class="card"><div class="section-title">📋 Article List</div><div class="table-wrap"><table>
-    <thead><tr><th>Day</th><th>Keyword</th><th>Title</th><th>Intent</th><th>Words</th><th>Action</th></tr></thead>
-    <tbody>${items.map(item=>`
-      <tr>
-        <td style="font-family:'Space Mono',monospace;color:var(--muted);">Day ${item.day}</td>
-        <td><span class="badge badge-purple">${escH(item.keyword)}</span></td>
-        <td style="font-size:12px;">${escH(item.title)}</td>
-        <td><span class="badge ${item.intent==='commercial'?'badge-yellow':item.intent==='transactional'?'badge-green':'badge-blue'}">${item.intent||'informational'}</span></td>
-        <td style="font-family:'Space Mono',monospace;font-size:12px;">${item.wordcount||1500}</td>
-        <td><button class="btn btn-accent btn-sm" onclick="writeFromCalendar('${escH(item.keyword).replace(/'/g,"\\'")}','${escH(item.title).replace(/'/g,"\\'")}')">✍️ Write</button></td>
-      </tr>`).join('')}
+  html+=`</div></div>`;
+  html+=`<div class="card"><div class="section-title">📋 Article List</div><div class="table-wrap"><table>
+    <thead><tr><th>Day</th><th>Keyword</th><th>Title</th><th>Intent</th><th>Words</th><th></th></tr></thead>
+    <tbody>${items.map(it=>`<tr><td style="font-family:'Space Mono',monospace;color:var(--muted);font-size:12px;">Day ${it.day}</td>
+    <td><span class="badge badge-purple">${escH(it.keyword)}</span></td>
+    <td style="font-size:12px;">${escH(it.title)}</td>
+    <td><span class="badge ${it.intent==='commercial'?'badge-yellow':it.intent==='transactional'?'badge-green':'badge-blue'}">${it.intent||'info'}</span></td>
+    <td style="font-family:'Space Mono',monospace;font-size:12px;">${it.wordcount||1500}</td>
+    <td><button class="btn btn-accent btn-sm" onclick="writeFromCalendar('${escH(it.keyword).replace(/'/g,"\\'")}','${escH(it.title).replace(/'/g,"\\'")}')">✍️ Write</button></td></tr>`).join('')}
     </tbody></table></div></div>`;
-
-  el.innerHTML = html;
+  document.getElementById('calendarOutput').innerHTML=html;
 }
-
-function writeFromCalendar(keyword, title) {
-  document.getElementById('writerKeyword').value = keyword;
-  showPage('writer');
-  setTimeout(() => writeArticle(), 200);
-}
-
-async function writeAllArticles() {
-  const cal = DB.get('calendar');
-  if (!cal || !cal.items) { toast('Generate a calendar first', true); return; }
-  toast('⚡ Writing all articles — this will take a few minutes…');
-  for (const item of cal.items.slice(0,5)) { // limit to 5 at once
-    document.getElementById('writerKeyword').value = item.keyword;
-    await writeArticle();
-    await new Promise(r=>setTimeout(r,1000));
-  }
+function writeFromCalendar(kw,title){document.getElementById('writerKeyword').value=kw;showPage('writer');setTimeout(()=>writeArticle(),150);}
+async function writeAllArticles(){
+  const cal=DB.get('calendar'); if(!cal||!cal.items){toast('Generate a calendar first',true);return;}
+  toast('⚡ Writing first 5 articles…');
+  for(const it of cal.items.slice(0,5)){document.getElementById('writerKeyword').value=it.keyword;await writeArticle();await new Promise(r=>setTimeout(r,800));}
   toast('✅ First 5 articles written!');
 }
 
-// ═══════════════════════════════════════════════
-// SITE AUDIT
-// ═══════════════════════════════════════════════
-function auditPrompt(url) {
-  return `You are a senior technical SEO expert. Perform a detailed audit for: ${url}
+// ════════════════════════════════════════════
+// SITE AUDIT (FULL + QUICK)
+// ════════════════════════════════════════════
+function fullAuditPrompt(url){
+  return `You are a senior technical SEO expert. Perform a FULL detailed audit for: ${url}
 
-Use ✅ ⚠️ ❌ indicators.
+Use ✅ ⚠️ ❌ indicators throughout.
 
 ## Overall SEO Health Score
-Score /100 with brief rationale.
+[X/100] — brief rationale
 
-## Title Tags
-Present? 50-60 chars? Keyword-rich?
+## Technical Signals
+- HTTPS/Security
+- Robots.txt
+- XML Sitemap
+- Canonical Tags
+- Core Web Vitals estimate
+- Mobile Friendliness
+- Page Speed estimate
 
-## Meta Descriptions
-Present? 150-160 chars? Compelling?
+## On-Page Elements
+- Title Tag: [present? length? keyword?]
+- Meta Description: [present? length? compelling?]
+- H1 Tag: [present? unique? keyword?]
+- Header Hierarchy (H2-H4)
+- Image Alt Tags
+- Internal Linking
 
-## Header Structure (H1–H3)
-Hierarchy, keyword usage, issues.
-
-## URL Structure
-Clean, descriptive, keyword-friendly?
-
-## Technical Issues
-Canonicals, robots.txt, sitemap, HTTPS, mobile.
-
-## Core Web Vitals Estimate
-Expected performance for this site type.
+## Indexability
+- Crawlability signals
+- Duplicate content risks
+- Thin content assessment
 
 ## Top 5 Critical Fixes
-Ranked by impact with specific steps.`;
+Ranked by impact — each with: issue, why it matters, exact fix steps.`;
 }
 
-async function runAuditPage() {
-  const url = document.getElementById('auditUrl').value.trim();
-  if (!url) { toast('Enter a URL', true); return; }
-  document.getElementById('auditBtn').disabled = true;
-  document.getElementById('auditOutput').innerHTML = loadingHTML('Auditing '+url+'…');
-  try {
-    const result = await callClaude(auditPrompt(url));
-    document.getElementById('auditOutput').innerHTML = `<div class="card"><div class="article-preview">${mdHtml(result)}</div></div>`;
-    toast('✅ Audit complete!');
-  } catch(e) { document.getElementById('auditOutput').innerHTML = `<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`; }
-  document.getElementById('auditBtn').disabled = false;
+async function runAuditPage(mode='full'){
+  const url=document.getElementById('auditUrl').value.trim(); if(!url){toast('Enter a URL',true);return;}
+  document.getElementById('auditBtn').disabled=true;
+  document.getElementById('quickAuditBtn').disabled=true;
+  document.getElementById('auditOutput').innerHTML=loadingHTML(mode==='quick'?'Quick scan in progress…':'Running full audit…',
+    mode==='quick'?'Checking top issues — ~10 seconds':'Full technical analysis — ~20 seconds');
+  const prompt=mode==='quick'
+    ?`Quick SEO scan of: ${url}. Return top 5 issues with ✅ ⚠️ ❌, one-line fix each, and Quick Score /100. Be concise.`
+    :fullAuditPrompt(url);
+  try{
+    const r=await callClaude(prompt, mode==='quick'?400:1500);
+    document.getElementById('auditOutput').innerHTML=resultCard(`${mode==='quick'?'⚡ Quick Scan':'🔍 Full Audit'} — ${url}`, r, r);
+    toast('✅ '+(mode==='quick'?'Quick scan':'Full audit')+' complete!');
+  }catch(e){document.getElementById('auditOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;}
+  document.getElementById('auditBtn').disabled=false;
+  document.getElementById('quickAuditBtn').disabled=false;
 }
 
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
+// ON-PAGE SEO
+// ════════════════════════════════════════════
+async function runOnPage(){
+  const url=document.getElementById('onpageUrl').value.trim(); if(!url){toast('Enter a URL',true);return;}
+  document.getElementById('onpageBtn').disabled=true;
+  document.getElementById('onpageOutput').innerHTML=loadingHTML('Analysing on-page SEO…');
+  const prompt=`You are an on-page SEO expert. Analyse and provide improvements for: ${url}
+
+## Current State Assessment
+Use ✅ ⚠️ ❌ for each element:
+- Title Tag (current estimate, length, keyword use)
+- Meta Description (current estimate, length, CTA)
+- H1 Tag (present? matches title intent?)
+- H2–H4 Structure (hierarchy, keyword density)
+- URL Structure (clean? keywords? depth?)
+- Image Optimisation (alt tags, file names, WebP)
+- Internal Links (anchor text variety, relevance)
+- External Links (authority, outbound ratio)
+- Content Length (estimated, adequate?)
+- Keyword Density (estimated, over/under-optimised?)
+- Schema Markup (present? correct type?)
+
+## Rewritten Elements
+Provide improved versions of:
+
+### Optimised Title Tag
+[Your improved title — 50-60 chars]
+
+### Optimised Meta Description
+[Your improved meta — 150-160 chars with CTA]
+
+### Recommended H1
+[Single H1 incorporating primary keyword]
+
+### Recommended H2 Structure
+List 5-7 H2s that improve keyword coverage
+
+### Schema JSON-LD to Add
+\`\`\`json
+[appropriate schema for this page type]
+\`\`\`
+
+## Priority Action List
+Top 5 on-page fixes ranked by impact.`;
+  try{
+    const r=await callClaude(prompt,1500);
+    document.getElementById('onpageOutput').innerHTML=resultCard('📝 On-Page SEO Analysis — '+url,r,r);
+    toast('✅ On-page analysis done!');
+  }catch(e){document.getElementById('onpageOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;}
+  document.getElementById('onpageBtn').disabled=false;
+}
+
+// ════════════════════════════════════════════
+// COMPETITOR ANALYSIS
+// ════════════════════════════════════════════
+async function runCompetitor(){
+  const url=document.getElementById('compUrl').value.trim();
+  const niche=document.getElementById('compNiche').value.trim();
+  if(!url&&!niche){toast('Enter your URL and niche',true);return;}
+  document.getElementById('compBtn').disabled=true;
+  document.getElementById('compOutput').innerHTML=loadingHTML('Analysing competitors…');
+  const prompt=`You are a competitive SEO analyst. Provide a full competitor analysis for:
+Website: ${url||'not specified'}
+Niche: ${niche}
+
+## Top 5 Competitors to Beat
+Table: | Domain | Why They Rank | Estimated Monthly Traffic | Their Strengths | Their Weaknesses |
+
+## Competitor Keyword Gaps
+Table: | Keyword | Competitor Ranking | Why You Can Win It | Content Angle |
+(10 opportunities)
+
+## Content Gap Analysis
+What types of content competitors have that you need:
+Table: | Content Type | Competitors Who Have It | Why You Need It | Priority |
+
+## Backlink Gap Analysis
+5 link sources your competitors have that you should target.
+
+## Their Top-Performing Content Types
+What formats/topics are working for competitors in this niche.
+
+## Your Unique Angle
+How to differentiate — 3 specific positioning strategies.
+
+## 90-Day Battle Plan
+### Month 1 — Quick Wins (steal easy rankings)
+List 5 actions
+
+### Month 2 — Content Blitz
+List 5 actions
+
+### Month 3 — Authority Build
+List 5 actions
+
+## Predicted Traffic Impact
+Realistic estimates if you execute this plan.`;
+  try{
+    const r=await callClaude(prompt,1500);
+    document.getElementById('compOutput').innerHTML=resultCard('⚔️ Competitor Analysis — '+niche,r,r);
+    toast('✅ Analysis complete!');
+  }catch(e){document.getElementById('compOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;}
+  document.getElementById('compBtn').disabled=false;
+}
+
+// ════════════════════════════════════════════
 // KEYWORD RESEARCH
-// ═══════════════════════════════════════════════
-async function runKeywords() {
-  const url = document.getElementById('kwUrl').value.trim();
-  if (!url) { toast('Enter a URL', true); return; }
-  document.getElementById('kwBtn').disabled = true;
-  document.getElementById('kwOutput').innerHTML = loadingHTML('Researching keywords…');
-  const prompt = `You are a keyword research specialist. Produce a full keyword report for: ${url}
+// ════════════════════════════════════════════
+async function runKeywords(){
+  const url=document.getElementById('kwUrl').value.trim(); if(!url){toast('Enter a URL',true);return;}
+  document.getElementById('kwBtn').disabled=true;
+  document.getElementById('kwOutput').innerHTML=loadingHTML('Researching keywords…');
+  const prompt=`Keyword research specialist. Full report for: ${url}
 
-## Primary Keywords
+## Primary Keywords (10)
 Table: | Keyword | Volume Tier | Difficulty | Intent |
-(10 rows)
 
-## Long-Tail Keywords
+## Long-Tail Keywords (15)
 Table: | Phrase | Volume Tier | Why It Fits |
-(15 rows)
 
 ## Semantic / LSI Keywords
 Bullet list of 15 related terms.
 
-## Question Keywords (People Also Ask)
-10 question-format queries.
+## People Also Ask Questions (10)
+Question-format queries.
 
-## Local Keywords
-8 geo-modified variations.
+## Local Keywords (8)
+Geo-modified variations.
 
 ## Quick Wins
-5 low-difficulty opportunities to pursue now.
+5 low-difficulty opportunities to pursue immediately.
 
 ## Keyword-to-Page Mapping
-Table: | Keyword | Page Type | Slug |`;
-
-  try {
-    const result = await callClaude(prompt);
-    const kws = (result.match(/\| .+? \|/g)||[]).length;
-    DB.set('keywords', Array(kws).fill({}));
-    document.getElementById('statKeywords').textContent = kws;
-    document.getElementById('kwOutput').innerHTML = `<div class="card"><div class="article-preview">${mdHtml(result)}</div></div>`;
+Table: | Keyword | Page Type | Suggested URL Slug |`;
+  try{
+    const r=await callClaude(prompt,1500);
+    const kws=(r.match(/\n\|/g)||[]).length;
+    DB.set('keywords',Array(kws).fill({}));
+    document.getElementById('statKeywords').textContent=kws;
+    document.getElementById('kwOutput').innerHTML=resultCard('🎯 Keyword Research — '+url,r,r);
     toast('✅ Keywords researched!');
-  } catch(e) { document.getElementById('kwOutput').innerHTML = `<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`; }
-  document.getElementById('kwBtn').disabled = false;
+  }catch(e){document.getElementById('kwOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;}
+  document.getElementById('kwBtn').disabled=false;
 }
 
-// ═══════════════════════════════════════════════
-// BACKLINKS
-// ═══════════════════════════════════════════════
-let blTrackerData = [];
+// ════════════════════════════════════════════
+// LOCAL SEO
+// ════════════════════════════════════════════
+async function runLocalSEO(){
+  const url=document.getElementById('localUrl').value.trim();
+  const biz=document.getElementById('localBiz').value.trim();
+  const city=document.getElementById('localCity').value.trim();
+  if(!url&&!biz){toast('Enter a URL or business name',true);return;}
+  document.getElementById('localBtn').disabled=true;
+  document.getElementById('localOutput').innerHTML=loadingHTML('Analysing local SEO…');
+  const prompt=`You are a local SEO expert. Complete local SEO analysis and action plan for:
+Business: ${biz||'unspecified'}
+Website: ${url||'unspecified'}
+Location: ${city||'unspecified'}
 
-function switchBLTab(tab, el) {
-  ['targets','outreach','tracker'].forEach(t=>{
-    document.getElementById('bl-'+t).style.display = t===tab?'block':'none';
-  });
+## Google Business Profile Optimisation
+Use ✅ ⚠️ ❌ for each:
+- Profile claimed and verified
+- Business name (exact match)
+- Categories (primary + secondary)
+- Business description (keyword-rich, 750 chars)
+- Photos (cover, interior, exterior, team, products)
+- Hours of operation
+- Q&A section
+- Review strategy
+- Posts (weekly posts recommended)
+- Services/Products listed
+
+## NAP Consistency
+- What NAP should look like for ${biz||'this business'}
+- Top 10 citation directories to build
+- How to audit and fix NAP inconsistencies
+
+## Local Keyword Strategy
+Table: | Keyword | Monthly Volume | Difficulty | Page Type |
+(15 local keywords including [service] + [city] patterns)
+
+## Local Citation Building
+Table: | Directory | Domain Authority | Niche Relevant | Priority |
+(Top 15 directories)
+
+## Local Schema JSON-LD
+\`\`\`json
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "${escH(biz||'Business Name')}",
+  "url": "${escH(url||'https://example.com')}",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "${escH(city||'City')}",
+    "addressCountry": "US"
+  }
+}
+\`\`\`
+(Expand with all relevant LocalBusiness schema properties)
+
+## 90-Day Local SEO Action Plan
+Week-by-week prioritised actions.`;
+  try{
+    const r=await callClaude(prompt,1500);
+    document.getElementById('localOutput').innerHTML=resultCard(`📍 Local SEO — ${biz||url}`,r,r);
+    toast('✅ Local SEO analysis done!');
+  }catch(e){document.getElementById('localOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;}
+  document.getElementById('localBtn').disabled=false;
+}
+
+// ════════════════════════════════════════════
+// CORE WEB VITALS
+// ════════════════════════════════════════════
+async function runVitals(){
+  const url=document.getElementById('vitalsUrl').value.trim(); if(!url){toast('Enter a URL',true);return;}
+  document.getElementById('vitalsBtn').disabled=true;
+  document.getElementById('vitalsOutput').innerHTML=loadingHTML('Analysing Core Web Vitals…');
+  const prompt=`You are a web performance engineer and SEO expert. Provide a comprehensive Core Web Vitals analysis for: ${url}
+
+## Estimated Performance Baseline
+Based on the site type, estimate likely scores:
+| Metric | Estimated Score | Target | Status |
+|--------|----------------|--------|--------|
+| LCP (Largest Contentful Paint) | ? | < 2.5s | ✅/⚠️/❌ |
+| CLS (Cumulative Layout Shift) | ? | < 0.1 | ✅/⚠️/❌ |
+| INP (Interaction to Next Paint) | ? | < 200ms | ✅/⚠️/❌ |
+| TTFB (Time to First Byte) | ? | < 800ms | ✅/⚠️/❌ |
+| FCP (First Contentful Paint) | ? | < 1.8s | ✅/⚠️/❌ |
+
+## LCP Optimisation (Largest Contentful Paint)
+Top causes and exact fixes:
+- Image optimisation (format, size, lazy loading)
+- Critical CSS delivery
+- Server response time
+- Render-blocking resources
+- Code examples where relevant
+
+## CLS Optimisation (Cumulative Layout Shift)
+Common causes and fixes:
+- Image/video dimension attributes
+- Dynamic content insertion
+- Font loading (font-display: swap)
+- Ad slot reservations
+
+## INP Optimisation (Interaction to Next Paint)
+- JavaScript execution optimisation
+- Event handler efficiency
+- Long task breaking
+- Third-party script management
+
+## Server & Infrastructure Fixes
+- Hosting recommendations
+- CDN setup
+- Caching strategy (browser + server)
+- HTTP/2 or HTTP/3
+- Compression (Brotli/Gzip)
+
+## Image Optimisation Checklist
+Specific steps with tools and code snippets.
+
+## JavaScript & CSS Optimisation
+- Minification
+- Tree shaking
+- Code splitting
+- Critical path CSS
+
+## WordPress-Specific Fixes (if applicable)
+Top plugins and settings to improve vitals.
+
+## Priority Fix List
+Top 10 fixes ranked: Impact × Effort score.
+
+## Free Tools to Measure
+List with links to: PageSpeed Insights, GTmetrix, WebPageTest, Search Console.`;
+  try{
+    const r=await callClaude(prompt,1500);
+    document.getElementById('vitalsOutput').innerHTML=resultCard('⚙️ Core Web Vitals — '+url,r,r);
+    toast('✅ Vitals analysis complete!');
+  }catch(e){document.getElementById('vitalsOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;}
+  document.getElementById('vitalsBtn').disabled=false;
+}
+
+// ════════════════════════════════════════════
+// BACKLINKS
+// ════════════════════════════════════════════
+function switchBLTab(tab,el){
+  ['targets','outreach','tracker'].forEach(t=>document.getElementById('bl-'+t).style.display=t===tab?'block':'none');
   document.querySelectorAll('#page-backlinks .tab-btn').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');
+  if(tab==='tracker') renderBacklinkTracker();
 }
-
-async function findBacklinkTargets() {
-  const url = document.getElementById('blUrl').value.trim();
-  const niche = document.getElementById('blNiche').value.trim();
-  if (!url && !niche) { toast('Enter a URL or niche', true); return; }
-  document.getElementById('blBtn').disabled = true;
-  document.getElementById('blTargetsOutput').innerHTML = loadingHTML('Finding backlink targets…');
-
-  const prompt = `You are a link-building expert. Find backlink opportunities for:
-Website: ${url}
-Niche: ${niche || 'general'}
+async function findBacklinkTargets(){
+  const url=document.getElementById('blUrl').value.trim();
+  const niche=document.getElementById('blNiche').value.trim();
+  if(!url&&!niche){toast('Enter a URL or niche',true);return;}
+  document.getElementById('blBtn').disabled=true;
+  document.getElementById('blTargetsOutput').innerHTML=loadingHTML('Finding backlink targets…');
+  const prompt=`Link-building expert. Find backlink opportunities for:
+Website: ${url} | Niche: ${niche||'general'}
 
 ## High-Value Directories (10)
-Table: | Directory Name | Type | DA Estimate | Why It Fits | Action |
+Table: | Directory Name | Type | DA Est | Why It Fits | Action |
 
 ## Guest Post Opportunities (10)
 Table: | Site Type | Domain Example | DA | Topic Angle | Pitch Approach |
@@ -1287,271 +1790,280 @@ Table: | Site Type | Domain Example | DA | Topic Angle | Pitch Approach |
 Table: | Resource Type | Site Type | How to Find | Pitch Angle |
 
 ## HARO / Journalist Opportunities
-5 specific angles to pitch to journalists and get mentioned.
+5 specific angles.
 
 ## Local / Industry Associations
-5 relevant associations or chambers to join for links.
+5 relevant associations.
 
 ## Competitor Backlink Angles
-3 strategies to earn links that competitors have.
+3 strategies to earn links competitors have.
 
 ## 90-Day Link Building Timeline
-Week-by-week action plan.`;
-
-  try {
-    const result = await callClaude(prompt);
-    const targets = (result.match(/\n\|/g)||[]).length;
-    blTrackerData = DB.get('backlinks') || [];
-    DB.set('backlinks', Array(targets).fill({}));
-    document.getElementById('statBacklinks').textContent = targets;
-    document.getElementById('blTargetsOutput').innerHTML = `
-      <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-          <div class="section-title" style="margin:0;">🔗 Backlink Opportunities Found</div>
-          <button class="btn btn-ghost btn-sm" onclick="switchBLTab('outreach',document.querySelectorAll('#page-backlinks .tab-btn')[1])">📧 Generate Outreach Emails →</button>
-        </div>
-        <div class="article-preview">${mdHtml(result)}</div>
-      </div>`;
+Week-by-week.`;
+  try{
+    const r=await callClaude(prompt,1500);
+    const t=(r.match(/\n\|/g)||[]).length;
+    DB.set('backlinks',Array(t).fill({}));
+    document.getElementById('statBacklinks').textContent=t;
+    document.getElementById('blTargetsOutput').innerHTML=`<div class="card">
+      <div style="display:flex;justify-content:space-between;margin-bottom:13px;">
+        <div class="section-title" style="margin:0;">🔗 Backlink Opportunities</div>
+        <button class="btn btn-ghost btn-sm" onclick="switchBLTab('outreach',document.querySelectorAll('#page-backlinks .tab-btn')[1])">📧 Generate Outreach →</button>
+      </div><div class="article-preview">${mdHtml(r)}</div></div>`;
     toast('✅ Targets found!');
-  } catch(e) { document.getElementById('blTargetsOutput').innerHTML = `<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`; }
-  document.getElementById('blBtn').disabled = false;
+  }catch(e){document.getElementById('blTargetsOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;}
+  document.getElementById('blBtn').disabled=false;
 }
-
-async function generateOutreach() {
-  const url = document.getElementById('outUrl').value.trim();
-  const target = document.getElementById('outTarget').value.trim();
-  const name = document.getElementById('outName').value.trim();
-  const type = document.getElementById('outType').value;
-  if (!url || !target) { toast('Enter your URL and target URL', true); return; }
-
-  document.getElementById('outreachOutput').innerHTML = loadingHTML('Writing outreach email…');
-
-  const prompt = `You are an expert link-building outreach specialist. Write a highly personalised, natural-sounding ${type} email.
-
-From: ${name || 'the website owner'} at ${url}
-Target site: ${target}
-Email type: ${type}
-
-Write 3 different email variations:
-
-## Version 1 — Direct & Concise
-[Short, punchy, gets to the point in 3 sentences]
-
-## Version 2 — Value-Led
-[Lead with what value you offer them first]
-
-## Version 3 — Relationship-First
-[More conversational, builds rapport before the ask]
-
-For each: write a subject line and full email body. Make them feel human, not templated. Personalise based on what ${target} likely does. Include a clear but soft CTA.`;
-
-  try {
-    const result = await callClaude(prompt);
-    document.getElementById('outreachOutput').innerHTML = `
-      <div class="card">
-        <div style="display:flex;justify-content:space-between;margin-bottom:14px;">
-          <div class="section-title" style="margin:0;">📧 Outreach Emails — ${type}</div>
-          <button class="btn btn-ghost btn-sm" onclick="navigator.clipboard.writeText(document.querySelector('#outreachOutput .article-preview').innerText).then(()=>toast('Copied!'))">📋 Copy All</button>
-        </div>
-        <div class="article-preview">${mdHtml(result)}</div>
-      </div>`;
+async function generateOutreach(){
+  const url=document.getElementById('outUrl').value.trim();
+  const target=document.getElementById('outTarget').value.trim();
+  const name=document.getElementById('outName').value.trim();
+  const type=document.getElementById('outType').value;
+  if(!url||!target){toast('Enter your URL and target URL',true);return;}
+  document.getElementById('outreachOutput').innerHTML=loadingHTML('Writing outreach emails…');
+  const prompt=`Expert link-building outreach. Write a ${type} email.
+From: ${name||'website owner'} at ${url}
+Target: ${target}
+Write 3 versions: 1) Direct & Concise 2) Value-Led 3) Relationship-First
+Each: subject line + full body. Human, personalised, soft CTA.`;
+  try{
+    const r=await callClaude(prompt,1000);
+    document.getElementById('outreachOutput').innerHTML=`<div class="card">
+      <div style="display:flex;justify-content:space-between;margin-bottom:13px;">
+        <div class="section-title" style="margin:0;">📧 Outreach Emails — ${type}</div>
+        <button class="btn btn-ghost btn-sm" onclick="navigator.clipboard.writeText(document.querySelector('#outreachOutput .article-preview').innerText).then(()=>toast('Copied!'))">📋 Copy All</button>
+      </div><div class="article-preview">${mdHtml(r)}</div></div>`;
     toast('✅ Emails generated!');
-  } catch(e) { document.getElementById('outreachOutput').innerHTML = `<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`; }
+  }catch(e){document.getElementById('outreachOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;}
+}
+function addBacklinkTrack(){
+  const url=document.getElementById('blTrackUrl').value.trim(); if(!url){toast('Enter a URL',true);return;}
+  const status=document.getElementById('blTrackStatus').value.trim()||'To Contact';
+  const data=DB.get('backlinks_tracker')||[];
+  data.push({url,status,date:new Date().toLocaleDateString(),id:Date.now()});
+  DB.set('backlinks_tracker',data);
+  document.getElementById('blTrackUrl').value=''; document.getElementById('blTrackStatus').value='';
+  renderBacklinkTracker(); toast('Added to tracker!');
+}
+function renderBacklinkTracker(){
+  const data=DB.get('backlinks_tracker')||[];
+  const el=document.getElementById('blTrackerTable');
+  if(!data.length){el.innerHTML='<div class="empty-state"><div class="icon">📊</div><div class="title">No backlinks tracked yet</div></div>';return;}
+  el.innerHTML=`<div class="table-wrap"><table><thead><tr><th>Target URL</th><th>Status</th><th>Date</th><th>Update</th></tr></thead><tbody>
+  ${data.map(b=>`<tr><td style="font-family:'Space Mono',monospace;font-size:11.5px;">${escH(b.url)}</td>
+  <td><span class="badge ${b.status==='Secured'?'badge-green':b.status==='Emailed'?'badge-blue':'badge-yellow'}">${escH(b.status)}</span></td>
+  <td style="color:var(--muted);font-size:12px;">${b.date}</td>
+  <td><select onchange="updateBLStatus(${b.id},this.value)" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;">
+    ${['To Contact','Emailed','Followed Up','Secured','Rejected'].map(s=>`<option ${b.status===s?'selected':''}>${s}</option>`).join('')}
+  </select></td></tr>`).join('')}
+  </tbody></table></div>`;
+}
+function updateBLStatus(id,status){
+  const data=DB.get('backlinks_tracker')||[];
+  const it=data.find(b=>b.id===id); if(it){it.status=status;DB.set('backlinks_tracker',data);renderBacklinkTracker();}
 }
 
-function addBacklinkTrack() {
-  const url = document.getElementById('blTrackUrl').value.trim();
-  const status = document.getElementById('blTrackStatus').value.trim();
-  if (!url) { toast('Enter a URL', true); return; }
-  blTrackerData = DB.get('backlinks_tracker') || [];
-  blTrackerData.push({ url, status: status||'To Contact', date: new Date().toLocaleDateString(), id: Date.now() });
-  DB.set('backlinks_tracker', blTrackerData);
-  document.getElementById('blTrackUrl').value = '';
-  document.getElementById('blTrackStatus').value = '';
-  renderBacklinkTracker();
-  toast('Added to tracker!');
-}
-
-function renderBacklinkTracker() {
-  const data = DB.get('backlinks_tracker') || [];
-  const el = document.getElementById('blTrackerTable');
-  if (!data.length) { el.innerHTML = '<div class="empty-state"><div class="icon">📊</div><div class="title">No backlinks tracked yet</div></div>'; return; }
-  el.innerHTML = `<div class="table-wrap"><table>
-    <thead><tr><th>Target URL</th><th>Status</th><th>Date Added</th><th>Action</th></tr></thead>
-    <tbody>${data.map(b=>`
-      <tr>
-        <td style="font-family:'Space Mono',monospace;font-size:12px;">${escH(b.url)}</td>
-        <td><span class="badge ${b.status==='Secured'?'badge-green':b.status==='Emailed'?'badge-blue':'badge-yellow'}">${escH(b.status)}</span></td>
-        <td style="color:var(--muted);font-size:12px;">${b.date}</td>
-        <td>
-          <select onchange="updateBLStatus(${b.id},this.value)" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;">
-            <option ${b.status==='To Contact'?'selected':''}>To Contact</option>
-            <option ${b.status==='Emailed'?'selected':''}>Emailed</option>
-            <option ${b.status==='Followed Up'?'selected':''}>Followed Up</option>
-            <option ${b.status==='Secured'?'selected':''}>Secured</option>
-            <option ${b.status==='Rejected'?'selected':''}>Rejected</option>
-          </select>
-        </td>
-      </tr>`).join('')}
-    </tbody></table></div>`;
-}
-
-function updateBLStatus(id, status) {
-  const data = DB.get('backlinks_tracker') || [];
-  const item = data.find(b=>b.id===id);
-  if (item) { item.status = status; DB.set('backlinks_tracker', data); renderBacklinkTracker(); }
-}
-
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
 // SCHEMA GENERATOR
-// ═══════════════════════════════════════════════
-async function generateSchema() {
-  const url = document.getElementById('schemaUrl').value.trim();
-  const type = document.getElementById('schemaType').value;
-  if (!url) { toast('Enter a URL', true); return; }
-  document.getElementById('schemaOutput').innerHTML = loadingHTML('Generating schema markup…');
-
-  const prompt = `You are a structured data expert. Generate complete, valid JSON-LD schema markup for: ${url}
-Schema type(s): ${type}
-
-For each schema type, provide:
-1. The complete JSON-LD code block (pre-filled with realistic data for this site)
-2. Which page to add it to
-3. Which Google Rich Result it unlocks
-
-${type==='All Schema Types'?`Include all of these:
-## 1. Organization Schema
-## 2. WebSite Schema (with SearchAction)
-## 3. LocalBusiness Schema
-## 4. BreadcrumbList Schema (template)
-## 5. FAQPage Schema (5 Q&As)
-## 6. Article Schema (blog template)`:`## ${type} Schema`}
-
-Make all JSON-LD valid and pre-filled with realistic placeholder data based on the site's apparent niche.`;
-
-  try {
-    const result = await callClaude(prompt, 1500);
-    document.getElementById('schemaOutput').innerHTML = `
-      <div class="card">
-        <div style="display:flex;justify-content:space-between;margin-bottom:14px;">
-          <div class="section-title" style="margin:0;">🏗️ Schema Markup — ${type}</div>
-          <button class="btn btn-ghost btn-sm" onclick="navigator.clipboard.writeText(document.querySelector('#schemaOutput .article-preview').innerText).then(()=>toast('Copied!'))">📋 Copy All</button>
-        </div>
-        <div class="article-preview">${mdHtml(result)}</div>
-      </div>`;
+// ════════════════════════════════════════════
+async function generateSchema(){
+  const url=document.getElementById('schemaUrl').value.trim(); if(!url){toast('Enter a URL',true);return;}
+  const type=document.getElementById('schemaType').value;
+  document.getElementById('schemaOutput').innerHTML=loadingHTML('Generating schema markup…');
+  const prompt=`Structured data expert. Generate complete, valid JSON-LD schema for: ${url}
+Schema: ${type}
+${type==='All Schema Types'?`Include: Organization, WebSite (with SearchAction), LocalBusiness, BreadcrumbList, FAQPage (5 Q&As), Article template.`:`Generate: ${type}`}
+For each: full JSON-LD code block, which page to add it to, which Rich Result it unlocks. Pre-fill with realistic data for this site type.`;
+  try{
+    const r=await callClaude(prompt,1500);
+    document.getElementById('schemaOutput').innerHTML=resultCard(`🏗️ Schema Markup — ${type}`,r,r);
     toast('✅ Schema generated!');
-  } catch(e) { document.getElementById('schemaOutput').innerHTML = `<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`; }
+  }catch(e){document.getElementById('schemaOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;}
 }
 
-// ═══════════════════════════════════════════════
-// WORDPRESS PUBLISHING
-// ═══════════════════════════════════════════════
-function saveWPSettings() {
-  const wp = { wpUrl: document.getElementById('wpUrl').value.trim(), wpUser: document.getElementById('wpUser').value.trim(), wpCategory: document.getElementById('wpCategory').value.trim(), wpAuthor: document.getElementById('wpAuthor').value.trim() };
-  DB.set('wp', wp);
-  toast('✅ WordPress settings saved!');
+// ════════════════════════════════════════════
+// EXECUTIVE REPORT
+// ════════════════════════════════════════════
+async function generateReport(){
+  const url=document.getElementById('reportUrl').value.trim();
+  const biz=document.getElementById('reportBiz').value.trim();
+  const industry=document.getElementById('reportIndustry').value.trim();
+  if(!url&&!biz){toast('Enter a URL or business name',true);return;}
+  document.getElementById('reportBtn').disabled=true;
+  document.getElementById('reportOutput').innerHTML=loadingHTML('Generating executive report…','Creating full scoring, roadmap and ROI projections — ~25 seconds');
+  const prompt=`You are a senior SEO consultant. Write a professional executive SEO report for:
+Business: ${biz||'unspecified'}
+Website: ${url||'unspecified'}
+Industry: ${industry||'general'}
+
+# Executive SEO Report
+**Prepared by:** AutoSEO AI Platform  
+**Date:** ${new Date().toLocaleDateString()}
+
+## Executive Summary
+3-4 sentence overview of current SEO position, biggest opportunities, and expected outcomes if recommendations are implemented.
+
+## SEO Scorecard
+| Category | Score | Grade | Priority |
+|----------|-------|-------|----------|
+| Technical SEO | /20 | A-F | High/Med/Low |
+| On-Page Optimisation | /20 | A-F | |
+| Content Quality | /20 | A-F | |
+| Backlink Profile | /20 | A-F | |
+| Local SEO | /20 | A-F | |
+| **TOTAL** | **/100** | | |
+
+## Current Situation Analysis
+### Strengths (what's working)
+### Weaknesses (critical gaps)
+### Opportunities (quick wins available)
+### Threats (competitors, algorithm risks)
+
+## Traffic & Visibility Estimate
+Current estimated organic performance and baseline.
+
+## 90-Day SEO Roadmap
+
+### Month 1 — Technical Foundation (Days 1-30)
+Table: | Priority | Action | Owner | Expected Impact |
+(8 actions)
+
+### Month 2 — Content & Authority (Days 31-60)
+Table: | Priority | Action | Owner | Expected Impact |
+(8 actions)
+
+### Month 3 — Scale & Measure (Days 61-90)
+Table: | Priority | Action | Owner | Expected Impact |
+(8 actions)
+
+## ROI Projections
+### Conservative Scenario (implementing 50% of recommendations)
+- Traffic increase: +X%
+- New monthly visitors: +X
+- Estimated lead/conversion increase: +X%
+- Estimated revenue impact: $X–$X/month
+
+### Optimistic Scenario (implementing 80%+ of recommendations)
+- Traffic increase: +X%
+- New monthly visitors: +X
+- Estimated revenue impact: $X–$X/month
+
+### Payback Timeline
+When to expect results at each stage.
+
+## Recommended Tool Stack
+Table: | Tool | Purpose | Cost | Priority |
+
+## Next Steps
+Top 5 actions to take in the next 7 days.
+
+---
+*This report was generated by AutoSEO AI. Estimates are based on industry benchmarks for ${industry||'your sector'}.*`;
+  try{
+    const r=await callClaude(prompt,1500);
+    document.getElementById('reportOutput').innerHTML=`<div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border);">
+        <div><div class="section-title" style="margin:0;">📊 Executive SEO Report — ${escH(biz||url)}</div>
+        <div style="font-size:11.5px;color:var(--muted);margin-top:3px;">Generated ${new Date().toLocaleDateString()} · AutoSEO AI Platform</div></div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-ghost btn-sm" onclick="navigator.clipboard.writeText(${JSON.stringify(r)}).then(()=>toast('Report copied!'))">📋 Copy</button>
+          <button class="btn btn-accent btn-sm" onclick="printReport()">🖨️ Print / PDF</button>
+        </div>
+      </div>
+      <div class="article-preview" style="max-height:none;">${mdHtml(r)}</div>
+    </div>`;
+    window._lastReport=r;
+    toast('✅ Report generated!');
+  }catch(e){
+    document.getElementById('reportOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;
+    toast('Error: '+e.message,true);
+  }
+  document.getElementById('reportBtn').disabled=false;
+}
+function printReport(){
+  const content=document.querySelector('#reportOutput .article-preview');
+  if(!content)return;
+  const w=window.open('','_blank');
+  w.document.write(`<html><head><title>SEO Report</title><style>body{font-family:Georgia,serif;max-width:800px;margin:40px auto;line-height:1.8;color:#222;}h1{font-size:24px;}h2{font-size:18px;border-bottom:2px solid #6c47ff;padding-bottom:6px;color:#6c47ff;}h3{font-size:15px;color:#7c3aed;}table{width:100%;border-collapse:collapse;margin:14px 0;}th,td{padding:9px 12px;border:1px solid #ddd;text-align:left;}th{background:#f5f5ff;}</style></head><body>${content.innerHTML}</body></html>`);
+  w.document.close(); w.print();
 }
 
-async function testWPConnection() {
-  const wpUrl = document.getElementById('wpUrl').value.trim();
-  const wpUser = document.getElementById('wpUser').value.trim();
-  const wpPass = document.getElementById('wpPass').value.trim();
-  if (!wpUrl || !wpUser || !wpPass) { toast('Fill in all WordPress fields', true); return; }
-
-  const resultEl = document.getElementById('wpTestResult');
-  resultEl.innerHTML = '<span style="color:var(--muted);">Testing connection…</span>';
-
-  try {
-    const creds = btoa(wpUser+':'+wpPass);
-    const res = await fetch(wpUrl.replace(/\/$/,'')+'/wp-json/wp/v2/users/me', {
-      headers: { 'Authorization': 'Basic '+creds }
-    });
-    if (res.ok) {
-      const data = await res.json();
-      DB.set('wp', { wpUrl, wpUser, wpPass, wpCategory: document.getElementById('wpCategory').value, wpAuthor: document.getElementById('wpAuthor').value });
-      resultEl.innerHTML = `<span style="color:var(--success);">✅ Connected! Logged in as: ${escH(data.name)}</span>`;
-      document.getElementById('wpStatus2').className = 'badge badge-green';
-      document.getElementById('wpStatus2').textContent = '✅ Connected';
+// ════════════════════════════════════════════
+// WORDPRESS
+// ════════════════════════════════════════════
+function saveWPSettings(){
+  const wp={wpUrl:document.getElementById('wpUrl').value.trim(),wpUser:document.getElementById('wpUser').value.trim(),wpCategory:document.getElementById('wpCategory').value.trim(),wpAuthor:document.getElementById('wpAuthor').value.trim()};
+  DB.set('wp',wp); toast('✅ WordPress settings saved!');
+}
+async function testWPConnection(){
+  const wpUrl=document.getElementById('wpUrl').value.trim();
+  const wpUser=document.getElementById('wpUser').value.trim();
+  const wpPass=document.getElementById('wpPass').value.trim();
+  if(!wpUrl||!wpUser||!wpPass){toast('Fill in all WordPress fields',true);return;}
+  const el=document.getElementById('wpTestResult');
+  el.innerHTML='<span style="color:var(--muted);">Testing…</span>';
+  try{
+    const creds=btoa(wpUser+':'+wpPass);
+    const res=await fetch(wpUrl.replace(/\/$/,'')+'/wp-json/wp/v2/users/me',{headers:{'Authorization':'Basic '+creds}});
+    if(res.ok){
+      const data=await res.json();
+      DB.set('wp',{wpUrl,wpUser,wpPass,wpCategory:document.getElementById('wpCategory').value,wpAuthor:document.getElementById('wpAuthor').value});
+      el.innerHTML=`<span style="color:var(--success);">✅ Connected! Logged in as: ${escH(data.name)}</span>`;
+      document.getElementById('wpStatus2').className='badge badge-green';
+      document.getElementById('wpStatus2').textContent='✅ Connected';
       toast('✅ WordPress connected!');
-    } else {
-      resultEl.innerHTML = `<span style="color:var(--danger);">❌ Connection failed (HTTP ${res.status}). Check your credentials.</span>`;
-    }
-  } catch(e) {
-    resultEl.innerHTML = `<span style="color:var(--danger);">❌ Error: ${escH(e.message)}</span>`;
-  }
+    }else{el.innerHTML=`<span style="color:var(--danger);">❌ Failed (HTTP ${res.status}). Check credentials.</span>`;}
+  }catch(e){el.innerHTML=`<span style="color:var(--danger);">❌ ${escH(e.message)}</span>`;}
 }
-
-async function publishToWP() {
-  if (!currentArticle) { toast('No article to publish', true); return; }
-  const wp = DB.get('wp');
-  if (!wp || !wp.wpUrl || !wp.wpUser || !wp.wpPass) {
-    toast('Set up WordPress connection in Settings first', true);
-    showPage('wordpress');
-    return;
-  }
-
-  document.getElementById('publishBtn') && (document.getElementById('publishBtn').disabled = true);
+async function publishToWP(){
+  if(!currentArticle){toast('No article to publish',true);return;}
+  const wp=DB.get('wp');
+  if(!wp||!wp.wpUrl||!wp.wpUser||!wp.wpPass){toast('Set up WordPress connection first',true);showPage('wordpress');return;}
+  const pubBtn=document.getElementById('publishBtn');
+  if(pubBtn)pubBtn.disabled=true;
   toast('📤 Publishing to WordPress…');
-
-  try {
-    const creds = btoa(wp.wpUser+':'+wp.wpPass);
-    const status = document.getElementById('wpStatus') ? document.getElementById('wpStatus').value : 'draft';
-
-    // Convert markdown to HTML for WP
-    const htmlContent = mdHtml(currentArticle.content);
-
-    const res = await fetch(wp.wpUrl.replace(/\/$/,'')+'/wp-json/wp/v2/posts', {
-      method: 'POST',
-      headers: { 'Authorization': 'Basic '+creds, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title: currentArticle.title, content: htmlContent, status: status, slug: currentArticle.keyword.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'') })
+  try{
+    const creds=btoa(wp.wpUser+':'+wp.wpPass);
+    const status=document.getElementById('wpStatus')?document.getElementById('wpStatus').value:'draft';
+    const htmlContent=mdHtml(currentArticle.content);
+    const res=await fetch(wp.wpUrl.replace(/\/$/,'')+'/wp-json/wp/v2/posts',{
+      method:'POST',headers:{'Authorization':'Basic '+creds,'Content-Type':'application/json'},
+      body:JSON.stringify({title:currentArticle.title,content:htmlContent,status,slug:currentArticle.keyword.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'')})
     });
-
-    if (res.ok) {
-      const data = await res.json();
-      // Mark article as published
-      const articles = DB.get('articles') || [];
-      const a = articles.find(x=>x.id===currentArticle.id);
-      if (a) { a.published = true; a.wpId = data.id; a.wpUrl = data.link; DB.set('articles', articles); }
-      currentArticle.published = true;
-      document.getElementById('statPublished').textContent = articles.filter(x=>x.published).length;
-      toast(`✅ Published! View at: ${data.link}`);
+    if(res.ok){
+      const data=await res.json();
+      const arts=DB.get('articles')||[];
+      const a=arts.find(x=>x.id===currentArticle.id);
+      if(a){a.published=true;a.wpId=data.id;a.wpUrl=data.link;DB.set('articles',arts);}
+      currentArticle.published=true;
+      document.getElementById('statPublished').textContent=(DB.get('articles')||[]).filter(x=>x.published).length;
+      toast(`✅ Published! ${data.link}`);
       renderArticlesList();
-    } else {
-      const err = await res.json();
-      toast('❌ Publish failed: '+(err.message||'Unknown error'), true);
-    }
-  } catch(e) {
-    toast('❌ '+e.message, true);
-  }
-  document.getElementById('publishBtn') && (document.getElementById('publishBtn').disabled = false);
+    }else{const err=await res.json();toast('❌ '+(err.message||'Publish failed'),true);}
+  }catch(e){toast('❌ '+e.message,true);}
+  if(pubBtn)pubBtn.disabled=false;
 }
 
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════════
 // SETTINGS
-// ═══════════════════════════════════════════════
-function updateKey() {
-  const key = document.getElementById('settingsKey').value.trim();
-  if (!key.startsWith('sk-ant')) { toast('Invalid key format', true); return; }
-  API_KEY = key;
-  DB.set('apikey', key);
-  document.getElementById('keyDisplay').textContent = key.slice(0,10)+'••••'+key.slice(-4);
+// ════════════════════════════════════════════
+function updateKey(){
+  const key=document.getElementById('settingsKey').value.trim();
+  if(!key.startsWith('sk-ant')){toast('Invalid key format',true);return;}
+  API_KEY=key; DB.set('apikey',key);
+  document.getElementById('keyDisplay').textContent=key.slice(0,10)+'••••'+key.slice(-4);
   toast('✅ API key updated!');
 }
-
-function saveBizProfile() {
-  const biz = {};
-  ['bizName','bizUrl','bizNiche','bizAudience'].forEach(id => { biz[id] = document.getElementById(id).value.trim(); });
-  DB.set('biz', biz);
-  loadDashboard();
-  toast('✅ Business profile saved!');
+function saveBizProfile(){
+  const biz={};
+  ['bizName','bizUrl','bizNiche','bizAudience'].forEach(id=>{biz[id]=document.getElementById(id).value.trim();});
+  DB.set('biz',biz); loadDashboard(); toast('✅ Business profile saved!');
 }
-
-function clearAllData() {
-  if (!confirm('Clear all saved articles, calendar, and settings? This cannot be undone.')) return;
+function clearAllData(){
+  if(!confirm('Clear all data? This cannot be undone.'))return;
   ['articles','calendar','backlinks','backlinks_tracker','keywords','biz','wp','apikey'].forEach(k=>DB.del(k));
-  API_KEY = '';
-  toast('🗑️ All data cleared. Refresh the page.');
-  setTimeout(()=>location.reload(), 1500);
+  API_KEY=''; toast('🗑️ Cleared. Refreshing…');
+  setTimeout(()=>location.reload(),1500);
 }
 </script>
 </body>
