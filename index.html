@@ -1306,32 +1306,28 @@ function renderResearch(b, rawContent){
     <!-- ── PROPOSED OUTLINE ── -->
     <div class="brief-section">
       <div class="brief-section-title">📐 Proposed Article Outline <span style="font-size:10px;color:var(--muted);font-weight:400;">edit headings freely</span></div>
-      <textarea class="input research-field" id="r_outline" rows="10" style="font-family:'Space Mono',monospace;font-size:12px;line-height:1.9;">${(arr(b.outline).length?arr(b.outline):[]).map(h=>h.level+': '+h.text).join('
-')}</textarea>
+      <textarea class="input research-field" id="r_outline" rows="10" style="font-family:'Space Mono',monospace;font-size:12px;line-height:1.9;">${(arr(b.outline).length?arr(b.outline):[]).map(h=>h.level+': '+h.text).join('\n')}</textarea>
       <div style="font-size:11px;color:var(--muted);margin-top:5px;">Format: H1: Title / H2: Section / H3: Sub-section — one per line</div>
     </div>
 
     <!-- ── PEOPLE ALSO ASK ── -->
     <div class="brief-section">
       <div class="brief-section-title">❓ People Also Ask</div>
-      <textarea class="input research-field" id="r_paa" rows="6" style="line-height:2;">${escH(arr(b.peopleAlsoAsk).join('
-'))}</textarea>
+      <textarea class="input research-field" id="r_paa" rows="6" style="line-height:2;">${escH(arr(b.peopleAlsoAsk).join('\n'))}</textarea>
       <div style="font-size:11px;color:var(--muted);margin-top:5px;">One question per line — tick the ones to include in your FAQ section</div>
     </div>
 
     <!-- ── KEY STATISTICS ── -->
     <div class="brief-section">
       <div class="brief-section-title">📊 Key Statistics to Include</div>
-      <textarea class="input research-field" id="r_stats" rows="5" style="line-height:1.9;">${escH([b.stat1,b.stat2,b.stat3,b.stat4].filter(Boolean).join('
-'))}</textarea>
+      <textarea class="input research-field" id="r_stats" rows="5" style="line-height:1.9;">${escH([b.stat1,b.stat2,b.stat3,b.stat4].filter(Boolean).join('\n'))}</textarea>
       <div style="font-size:11px;color:var(--muted);margin-top:5px;">Add, remove or edit statistics before writing</div>
     </div>
 
     <!-- ── EXPERT QUOTE ANGLES ── -->
     <div class="brief-section">
       <div class="brief-section-title">💬 Expert Quote Angles</div>
-      <textarea class="input research-field" id="r_quotes" rows="4" style="line-height:1.9;">${escH([b.quote1,b.quote2,b.quote3].filter(Boolean).join('
-'))}</textarea>
+      <textarea class="input research-field" id="r_quotes" rows="4" style="line-height:1.9;">${escH([b.quote1,b.quote2,b.quote3].filter(Boolean).join('\n'))}</textarea>
     </div>
 
     <!-- ── INTERNAL LINKS & COMPETITOR GAPS ── -->
