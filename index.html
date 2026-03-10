@@ -268,7 +268,7 @@ tr:hover td{background:rgba(108,71,255,0.025);}
 
       <div class="nav-section">Content Engine</div>
       <div class="nav-item" onclick="showPage('writer')"><span class="nav-icon">✍️</span>Article Writer</div>
-      <div class="nav-item" onclick="showPage('brief')"><span class="nav-icon">📋</span>Content Brief</div>
+      <div class="nav-item" onclick="showPage('brief')"><span class="nav-icon">🔬</span>Content Research</div>
       <div class="nav-item" onclick="showPage('strategy')"><span class="nav-icon">🗺️</span>Content Strategy</div>
       <div class="nav-item" onclick="showPage('calendar')"><span class="nav-icon">📅</span>Content Calendar</div>
       <div class="nav-item" onclick="showPage('articles')"><span class="nav-icon">📄</span>Published Articles</div>
@@ -402,10 +402,14 @@ tr:hover td{background:rgba(108,71,255,0.025);}
       </div>
     </div>
 
-    <!-- ══ CONTENT BRIEF ══ -->
+    <!-- ══ CONTENT RESEARCH ══ -->
     <div class="page" id="page-brief">
       <div class="topbar">
-        <div><div class="page-title">📋 Content Brief</div><div class="page-sub">AI research brief with sources — compile articles manually</div></div>
+        <div><div class="page-title">🔬 Content Research</div><div class="page-sub">AI-researched data in editable fields — pick, edit, and write manually</div></div>
+        <div class="topbar-actions" id="researchActions" style="display:none;">
+          <button class="btn btn-ghost btn-sm" onclick="clearResearch()">🗑️ Clear</button>
+          <button class="btn btn-teal" onclick="writeFromResearch()">✍️ Write Article from Research</button>
+        </div>
       </div>
       <div class="page-body">
         <div class="card card-accent" style="margin-bottom:18px;">
@@ -418,11 +422,11 @@ tr:hover td{background:rgba(108,71,255,0.025);}
                 <option>Local Page</option><option>Thought Leadership</option><option>FAQ Article</option>
               </select>
             </div>
-            <button class="btn btn-accent" onclick="generateBrief()" id="briefBtn" style="align-self:flex-end;">📋 Generate Brief</button>
+            <button class="btn btn-accent" onclick="generateBrief()" id="briefBtn" style="align-self:flex-end;">🔬 Research Topic</button>
           </div>
         </div>
         <div id="briefOutput">
-          <div class="empty-state"><div class="icon">📋</div><div class="title">Enter a keyword to generate a content brief</div><div style="font-size:12px;">Research data and sources will populate on the right</div></div>
+          <div class="empty-state"><div class="icon">🔬</div><div class="title">Enter a keyword to start research</div><div style="font-size:12px;">All fields will be editable — pick, modify and write your article</div></div>
         </div>
       </div>
     </div>
@@ -1099,7 +1103,7 @@ function viewArticle(id){
 }
 
 // ════════════════════════════════════════════
-// CONTENT BRIEF
+// CONTENT RESEARCH
 // ════════════════════════════════════════════
 async function generateBrief(){
   const kw=document.getElementById('briefKeyword').value.trim();
@@ -1107,63 +1111,130 @@ async function generateBrief(){
   const type=document.getElementById('briefType').value;
   if(!kw){toast('Enter a keyword or topic',true);return;}
   document.getElementById('briefBtn').disabled=true;
-  document.getElementById('briefOutput').innerHTML=loadingHTML('Researching your brief…','Pulling data from multiple angles — ~20 seconds');
+  document.getElementById('researchActions').style.display='none';
+  document.getElementById('briefOutput').innerHTML=loadingHTML('Researching topic…','Deep-diving multiple angles — ~25 seconds');
 
-  const prompt=`You are an expert SEO content strategist. Create a comprehensive content brief for:
-
+  // Two parallel prompts: structured metadata + detailed content
+  const metaPrompt=`You are an expert SEO content strategist. Create a comprehensive content research brief for:
 Keyword/Topic: "${kw}"
 Industry: ${industry||'general'}
 Content Type: ${type}
 
-Return a structured JSON object (only JSON, no markdown, no explanation) with this EXACT format:
+Return ONLY a valid JSON object. No markdown fences, no comments, no trailing commas. Every string value must use escaped quotes if needed.
 {
   "keyword": "${kw}",
-  "searchIntent": "informational|commercial|transactional|navigational",
-  "estimatedVolume": "high|medium|low",
-  "difficulty": "easy|medium|hard",
+  "searchIntent": "one of: informational, commercial, transactional, navigational",
+  "estimatedVolume": "one of: high, medium, low",
+  "difficulty": "one of: easy, medium, hard",
   "targetWordCount": 1800,
-  "targetAudience": "description of ideal reader",
-  "contentAngle": "unique angle or hook for this article",
+  "targetAudience": "one sentence describing the ideal reader",
+  "contentAngle": "unique hook or angle for this article",
   "primaryKeyword": "${kw}",
-  "secondaryKeywords": ["kw2","kw3","kw4","kw5","kw6"],
-  "lsiKeywords": ["term1","term2","term3","term4","term5","term6","term7","term8"],
-  "peopleAlsoAsk": ["question1?","question2?","question3?","question4?","question5?","question6?"],
-  "suggestedTitle": "SEO optimized H1 title",
-  "titleAlternatives": ["alt title 1","alt title 2","alt title 3"],
-  "metaDescription": "155 char meta description",
-  "proposedOutline": [
-    {"level":"H1","text":"Main title"},
-    {"level":"H2","text":"Introduction section"},
-    {"level":"H2","text":"Section 2"},
+  "secondaryKeywords": ["related keyword 1","related keyword 2","related keyword 3","related keyword 4","related keyword 5"],
+  "lsiKeywords": ["semantic term 1","semantic term 2","semantic term 3","semantic term 4","semantic term 5","semantic term 6"],
+  "peopleAlsoAsk": ["question 1?","question 2?","question 3?","question 4?","question 5?"],
+  "suggestedTitle": "Best SEO H1 title for this keyword",
+  "titleAlt1": "Alternative title option 1",
+  "titleAlt2": "Alternative title option 2",
+  "titleAlt3": "Alternative title option 3",
+  "metaDescription": "Compelling 155-character meta description with CTA",
+  "outline": [
+    {"level":"H1","text":"Article main title"},
+    {"level":"H2","text":"Introduction heading"},
+    {"level":"H2","text":"Main section 2"},
     {"level":"H3","text":"Sub-section 2a"},
-    {"level":"H2","text":"Section 3"},
+    {"level":"H2","text":"Main section 3"},
     {"level":"H3","text":"Sub-section 3a"},
-    {"level":"H2","text":"Section 4"},
-    {"level":"H2","text":"FAQ Section"},
+    {"level":"H2","text":"Main section 4"},
+    {"level":"H2","text":"Common Mistakes"},
+    {"level":"H2","text":"FAQ"},
     {"level":"H2","text":"Conclusion"}
   ],
-  "keyStatistics": ["stat1 with source context","stat2","stat3","stat4"],
-  "expertQuoteAngles": ["angle1 to find a quote for","angle2","angle3"],
-  "internalLinkOpportunities": ["page type 1","page type 2","page type 3"],
-  "competitorAngles": ["what competitors cover","gap 1 you can fill","gap 2"],
-  "cta": "recommended call to action",
-  "sources": [
-    {"type":"Industry Study","title":"Suggested source type 1","url":"https://example.com","relevance":"Why this type of source helps"},
-    {"type":"Government/Authority","title":"Suggested source type 2","url":"https://example.com","relevance":"Why this matters"},
-    {"type":"Expert Blog","title":"Suggested source type 3","url":"https://example.com","relevance":"What to look for"},
-    {"type":"News/Media","title":"Suggested source type 4","url":"https://example.com","relevance":"For recency signals"},
-    {"type":"Research Paper","title":"Suggested source type 5","url":"https://example.com","relevance":"Academic backing"}
-  ]
+  "stat1": "Key statistic 1 with source context",
+  "stat2": "Key statistic 2 with source context",
+  "stat3": "Key statistic 3 with source context",
+  "stat4": "Key statistic 4 with source context",
+  "quote1": "Expert quote angle 1 — who to find and what to ask",
+  "quote2": "Expert quote angle 2",
+  "quote3": "Expert quote angle 3",
+  "internalLinks": "Internal link opportunity 1, opportunity 2, opportunity 3",
+  "competitorGaps": "Competitor gap 1, gap 2, gap 3",
+  "cta": "Recommended call to action for this article",
+  "srcType1": "Industry Study","srcTitle1": "Recommended study type","srcUrl1": "https://pubmed.ncbi.nlm.nih.gov","srcWhy1": "Adds scientific credibility",
+  "srcType2": "Government Authority","srcTitle2": "Official gov source","srcUrl2": "https://www.cdc.gov","srcWhy2": "YMYL trust signals",
+  "srcType3": "Expert Blog","srcTitle3": "Leading industry blog","srcUrl3": "https://healthline.com","srcWhy3": "Accessible expert opinion",
+  "srcType4": "News Media","srcTitle4": "Recent news coverage","srcUrl4": "https://www.nytimes.com","srcWhy4": "Recency signals",
+  "srcType5": "Research Paper","srcTitle5": "Academic paper type","srcUrl5": "https://scholar.google.com","srcWhy5": "E-E-A-T authority"
 }`;
 
+  const contentPrompt=`You are an expert SEO writer and researcher. Write detailed, research-quality content for a "${type}" article about: "${kw}" in the ${industry||'general'} industry.
+
+Produce the following sections with rich, detailed content a writer can pick from and edit. Use real facts, statistics, examples and expert insights where possible.
+
+## INTRODUCTION
+Write 2-3 compelling opening paragraphs (150-200 words total). Hook the reader, state the problem, promise the solution. Naturally include the keyword "${kw}".
+
+## BACKGROUND & CONTEXT
+Write 2-3 paragraphs of background context, history, and why this topic matters right now (150-200 words).
+
+## KEY FACTS & DATA POINTS
+Write 4-6 bullet points with specific statistics, data, and facts relevant to "${kw}". Include source context for each.
+
+## MAIN CONTENT — SECTION 1
+Write 2-3 substantive paragraphs on the first major angle of "${kw}" (200-250 words). Be specific, authoritative, and helpful.
+
+## MAIN CONTENT — SECTION 2
+Write 2-3 substantive paragraphs on the second major angle (200-250 words). Include practical advice or how-to guidance.
+
+## MAIN CONTENT — SECTION 3
+Write 2-3 paragraphs on the third angle, covering common concerns, comparisons, or advanced insights (150-200 words).
+
+## EXPERT INSIGHTS
+Write 2-3 paragraphs framed as expert perspective or what specialists in this field say about "${kw}" (150-200 words).
+
+## PRACTICAL TIPS
+Write 5-7 actionable tips or recommendations related to "${kw}". Each tip: bold heading + 2-3 sentence explanation.
+
+## FAQ ANSWERS
+Write answers to the 5 most common questions about "${kw}". Each: Question in bold + 3-4 sentence answer.
+
+## CONCLUSION
+Write a strong 2-paragraph conclusion (100-150 words) that summarises key points and ends with a clear call to action.`;
+
   try{
-    const raw=await callClaude(prompt,1500);
-    const clean=raw.replace(/```json|```/g,'').trim();
-    let brief;
-    try{brief=JSON.parse(clean);}catch(e){const m=clean.match(/\{[\s\S]+\}/);brief=m?JSON.parse(m[0]):null;}
-    if(!brief)throw new Error('Could not parse brief data');
-    renderBrief(brief);
-    toast('✅ Content brief ready!');
+    // Fire both calls in parallel
+    const [rawMeta, rawContent] = await Promise.all([
+      callClaude(metaPrompt, 1200),
+      callClaude(contentPrompt, 2000)
+    ]);
+
+    // Parse metadata JSON safely
+    let meta;
+    try{
+      const clean = rawMeta.replace(/```json|```/g,'').trim();
+      meta = JSON.parse(clean);
+    }catch(e){
+      // Attempt aggressive cleanup: remove trailing commas before } or ]
+      try{
+        const fixed = rawMeta
+          .replace(/```json|```/g,'')
+          .replace(/,(\s*[}\]])/g,'$1')
+          .trim();
+        meta = JSON.parse(fixed);
+      }catch(e2){
+        // Extract just the object
+        const m = rawMeta.match(/\{[\s\S]+\}/);
+        if(m){
+          try{
+            meta = JSON.parse(m[0].replace(/,(\s*[}\]])/g,'$1'));
+          }catch(e3){ throw new Error('Metadata parse failed — '+e3.message); }
+        } else { throw new Error('Could not extract JSON from response'); }
+      }
+    }
+
+    renderResearch(meta, rawContent);
+    document.getElementById('researchActions').style.display='flex';
+    toast('✅ Research complete! Edit fields then write your article.');
   }catch(e){
     document.getElementById('briefOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;
     toast('Error: '+e.message,true);
@@ -1171,108 +1242,156 @@ Return a structured JSON object (only JSON, no markdown, no explanation) with th
   document.getElementById('briefBtn').disabled=false;
 }
 
-function renderBrief(b){
+function renderResearch(b, rawContent){
   const intColor={'easy':'badge-green','medium':'badge-yellow','hard':'badge-red'}[b.difficulty]||'badge-purple';
+  const arr = v => Array.isArray(v) ? v : (typeof v==='string' ? v.split(',').map(s=>s.trim()).filter(Boolean) : []);
+
+  // Build sources array from flat keys
+  const sources=[];
+  for(let i=1;i<=5;i++){
+    if(b['srcType'+i]) sources.push({type:b['srcType'+i],title:b['srcTitle'+i]||'',url:b['srcUrl'+i]||'#',relevance:b['srcWhy'+i]||''});
+  }
+
   const html=`<div class="brief-layout">
-  <!-- LEFT: BRIEF DATA -->
-  <div class="brief-main">
 
-    <!-- Meta row -->
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;align-items:center;">
-      <span class="badge badge-purple">🎯 ${escH(b.primaryKeyword)}</span>
-      <span class="badge badge-blue">Intent: ${escH(b.searchIntent)}</span>
-      <span class="badge badge-yellow">Volume: ${escH(b.estimatedVolume)}</span>
-      <span class="badge ${intColor}">Difficulty: ${escH(b.difficulty)}</span>
-      <span class="badge badge-teal">~${b.targetWordCount} words</span>
+  <!-- ══ LEFT: EDITABLE RESEARCH FIELDS ══ -->
+  <div class="brief-main" id="researchFields">
+
+    <!-- Status badges -->
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;align-items:center;">
+      <span class="badge badge-purple">🎯 ${escH(b.primaryKeyword||b.keyword||'')}</span>
+      <span class="badge badge-blue">Intent: ${escH(b.searchIntent||'')}</span>
+      <span class="badge badge-yellow">Volume: ${escH(b.estimatedVolume||'')}</span>
+      <span class="badge ${intColor}">Difficulty: ${escH(b.difficulty||'')}</span>
+      <span class="badge badge-teal">~${b.targetWordCount||1800} words</span>
+      <span class="badge badge-green">✏️ All fields editable</span>
     </div>
 
-    <!-- Titles & Meta -->
+    <!-- ── TITLES & META ── -->
     <div class="brief-section">
-      <div class="brief-section-title">📰 Titles & Meta</div>
-      <div style="margin-bottom:12px;">
-        <div class="input-label" style="margin-bottom:6px;">Suggested H1 Title</div>
-        <div style="font-size:14px;font-weight:700;padding:10px 14px;background:rgba(108,71,255,0.06);border-radius:8px;border-left:3px solid var(--accent);">${escH(b.suggestedTitle)}</div>
+      <div class="brief-section-title">📰 Titles & Meta <span style="font-size:10px;color:var(--muted);font-weight:400;">(click any field to edit)</span></div>
+      <div class="input-group">
+        <label class="input-label">Suggested H1 Title</label>
+        <input class="input research-field" id="r_title" value="${escH(b.suggestedTitle||'')}" style="font-weight:700;font-size:14px;border-left:3px solid var(--accent);" />
       </div>
-      <div style="margin-bottom:12px;">
-        <div class="input-label" style="margin-bottom:6px;">Title Alternatives</div>
-        ${(b.titleAlternatives||[]).map(t=>`<div style="font-size:13px;padding:7px 12px;background:var(--surface2);border-radius:7px;margin-bottom:5px;">${escH(t)}</div>`).join('')}
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
+        <div><label class="input-label">Alt Title 1</label><input class="input research-field" id="r_alt1" value="${escH(b.titleAlt1||'')}" /></div>
+        <div><label class="input-label">Alt Title 2</label><input class="input research-field" id="r_alt2" value="${escH(b.titleAlt2||'')}" /></div>
+        <div><label class="input-label">Alt Title 3</label><input class="input research-field" id="r_alt3" value="${escH(b.titleAlt3||'')}" /></div>
+        <div><label class="input-label">Target Word Count</label><input class="input research-field" id="r_wordcount" value="${b.targetWordCount||1800}" /></div>
       </div>
-      <div>
-        <div class="input-label" style="margin-bottom:6px;">Meta Description</div>
-        <div style="font-size:12.5px;padding:10px 14px;background:var(--surface2);border-radius:8px;color:var(--muted);line-height:1.6;">${escH(b.metaDescription)}</div>
+      <div class="input-group">
+        <label class="input-label">Meta Description <span style="color:var(--muted);font-size:10px;">155 chars max</span></label>
+        <textarea class="input research-field" id="r_meta" rows="2" style="resize:none;">${escH(b.metaDescription||'')}</textarea>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div><label class="input-label">Target Audience</label><input class="input research-field" id="r_audience" value="${escH(b.targetAudience||'')}" /></div>
+        <div><label class="input-label">Content Angle / Hook</label><input class="input research-field" id="r_angle" value="${escH(b.contentAngle||'')}" /></div>
       </div>
     </div>
 
-    <!-- Keywords -->
+    <!-- ── KEYWORD MAP ── -->
     <div class="brief-section">
       <div class="brief-section-title">🎯 Keyword Map</div>
-      <div style="margin-bottom:12px;"><div class="input-label" style="margin-bottom:7px;">Secondary Keywords</div>
-        <div>${(b.secondaryKeywords||[]).map(k=>`<span class="brief-tag">${escH(k)}</span>`).join('')}</div>
+      <div class="input-group">
+        <label class="input-label">Secondary Keywords <span style="color:var(--muted);font-size:10px;">comma-separated</span></label>
+        <textarea class="input research-field" id="r_secondary" rows="2" style="resize:none;">${escH(arr(b.secondaryKeywords).join(', '))}</textarea>
       </div>
-      <div><div class="input-label" style="margin-bottom:7px;">LSI / Semantic Keywords</div>
-        <div>${(b.lsiKeywords||[]).map(k=>`<span class="brief-tag" style="background:rgba(13,148,136,0.07);color:#0d9488;border-color:rgba(13,148,136,0.15);">${escH(k)}</span>`).join('')}</div>
+      <div class="input-group">
+        <label class="input-label">LSI / Semantic Keywords <span style="color:var(--muted);font-size:10px;">comma-separated</span></label>
+        <textarea class="input research-field" id="r_lsi" rows="2" style="resize:none;">${escH(arr(b.lsiKeywords).join(', '))}</textarea>
       </div>
     </div>
 
-    <!-- Proposed Outline -->
+    <!-- ── PROPOSED OUTLINE ── -->
     <div class="brief-section">
-      <div class="brief-section-title">📐 Proposed Article Outline</div>
-      <div>${(b.proposedOutline||[]).map(h=>`<div class="brief-heading-item">
-        <span class="brief-h-tag">${escH(h.level)}</span>
-        <span class="brief-h-text" style="${h.level==='H1'?'font-weight:700;font-size:14px;':h.level==='H2'?'font-weight:600;':'color:var(--muted);'}">${escH(h.text)}</span>
-      </div>`).join('')}</div>
+      <div class="brief-section-title">📐 Proposed Article Outline <span style="font-size:10px;color:var(--muted);font-weight:400;">edit headings freely</span></div>
+      <textarea class="input research-field" id="r_outline" rows="10" style="font-family:'Space Mono',monospace;font-size:12px;line-height:1.9;">${(arr(b.outline).length?arr(b.outline):[]).map(h=>h.level+': '+h.text).join('
+')}</textarea>
+      <div style="font-size:11px;color:var(--muted);margin-top:5px;">Format: H1: Title / H2: Section / H3: Sub-section — one per line</div>
     </div>
 
-    <!-- People Also Ask -->
+    <!-- ── PEOPLE ALSO ASK ── -->
     <div class="brief-section">
       <div class="brief-section-title">❓ People Also Ask</div>
-      ${(b.peopleAlsoAsk||[]).map(q=>`<div class="brief-question">${escH(q)}</div>`).join('')}
+      <textarea class="input research-field" id="r_paa" rows="6" style="line-height:2;">${escH(arr(b.peopleAlsoAsk).join('
+'))}</textarea>
+      <div style="font-size:11px;color:var(--muted);margin-top:5px;">One question per line — tick the ones to include in your FAQ section</div>
     </div>
 
-    <!-- Stats, Quotes, CTAs -->
+    <!-- ── KEY STATISTICS ── -->
     <div class="brief-section">
       <div class="brief-section-title">📊 Key Statistics to Include</div>
-      <ul style="font-size:12.5px;color:var(--text);line-height:1.9;padding-left:18px;">
-        ${(b.keyStatistics||[]).map(s=>`<li>${escH(s)}</li>`).join('')}
-      </ul>
+      <textarea class="input research-field" id="r_stats" rows="5" style="line-height:1.9;">${escH([b.stat1,b.stat2,b.stat3,b.stat4].filter(Boolean).join('
+'))}</textarea>
+      <div style="font-size:11px;color:var(--muted);margin-top:5px;">Add, remove or edit statistics before writing</div>
     </div>
 
+    <!-- ── EXPERT QUOTE ANGLES ── -->
     <div class="brief-section">
       <div class="brief-section-title">💬 Expert Quote Angles</div>
-      ${(b.expertQuoteAngles||[]).map(q=>`<div style="padding:8px 12px;background:var(--surface2);border-radius:7px;font-size:12.5px;margin-bottom:6px;border-left:3px solid var(--accent2);">${escH(q)}</div>`).join('')}
+      <textarea class="input research-field" id="r_quotes" rows="4" style="line-height:1.9;">${escH([b.quote1,b.quote2,b.quote3].filter(Boolean).join('
+'))}</textarea>
     </div>
 
+    <!-- ── INTERNAL LINKS & COMPETITOR GAPS ── -->
     <div class="brief-section">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
         <div>
           <div class="brief-section-title">🔗 Internal Link Opportunities</div>
-          <ul style="font-size:12.5px;color:var(--muted);line-height:1.9;padding-left:18px;">${(b.internalLinkOpportunities||[]).map(l=>`<li>${escH(l)}</li>`).join('')}</ul>
+          <textarea class="input research-field" id="r_internal" rows="4" style="font-size:12px;line-height:1.9;">${escH(b.internalLinks||'')}</textarea>
         </div>
         <div>
           <div class="brief-section-title">⚔️ Competitor Gaps to Fill</div>
-          <ul style="font-size:12.5px;color:var(--muted);line-height:1.9;padding-left:18px;">${(b.competitorAngles||[]).map(c=>`<li>${escH(c)}</li>`).join('')}</ul>
+          <textarea class="input research-field" id="r_gaps" rows="4" style="font-size:12px;line-height:1.9;">${escH(b.competitorGaps||'')}</textarea>
         </div>
       </div>
     </div>
 
+    <!-- ── RECOMMENDED CTA ── -->
     <div class="brief-section">
       <div class="brief-section-title">🎯 Recommended CTA</div>
-      <div style="padding:11px 16px;background:rgba(108,71,255,0.07);border-radius:8px;font-size:13px;font-weight:600;color:var(--accent);">${escH(b.cta)}</div>
+      <input class="input research-field" id="r_cta" value="${escH(b.cta||'')}" />
     </div>
 
-    <div style="margin-top:16px;display:flex;gap:10px;">
-      <button class="btn btn-accent" onclick="writeFromBrief()">✍️ Write Article from Brief</button>
-      <button class="btn btn-ghost" onclick="navigator.clipboard.writeText(JSON.stringify(window._lastBrief,null,2)).then(()=>toast('Brief JSON copied!'))">📋 Copy Brief JSON</button>
+    <!-- ══ RESEARCHED CONTENT ══ -->
+    <div class="brief-section" style="border:2px solid rgba(108,71,255,0.25);background:rgba(108,71,255,0.02);">
+      <div class="brief-section-title" style="color:var(--accent);font-size:13px;">
+        ✍️ Researched Article Content
+        <span style="font-size:10px;color:var(--muted);font-weight:400;margin-left:8px;">Edit freely — this feeds directly into your article</span>
+      </div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:12px;line-height:1.6;">
+        Below is AI-researched content organised by section. <strong style="color:var(--text);">Delete what you don't want, keep and edit what you do.</strong> When you click "Write Article from Research", the AI will use exactly what's here to compile your final article.
+      </div>
+      <textarea class="input research-field" id="r_content" rows="30" style="font-size:13px;line-height:1.8;font-family:'Syne',sans-serif;">${escH(rawContent||'')}</textarea>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+        <button class="btn btn-ghost btn-sm" onclick="navigator.clipboard.writeText(document.getElementById('r_content').value).then(()=>toast('Content copied!'))">📋 Copy Content</button>
+        <button class="btn btn-ghost btn-sm" onclick="document.getElementById('r_content').value=''">🗑️ Clear Content</button>
+        <span style="font-size:11px;color:var(--muted);align-self:center;">Tip: Select all → delete any section you don't want to include</span>
+      </div>
     </div>
-  </div>
 
-  <!-- RIGHT: SOURCES PANEL -->
+    <!-- ── WRITE BUTTON ── -->
+    <div style="margin-top:18px;padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-weight:700;font-size:14px;">Ready to write?</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:3px;">Edit fields above, then click to generate your article using your selections.</div>
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-ghost" onclick="navigator.clipboard.writeText(gatherResearchSummary()).then(()=>toast('Research summary copied!'))">📋 Copy Summary</button>
+        <button class="btn btn-teal" onclick="writeFromResearch()">✍️ Write Article from Research</button>
+      </div>
+    </div>
+
+  </div><!-- /.brief-main -->
+
+  <!-- ══ RIGHT: SOURCES PANEL ══ -->
   <div class="brief-sources">
     <div style="font-size:11px;font-family:'Space Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding-bottom:8px;border-bottom:1px solid var(--border);">📚 Research Sources</div>
-    <div style="font-size:11.5px;color:var(--muted);line-height:1.6;padding:8px 0;">Use these source types to pull real data for your article. Each adds credibility and helps rank for E-E-A-T signals.</div>
-    ${(b.sources||[]).map((s,i)=>`<div class="source-card">
+    <div style="font-size:11.5px;color:var(--muted);line-height:1.6;padding:8px 0;">Reference these source types to add real data and credibility to your article.</div>
+    ${sources.map((s,i)=>`<div class="source-card">
       <div class="source-label">${escH(s.type)}</div>
-      <div class="source-title"><span style="width:20px;height:20px;background:rgba(108,71,255,0.12);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:var(--accent);font-weight:700;">${i+1}</span>${escH(s.title)}</div>
+      <div class="source-title"><span style="width:20px;height:20px;background:rgba(108,71,255,0.12);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:var(--accent);font-weight:700;flex-shrink:0;">${i+1}</span>&nbsp;${escH(s.title)}</div>
       <div class="source-url">${escH(s.url)}</div>
       <div class="source-snippet">${escH(s.relevance)}</div>
     </div>`).join('')}
@@ -1280,18 +1399,143 @@ function renderBrief(b){
       <div class="source-label">💡 PRO TIP</div>
       <div style="font-size:12px;color:var(--muted);line-height:1.7;">Aim for 3-5 authoritative external links per 1,000 words. Mix: 1 gov/academic, 1 industry study, 1-2 expert blogs, and a recent news source.</div>
     </div>
+    <div class="source-card" style="background:rgba(13,148,136,0.04);border-color:rgba(13,148,136,0.2);">
+      <div class="source-label" style="color:#0d9488;">✍️ WORKFLOW</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7;"><strong style="color:var(--text);">1.</strong> Review all fields on the left<br><strong style="color:var(--text);">2.</strong> Edit / delete content you don't want<br><strong style="color:var(--text);">3.</strong> Keep the statistics and angles you like<br><strong style="color:var(--text);">4.</strong> Click "Write Article from Research"<br><strong style="color:var(--text);">5.</strong> AI compiles using your selections</div>
+    </div>
   </div>
+
 </div>`;
 
   window._lastBrief = b;
   document.getElementById('briefOutput').innerHTML = html;
 }
 
-function writeFromBrief(){
-  if(!window._lastBrief)return;
-  document.getElementById('writerKeyword').value=window._lastBrief.primaryKeyword||'';
+function gatherResearchSummary(){
+  const get = id => { const el=document.getElementById(id); return el?el.value.trim():''; };
+  return [
+    '=== CONTENT RESEARCH SUMMARY ===',
+    'TITLE: '+get('r_title'),
+    'ALT TITLES: '+[get('r_alt1'),get('r_alt2'),get('r_alt3')].filter(Boolean).join(' | '),
+    'META: '+get('r_meta'),
+    'AUDIENCE: '+get('r_audience'),
+    'ANGLE: '+get('r_angle'),
+    '',
+    'SECONDARY KEYWORDS: '+get('r_secondary'),
+    'LSI KEYWORDS: '+get('r_lsi'),
+    '',
+    'OUTLINE:\n'+get('r_outline'),
+    '',
+    'PEOPLE ALSO ASK:\n'+get('r_paa'),
+    '',
+    'STATISTICS:\n'+get('r_stats'),
+    '',
+    'QUOTE ANGLES:\n'+get('r_quotes'),
+    '',
+    'INTERNAL LINKS: '+get('r_internal'),
+    'COMPETITOR GAPS: '+get('r_gaps'),
+    'CTA: '+get('r_cta'),
+    '',
+    '=== RESEARCHED CONTENT ===',
+    get('r_content'),
+  ].join('\n');
+}
+
+async function writeFromResearch(){
+  const get = id => { const el=document.getElementById(id); return el?el.value.trim():''; };
+  const title    = get('r_title');
+  const meta     = get('r_meta');
+  const angle    = get('r_angle');
+  const outline  = get('r_outline');
+  const paa      = get('r_paa');
+  const stats    = get('r_stats');
+  const quotes   = get('r_quotes');
+  const secondary= get('r_secondary');
+  const lsi      = get('r_lsi');
+  const cta      = get('r_cta');
+  const content  = get('r_content');
+  const kw       = document.getElementById('briefKeyword').value.trim();
+
+  if(!title && !kw){ toast('No research data found. Run Research Topic first.',true); return; }
+
+  const prompt=`You are a professional SEO content writer. Write a complete, polished, publish-ready article using EXACTLY the research and selections provided below. Do not add topics not mentioned. Preserve the writer's edits and angles.
+
+TARGET KEYWORD: ${kw}
+ARTICLE TITLE (H1): ${title||kw}
+META DESCRIPTION: ${meta}
+CONTENT ANGLE: ${angle}
+SECONDARY KEYWORDS TO WEAVE IN: ${secondary}
+LSI KEYWORDS TO WEAVE IN: ${lsi}
+CALL TO ACTION: ${cta}
+
+ARTICLE OUTLINE (use this structure exactly):
+${outline}
+
+QUESTIONS TO ADDRESS IN FAQ:
+${paa}
+
+KEY STATISTICS TO INCLUDE:
+${stats}
+
+EXPERT INSIGHTS TO REFERENCE:
+${quotes}
+
+RESEARCHED CONTENT TO DRAW FROM (use this as your primary source material — incorporate, expand, and polish):
+${content}
+
+INSTRUCTIONS:
+- Write a complete, flowing article of 1500-2000 words
+- Start with the H1 title, then follow the outline structure
+- Naturally weave in the target keyword and secondary keywords
+- Include the statistics with proper context
+- Answer the PAA questions in the FAQ section
+- End with the recommended CTA
+- Use professional, authoritative tone
+- Format with proper H1, H2, H3 headers
+- Do NOT include the meta description in the article body`;
+
+  // Show loading in writer, switch to writer page
   showPage('writer');
-  setTimeout(()=>writeArticle(),200);
+  document.getElementById('writerOutput').innerHTML=loadingHTML('Writing article from your research…','Compiling your selections into a polished article');
+  document.getElementById('publishCard').style.display='none';
+
+  try{
+    const result = await callClaude(prompt, 2000);
+    currentArticle={
+      keyword:kw, url:'', content:result,
+      title:title||extractTitle(result)||kw,
+      words:countWords(result),
+      date:new Date().toLocaleDateString(),
+      published:false, id:Date.now()
+    };
+    saveArticle(currentArticle);
+    document.getElementById('writerOutput').innerHTML=`<div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border);">
+        <div>
+          <div style="font-size:14px;font-weight:700;">${escH(currentArticle.title)}</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:3px;">${currentArticle.words} words · From Research</div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-ghost btn-sm" onclick="copyArticle()">📋 Copy</button>
+          <button class="btn btn-accent btn-sm" onclick="publishToWP()">📤 Publish to WP</button>
+        </div>
+      </div>
+      <div class="article-preview">${mdHtml(result)}</div>
+    </div>`;
+    document.getElementById('publishCard').style.display='block';
+    toast('✅ Article written from your research!');
+  }catch(e){
+    document.getElementById('writerOutput').innerHTML=`<div class="error-msg" style="display:block;">❌ ${escH(e.message)}</div>`;
+    toast('Error: '+e.message,true);
+    showPage('brief');
+  }
+}
+
+function clearResearch(){
+  if(!confirm('Clear all research fields?')) return;
+  document.getElementById('briefOutput').innerHTML='<div class="empty-state"><div class="icon">🔬</div><div class="title">Enter a keyword to start research</div><div style="font-size:12px;">All fields will be editable — pick, modify and write your article</div></div>';
+  document.getElementById('researchActions').style.display='none';
+  window._lastBrief=null;
 }
 
 // ════════════════════════════════════════════
