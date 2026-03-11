@@ -1105,6 +1105,62 @@ function viewArticle(id){
 // ════════════════════════════════════════════
 // CONTENT RESEARCH
 // ════════════════════════════════════════════
+
+// Parse a plain-text research brief response into a metadata object
+function parseResearchMeta(raw){
+  const get = key => {
+    const rx = new RegExp('^'+key+':\\s*(.+)','mi');
+    const m = raw.match(rx);
+    return m ? m[1].trim() : '';
+  };
+  const getList = key => {
+    const rx = new RegExp('^'+key+':\\s*(.+)','mi');
+    const m = raw.match(rx);
+    if(!m) return [];
+    return m[1].split(/[,|]+/).map(s=>s.trim().replace(/^["'\-\*]+|["']+$/g,'')).filter(Boolean);
+  };
+  // Outline: lines starting with H1/H2/H3
+  const outlineLines = raw.split('\n').filter(l=>/^H[123]:\s/.test(l.trim()));
+  const outline = outlineLines.map(l=>{
+    const m=l.trim().match(/^(H[123]):\s*(.+)/);
+    return m ? {level:m[1],text:m[2].trim()} : null;
+  }).filter(Boolean);
+  // PAA: lines starting with - or numbers inside a PAA block
+  const paaBlock = raw.match(/PAA_START([\s\S]*?)PAA_END/);
+  const paa = paaBlock
+    ? paaBlock[1].split('\n').map(l=>l.replace(/^[\s\-\*\d\.]+/,'').trim()).filter(Boolean)
+    : getList('PAA');
+  return {
+    keyword:      get('KEYWORD'),
+    searchIntent: get('INTENT'),
+    estimatedVolume: get('VOLUME'),
+    difficulty:   get('DIFFICULTY'),
+    targetWordCount: parseInt(get('WORDCOUNT'))||1800,
+    targetAudience: get('AUDIENCE'),
+    contentAngle: get('ANGLE'),
+    primaryKeyword: get('KEYWORD'),
+    suggestedTitle: get('TITLE'),
+    titleAlt1:    get('ALT1'),
+    titleAlt2:    get('ALT2'),
+    titleAlt3:    get('ALT3'),
+    metaDescription: get('META'),
+    secondaryKeywords: getList('SECONDARY'),
+    lsiKeywords:  getList('LSI'),
+    peopleAlsoAsk: paa,
+    outline,
+    stat1: get('STAT1'), stat2: get('STAT2'), stat3: get('STAT3'), stat4: get('STAT4'),
+    quote1: get('QUOTE1'), quote2: get('QUOTE2'), quote3: get('QUOTE3'),
+    internalLinks: get('INTERNAL'),
+    competitorGaps: get('GAPS'),
+    cta: get('CTA'),
+    srcType1:get('SRC1_TYPE'),srcTitle1:get('SRC1_TITLE'),srcUrl1:get('SRC1_URL'),srcWhy1:get('SRC1_WHY'),
+    srcType2:get('SRC2_TYPE'),srcTitle2:get('SRC2_TITLE'),srcUrl2:get('SRC2_URL'),srcWhy2:get('SRC2_WHY'),
+    srcType3:get('SRC3_TYPE'),srcTitle3:get('SRC3_TITLE'),srcUrl3:get('SRC3_URL'),srcWhy3:get('SRC3_WHY'),
+    srcType4:get('SRC4_TYPE'),srcTitle4:get('SRC4_TITLE'),srcUrl4:get('SRC4_URL'),srcWhy4:get('SRC4_WHY'),
+    srcType5:get('SRC5_TYPE'),srcTitle5:get('SRC5_TITLE'),srcUrl5:get('SRC5_URL'),srcWhy5:get('SRC5_WHY'),
+  };
+}
+
 async function generateBrief(){
   const kw=document.getElementById('briefKeyword').value.trim();
   const industry=document.getElementById('briefIndustry').value.trim();
@@ -1114,58 +1170,79 @@ async function generateBrief(){
   document.getElementById('researchActions').style.display='none';
   document.getElementById('briefOutput').innerHTML=loadingHTML('Researching topic…','Deep-diving multiple angles — ~25 seconds');
 
-  // Two parallel prompts: structured metadata + detailed content
-  const metaPrompt=`You are an expert SEO content strategist. Create a comprehensive content research brief for:
-Keyword/Topic: "${kw}"
+  // Two parallel prompts: structured plain-text metadata + detailed content
+  const metaPrompt=`You are an expert SEO content strategist. Create a comprehensive content research brief.
+Keyword/Topic: ${kw}
 Industry: ${industry||'general'}
 Content Type: ${type}
 
-Return ONLY a valid JSON object. No markdown fences, no comments, no trailing commas. Every string value must use escaped quotes if needed.
-{
-  "keyword": "${kw}",
-  "searchIntent": "one of: informational, commercial, transactional, navigational",
-  "estimatedVolume": "one of: high, medium, low",
-  "difficulty": "one of: easy, medium, hard",
-  "targetWordCount": 1800,
-  "targetAudience": "one sentence describing the ideal reader",
-  "contentAngle": "unique hook or angle for this article",
-  "primaryKeyword": "${kw}",
-  "secondaryKeywords": ["related keyword 1","related keyword 2","related keyword 3","related keyword 4","related keyword 5"],
-  "lsiKeywords": ["semantic term 1","semantic term 2","semantic term 3","semantic term 4","semantic term 5","semantic term 6"],
-  "peopleAlsoAsk": ["question 1?","question 2?","question 3?","question 4?","question 5?"],
-  "suggestedTitle": "Best SEO H1 title for this keyword",
-  "titleAlt1": "Alternative title option 1",
-  "titleAlt2": "Alternative title option 2",
-  "titleAlt3": "Alternative title option 3",
-  "metaDescription": "Compelling 155-character meta description with CTA",
-  "outline": [
-    {"level":"H1","text":"Article main title"},
-    {"level":"H2","text":"Introduction heading"},
-    {"level":"H2","text":"Main section 2"},
-    {"level":"H3","text":"Sub-section 2a"},
-    {"level":"H2","text":"Main section 3"},
-    {"level":"H3","text":"Sub-section 3a"},
-    {"level":"H2","text":"Main section 4"},
-    {"level":"H2","text":"Common Mistakes"},
-    {"level":"H2","text":"FAQ"},
-    {"level":"H2","text":"Conclusion"}
-  ],
-  "stat1": "Key statistic 1 with source context",
-  "stat2": "Key statistic 2 with source context",
-  "stat3": "Key statistic 3 with source context",
-  "stat4": "Key statistic 4 with source context",
-  "quote1": "Expert quote angle 1 — who to find and what to ask",
-  "quote2": "Expert quote angle 2",
-  "quote3": "Expert quote angle 3",
-  "internalLinks": "Internal link opportunity 1, opportunity 2, opportunity 3",
-  "competitorGaps": "Competitor gap 1, gap 2, gap 3",
-  "cta": "Recommended call to action for this article",
-  "srcType1": "Industry Study","srcTitle1": "Recommended study type","srcUrl1": "https://pubmed.ncbi.nlm.nih.gov","srcWhy1": "Adds scientific credibility",
-  "srcType2": "Government Authority","srcTitle2": "Official gov source","srcUrl2": "https://www.cdc.gov","srcWhy2": "YMYL trust signals",
-  "srcType3": "Expert Blog","srcTitle3": "Leading industry blog","srcUrl3": "https://healthline.com","srcWhy3": "Accessible expert opinion",
-  "srcType4": "News Media","srcTitle4": "Recent news coverage","srcUrl4": "https://www.nytimes.com","srcWhy4": "Recency signals",
-  "srcType5": "Research Paper","srcTitle5": "Academic paper type","srcUrl5": "https://scholar.google.com","srcWhy5": "E-E-A-T authority"
-}`;
+Reply using EXACTLY these labelled lines — one value per line, no extra formatting:
+
+KEYWORD: ${kw}
+INTENT: informational
+VOLUME: medium
+DIFFICULTY: medium
+WORDCOUNT: 1800
+AUDIENCE: (one sentence describing the ideal reader)
+ANGLE: (unique hook or angle for this article)
+TITLE: (best SEO-optimised H1 title)
+ALT1: (alternative title 1)
+ALT2: (alternative title 2)
+ALT3: (alternative title 3)
+META: (compelling 150-155 char meta description with CTA)
+SECONDARY: keyword1, keyword2, keyword3, keyword4, keyword5
+LSI: term1, term2, term3, term4, term5, term6
+
+PAA_START
+- Question 1?
+- Question 2?
+- Question 3?
+- Question 4?
+- Question 5?
+PAA_END
+
+H1: Main article title
+H2: Introduction
+H2: Section 2 heading
+H3: Sub-section 2a
+H2: Section 3 heading
+H3: Sub-section 3a
+H2: Section 4 heading
+H2: Common Mistakes
+H2: FAQ
+H2: Conclusion
+
+STAT1: (key statistic with source context)
+STAT2: (key statistic with source context)
+STAT3: (key statistic with source context)
+STAT4: (key statistic with source context)
+QUOTE1: (expert quote angle 1 — who to find and what to ask)
+QUOTE2: (expert quote angle 2)
+QUOTE3: (expert quote angle 3)
+INTERNAL: page type 1, page type 2, page type 3
+GAPS: competitor gap 1, gap 2, gap 3
+CTA: (recommended call to action)
+
+SRC1_TYPE: Industry Study
+SRC1_TITLE: (recommended study or publication name)
+SRC1_URL: https://pubmed.ncbi.nlm.nih.gov
+SRC1_WHY: (why this source adds credibility)
+SRC2_TYPE: Government / Authority
+SRC2_TITLE: (official source name)
+SRC2_URL: https://www.cdc.gov
+SRC2_WHY: (YMYL trust signal reason)
+SRC3_TYPE: Expert Blog
+SRC3_TITLE: (leading industry blog)
+SRC3_URL: https://healthline.com
+SRC3_WHY: (accessible expert opinion)
+SRC4_TYPE: News / Media
+SRC4_TITLE: (recent news outlet)
+SRC4_URL: https://www.reuters.com
+SRC4_WHY: (recency signal)
+SRC5_TYPE: Research Paper
+SRC5_TITLE: (academic source type)
+SRC5_URL: https://scholar.google.com
+SRC5_WHY: (E-E-A-T authority)`;
 
   const contentPrompt=`You are an expert SEO writer and researcher. Write detailed, research-quality content for a "${type}" article about: "${kw}" in the ${industry||'general'} industry.
 
@@ -1208,28 +1285,14 @@ Write a strong 2-paragraph conclusion (100-150 words) that summarises key points
       callClaude(contentPrompt, 2000)
     ]);
 
-    // Parse metadata JSON safely
-    let meta;
-    try{
-      const clean = rawMeta.replace(/```json|```/g,'').trim();
-      meta = JSON.parse(clean);
-    }catch(e){
-      // Attempt aggressive cleanup: remove trailing commas before } or ]
-      try{
-        const fixed = rawMeta
-          .replace(/```json|```/g,'')
-          .replace(/,(\s*[}\]])/g,'$1')
-          .trim();
-        meta = JSON.parse(fixed);
-      }catch(e2){
-        // Extract just the object
-        const m = rawMeta.match(/\{[\s\S]+\}/);
-        if(m){
-          try{
-            meta = JSON.parse(m[0].replace(/,(\s*[}\]])/g,'$1'));
-          }catch(e3){ throw new Error('Metadata parse failed — '+e3.message); }
-        } else { throw new Error('Could not extract JSON from response'); }
-      }
+    // Parse plain-text metadata — no JSON, never fails
+    const meta = parseResearchMeta(rawMeta);
+    // Fallback: if title is empty the model may have ignored format — try to salvage
+    if(!meta.suggestedTitle && rawMeta.length > 50){
+      const firstLine = rawMeta.split('\n').find(l=>l.trim().length>10);
+      meta.suggestedTitle = firstLine||kw;
+      meta.primaryKeyword = kw;
+      meta.keyword = kw;
     }
 
     renderResearch(meta, rawContent);
